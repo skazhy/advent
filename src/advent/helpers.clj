@@ -21,15 +21,22 @@
 
 ;;; I/O
 
+(defn slurp-line [path]
+  (trim (slurp path)))
+
 (defn slurp-lines [path]
   (-> (slurp path) (split #"\n")))
 
-(defn slurp-int-lines [path]
-  (map #(Integer. %) (slurp-lines path)))
+;; Reading strings
 
 (defn slurp-word-lines [path]
   (map #(split (trim %) #" ") (slurp-lines path)))
 
+;; Reading numbers
+
+(defn slurp-int-lines [path]
+  (map #(Integer. %) (slurp-lines path)))
+
 (defn slurp-int-matrix [path]
-  (map (fn [line] (map  #(Integer. %) (split line #" ")))
+  (map (fn [line] (map  #(Integer. %) (split line #"\s|\t")))
        (slurp-lines path)))
