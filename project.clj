@@ -6,4 +6,5 @@
             :key "mit"
             :year 2015}
   :resource-paths ["resources"]
-  :dependencies [[org.clojure/clojure "1.9.0-RC2"]])
+  :dependencies [[org.clojure/clojure "1.9.0-RC2"]]
+  :profiles {:dev {:source-paths ["dev"]}})
