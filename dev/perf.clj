@@ -53,4 +53,5 @@
     "3" (day-3-perf)
     "4" (day-4-perf)
     "5" (day-5-perf)
-    "6" (day-6-perf)))
+    "6" (day-6-perf)
+    nil))
