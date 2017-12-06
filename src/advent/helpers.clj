@@ -37,6 +37,9 @@
 (defn slurp-int-lines [path]
   (map #(Integer. %) (slurp-lines path)))
 
+(defn slurp-int-line [path]
+  (map #(Integer. %) (first (slurp-lines path))))
+
 (defn slurp-int-matrix [path]
   (map (fn [line] (map  #(Integer. %) (split line #"\s|\t")))
        (slurp-lines path)))

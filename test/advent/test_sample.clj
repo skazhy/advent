@@ -57,3 +57,15 @@
 
   (testing "Day five, second puzzle"
     (= 10 (inc-dec-jumps [0 3  0  1  -3]))))
+
+
+(deftest day-6-puzzles
+  (def ^:private day-6-seq [14 0 15 12 11 11 3 5 1 6 8 4 9 1 8 4])
+
+  (testing "Day six, first puzzle"
+    (is (= 5 (redistribution-count [0 2 7 0])))
+    (is (= 11137 (redistribution-count day-6-seq))))
+
+  (testing "Day six, second puzzle"
+    (is (= 4 (redistribution-loop-size [0 2 7 0])))
+    (is (= 1037 (redistribution-loop-size day-6-seq)))))
