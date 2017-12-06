@@ -29,8 +29,9 @@
                  `"""` `
 ```
 
-Puzzle code is in `advent.puzzles`, provided samples are tested in
-`advent.test-sample`, run the tests with `lein test`.
+Puzzles are organized by day, all tests are in `advent.2017.test-sample`.
+Basic performance tests are in `perf`. Run tests for certain day with `lein
+perf $DAY_NUMBER`.
 
 ___
 

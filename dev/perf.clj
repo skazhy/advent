@@ -1,8 +1,13 @@
 (ns perf
   "Puzzle sollution performance testing."
   (:require [clojure.java.io :refer [resource]]
-            [advent.puzzles :as p]
-            [advent.helpers :as h]))
+            [advent.helpers :as h]
+            [advent.2017.day1 :as day1]
+            [advent.2017.day2 :as day2]
+            [advent.2017.day3 :as day3]
+            [advent.2017.day4 :as day4]
+            [advent.2017.day5 :as day5]
+            [advent.2017.day6 :as day6]))
 
 
 (defmacro measure [[m :as form]]
@@ -12,25 +17,40 @@
 
 
 (defn day-1-perf []
-  (let [input (h/slurp-line (resource "day1.txt"))]
-    (measure (p/inverse-captcha input))
-    (measure (p/halfway-captcha input))))
+  (let [input (h/slurp-line (resource "2017/day1.txt"))]
+    (measure (day1/puzzle1 input))
+    (measure (day1/puzzle2 input))))
 
 (defn day-2-perf []
-  (let [input (h/slurp-int-matrix (resource "day2.txt"))]
-    (measure (p/corruption-checksum input))
-    (measure (p/evenly-divisible-checksum input))))
+  (let [input (h/slurp-int-matrix (resource "2017/day2.txt"))]
+    (measure (day2/puzzle1 input))
+    (measure (day2/puzzle2 input))))
 
 (defn day-3-perf []
-  (measure (p/manhattan-distance 279138))
-  (measure (p/taxicab-neighbor-sum  279138)))
+  (measure (day3/puzzle1 279138))
+  (measure (day3/puzzle2  279138)))
 
 (defn day-4-perf []
-  (let [input (h/slurp-word-lines (resource "day4.txt"))]
-    (measure (p/unique-passphrases input))
-    (measure (p/no-anagram-passphrases input))))
+  (let [input (h/slurp-word-lines (resource "2017/day4.txt"))]
+    (measure (day4/puzzle1 input))
+    (measure (day4/puzzle2 input))))
 
 (defn day-5-perf []
-  (let [input (vec (h/slurp-int-lines (resource "day5.txt")))]
-    (measure (p/inc-jumps input))
-    (measure (p/inc-dec-jumps input))))
+  (let [input (vec (h/slurp-int-lines (resource "2017/day5.txt")))]
+    (measure (day5/puzzle1 input))
+    (measure (day5/puzzle1 input))))
+
+(defn day-6-perf []
+  (let [input (vec (first (h/slurp-int-matrix (resource "2017/day6.txt"))))]
+    (measure (day6/puzzle1 input))
+    (measure (day6/puzzle1 input))))
+
+
+(defn -main [day-no & _]
+  (case day-no
+    "1" (day-1-perf)
+    "2" (day-2-perf)
+    "3" (day-3-perf)
+    "4" (day-4-perf)
+    "5" (day-5-perf)
+    "6" (day-6-perf)))
