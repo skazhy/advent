@@ -7,7 +7,8 @@
             [advent.2017.day3 :as day3]
             [advent.2017.day4 :as day4]
             [advent.2017.day5 :as day5]
-            [advent.2017.day6 :as day6]))
+            [advent.2017.day6 :as day6]
+            [advent.2017.day7 :as day7]))
 
 
 (defmacro measure [[m :as form]]
@@ -45,6 +46,11 @@
     (measure (day6/puzzle1 input))
     (measure (day6/puzzle1 input))))
 
+(defn day-7-perf []
+  (let [input (h/slurp-word-lines (resource "2017/day7.txt"))]
+    (measure (day7/puzzle1 input))
+    (measure (day7/puzzle2 input))))
+
 
 (defn -main [day-no & _]
   (case day-no
@@ -54,4 +60,5 @@
     "4" (day-4-perf)
     "5" (day-5-perf)
     "6" (day-6-perf)
+    "7" (day-7-perf)
     nil))

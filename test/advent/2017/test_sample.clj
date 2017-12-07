@@ -6,7 +6,8 @@
             [advent.2017.day3 :as day3]
             [advent.2017.day4 :as day4]
             [advent.2017.day5 :as day5]
-            [advent.2017.day6 :as day6]))
+            [advent.2017.day6 :as day6]
+            [advent.2017.day7 :as day7]))
 
 
 (deftest day-1-puzzles
@@ -74,3 +75,19 @@
   (testing "Day 6, second puzzle"
     (is (= 4 (day6/puzzle2 [0 2 7 0])))
     (is (= 1037 (day6/puzzle2 day-6-seq)))))
+
+
+(deftest day-7-puzzles
+  (def ^:private day-7-tree
+    (map
+      #(clojure.string/split % #" ")
+      ["pbga (66)""xhth (57)" "ebii (61)" "havc (66)" "ktlj (57)"
+       "fwft (72) -> ktlj, cntj, xhth" "qoyq (66)"
+       "padx (45) -> pbga, havc, qoyq" "tknk (41) -> ugml, padx, fwft"
+       "jptl (61)" "ugml (68) -> gyxo, ebii, jptl" "gyxo (61)" "cntj (57)"]))
+
+  (testing "Day 7, first puzzle"
+    (is (= "tknk" (day7/puzzle1 day-7-tree))))
+
+  (testing "Day 7, second puzzle"
+    (is (= 60 (day7/puzzle2 day-7-tree)))))
