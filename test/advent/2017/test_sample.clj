@@ -102,10 +102,10 @@
       ["b inc 5 if a > 1"
        "a inc 1 if b < 5"
        "c dec -10 if a >= 1"
-       "c inc -20 if c == 10"))
+       "c inc -20 if c == 10"]))
 
   (testing "Day 8, first puzzle"
-    (is (= 3745 (day8/puzzle1 day-8-instructions))))
+    (is (= 1 (day8/puzzle1 day-8-instructions))))
 
   (testing "Day 8, second puzzle"
-    (is (= 4644 (day8/puzzle2 day-8-instructions)))))
+    (is (= 10 (day8/puzzle2 day-8-instructions)))))
