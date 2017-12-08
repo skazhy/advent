@@ -1,37 +1,32 @@
 (ns advent.2017.day8)
 
 
-(def comp-ops
-  {"!=" not= "<=" <= "==" = ">=" >= ">" > "<" <})
+(def ^:private comp-ops {"!=" not= "<=" <= "==" = ">=" >= ">" > "<" <})
+(def ^:private upd-ops {"inc" + "dec" -})
 
-(def upd-ops
-  {"inc" + "dec" -})
+(defn- instruciton-fn [op arg] (fn [i] (op (or i 0) (Integer. arg))))
 
-(defn parse-instruction [row]
-  (let [[dest-reg upd-op upd-with _ src-reg comp-op comp-with] row]
+(defn- parse-instruction [row]
+  ; format: [foo inc 10 if bar > 10]
+  (when-let [[dest-reg upd-op upd-with _ src-reg comp-op comp-with] row]
     {:dest-reg dest-reg
-     :compare #((get comp-ops comp-op) (or % 0) (Integer. comp-with))
-     :update #((get upd-ops upd-op) (or % 0) (Integer. upd-with))
+     :compare (instruciton-fn (get comp-ops comp-op) comp-with)
+     :update (instruciton-fn (get upd-ops upd-op) upd-with)
      :src-reg src-reg}))
 
-(defn can-exec? [registers instruction]
+(defn- can-exec? [registers instruction]
   ((:compare instruction) (get registers (:src-reg instruction))))
 
-(defn updated-register
-  "Performs the `update` operation on the destination register."
-  [registers instruction]
-  ((:update instruction) (get registers (:dest-reg instruction))))
-
-(defn apply-instructions [rows extract-result]
+(defn- apply-instructions [rows extract-result]
   (loop [rows rows registers {} max-value 0]
-    (if (seq rows)
-      (let [instruction (parse-instruction (first rows))]
-        (if (can-exec? registers instruction)
-          (let [res (updated-register registers instruction)]
-            (recur (rest rows)
-                   (assoc registers (:dest-reg instruction) res)
-                   (max max-value res)))
-          (recur (rest rows) registers max-value)))
+    (if-let [instruction (parse-instruction (first rows))]
+      (if (can-exec? registers instruction)
+        (let [res ((:update instruction)
+                    (get registers (:dest-reg instruction)))]
+          (recur (rest rows)
+                 (assoc registers (:dest-reg instruction) res)
+                 (max max-value res)))
+        (recur (rest rows) registers max-value))
       (extract-result registers max-value))))
 
 (defn puzzle1 [rows]
