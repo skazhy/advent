@@ -7,8 +7,12 @@
             [advent.2017.day4 :as day4]
             [advent.2017.day5 :as day5]
             [advent.2017.day6 :as day6]
-            [advent.2017.day7 :as day7]))
+            [advent.2017.day7 :as day7]
+            [advent.2017.day8 :as day8]))
 
+
+(defn- split-lines [raw-lines]
+  (map #(clojure.string/split % #" ") raw-lines))
 
 (deftest day-1-puzzles
   (testing "Day 1, first puzzle"
@@ -79,8 +83,7 @@
 
 (deftest day-7-puzzles
   (def ^:private day-7-tree
-    (map
-      #(clojure.string/split % #" ")
+    (split-lines
       ["pbga (66)""xhth (57)" "ebii (61)" "havc (66)" "ktlj (57)"
        "fwft (72) -> ktlj, cntj, xhth" "qoyq (66)"
        "padx (45) -> pbga, havc, qoyq" "tknk (41) -> ugml, padx, fwft"
@@ -91,3 +94,18 @@
 
   (testing "Day 7, second puzzle"
     (is (= 60 (day7/puzzle2 day-7-tree)))))
+
+
+(deftest day-8-puzzles
+  (def ^:private day-8-instructions
+    (split-lines
+      ["b inc 5 if a > 1"
+       "a inc 1 if b < 5"
+       "c dec -10 if a >= 1"
+       "c inc -20 if c == 10"))
+
+  (testing "Day 8, first puzzle"
+    (is (= 3745 (day8/puzzle1 day-8-instructions))))
+
+  (testing "Day 8, second puzzle"
+    (is (= 4644 (day8/puzzle2 day-8-instructions)))))
