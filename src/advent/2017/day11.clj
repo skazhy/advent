@@ -18,7 +18,7 @@
 (def ^:private even-x-direction
   {"n" [0 1] "s" [0 -1] "ne" [1 0] "nw" [-1 0] "sw" [-1 -1] "se" [1 -1]})
 
-(defn coord [loc direction]
+(defn move [loc direction]
   (if (even? (first loc))
     (get even-x-direction direction)
     (get odd-x-direction direction)))
@@ -29,8 +29,8 @@
 
 (defn navigate-home [steps callback-fn]
   (loop [steps steps loc [0 0] furthest 0]
-    (if-let [x (coord loc (first steps))]
-      (recur (rest steps) (map + loc x) (max furthest (steps-to-origin loc)))
+    (if-let [m (move loc (first steps))]
+      (recur (rest steps) (map + loc m) (max furthest (steps-to-origin loc)))
       (callback-fn (steps-to-origin loc) furthest))))
 
 (defn- parse-input [input] (clojure.string/split input #","))
