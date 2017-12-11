@@ -8,7 +8,8 @@
             [advent.2017.day5 :as day5]
             [advent.2017.day6 :as day6]
             [advent.2017.day7 :as day7]
-            [advent.2017.day8 :as day8]))
+            [advent.2017.day8 :as day8]
+            [advent.2017.day9 :as day9]))
 
 
 (defn- split-lines [raw-lines]
@@ -109,3 +110,23 @@
 
   (testing "Day 8, second puzzle"
     (is (= 10 (day8/puzzle2 day-8-instructions)))))
+
+(deftest day-9-puzzles
+  (testing "Day 9, first puzzle"
+    (is (= 1 (day9/puzzle1 "{}")))
+    (is (= 6 (day9/puzzle1 "{{{}}}")))
+    (is (= 5 (day9/puzzle1 "{{},{}}")))
+    (is (= 16 (day9/puzzle1 "{{{},{},{{}}}}")))
+    (is (= 1 (day9/puzzle1 "{<a>,<a>,<a>,<a>}")))
+    (is (= 9 (day9/puzzle1 "{{<ab>},{<ab>},{<ab>},{<ab>}}")))
+    (is (= 9 (day9/puzzle1 "{{<!!>},{<!!>},{<!!>},{<!!>}}")))
+    (is (= 3 (day9/puzzle1 "{{<a!>},{<a!>},{<a!>},{<ab>}}"))))
+
+  (testing "Day 9, second puzzle"
+    (is (= 0 (day9/puzzle2 "<>")))
+    (is (= 17 (day9/puzzle2 "<random characters>")))
+    (is (= 3 (day9/puzzle2 "<<<<>")))
+    (is (= 2 (day9/puzzle2 "<{!>}>")))
+    (is (= 0 (day9/puzzle2 "<!!>")))
+    (is (= 0 (day9/puzzle2 "<!!!>>")))
+    (is (= 10 (day9/puzzle2 "<{o\"i!a,<{i<a>")))))

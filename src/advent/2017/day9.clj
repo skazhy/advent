@@ -1,22 +1,29 @@
-(ns advent.2017.day9)
+(ns advent.2017.day9
+  "Advent of Code 2017, day 9: Stream parsing")
 
 
-(defn c-gr [items callback-fn]
-  (loop [items items in-garbage? false skip? false depth 0 tot-sc 0 gco 0]
+(defn c-gr [items]
+  (loop [items items
+         state {:in-garbage? false
+                :skip? false
+                :depth 0
+                :group-count 0
+                :garbage-size 0}]
     (if-let [i (first items)]
-      (cond
-        skip? (recur (rest items) in-garbage? false depth tot-sc gco)
-        (= \! i) (recur (rest items) in-garbage? true depth tot-sc gco)
-        (and (= \> i) in-garbage?) (recur (rest items) false false depth tot-sc gco)
-        in-garbage? (recur (rest items) in-garbage? false depth tot-sc (inc gco))
-        (= \{ i) (recur (rest items) false false (inc depth) tot-sc gco)
-        (= \} i) (recur (rest items) false false (dec depth) (+ tot-sc depth) gco)
-        (= \< i) (recur (rest items) true false depth tot-sc gco)
-        :else (recur (rest items) in-garbage? false depth tot-sc gco))
-      (callback-fn tot-sc gco))))
+      (recur
+        (rest items)
+        (cond
+          (:skip? state) (assoc state :skip? false)
+          (= \! i) (assoc state :skip? true)
+          (and (= \> i) (:in-garbage? state)) (assoc state :in-garbage? false)
+          (:in-garbage? state) (update state :garbage-size inc)
+          (= \{ i) (update state :depth inc)
+          (= \} i) (-> (update state :depth dec)
+                       (update :group-count + (:depth state)))
+          (= \< i) (assoc state :in-garbage? true)
+          :else state))
+      state)))
 
-(defn puzzle1 [items]
-  (c-gr items (fn [tot-sc _] tot-sc)))
+(defn puzzle1 [items] (:group-count (c-gr items)))
 
-(defn puzzle2 [items]
-  (c-gr items (fn [_ gco] gco)))
+(defn puzzle2 [items] (:garbage-size (c-gr items)))
