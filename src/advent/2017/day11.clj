@@ -1,4 +1,5 @@
-(ns advent.2017.day11)
+(ns advent.2017.day11
+  "Advent of Code 2017, day 11: Hex grids")
 
 
 ;;; Coordinate system
@@ -24,7 +25,7 @@
     (get odd-x-direction direction)))
 
 (defn steps-to-origin [point]
-  (let [[x y] (map #(Math/abs %) c)]
+  (let [[x y] (map #(Math/abs %) point)]
     (+ x (max (- y x) 0) (int (Math/ceil (/ x 2))))))
 
 (defn navigate-home [steps callback-fn]

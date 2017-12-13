@@ -10,7 +10,9 @@
             [advent.2017.day6 :as day6]
             [advent.2017.day7 :as day7]
             [advent.2017.day8 :as day8]
-            [advent.2017.day9 :as day9]))
+            [advent.2017.day9 :as day9]
+            [advent.2017.day10 :as day10]
+            [advent.2017.day11 :as day11]))
 
 
 (defmacro measure [[m :as form]]
@@ -63,6 +65,16 @@
     (measure (day9/puzzle1 input))
     (measure (day9/puzzle2 input))))
 
+(defn day-10-perf []
+  (measure (day10/puzzle1 "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63"
+                          256))
+  (measure (day10/puzzle2 "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63")))
+
+(defn day-11-perf []
+  (let [input (h/slurp-line (resource "2017/day11.txt"))]
+    (measure (day11/puzzle1 input))
+    (measure (day11/puzzle2 input))))
+
 
 (defn -main [day-no & _]
   (case day-no
@@ -74,5 +86,6 @@
     "6" (day-6-perf)
     "7" (day-7-perf)
     "8" (day-8-perf)
-    "9" (day-9-perf)
+    "10" (day-10-perf)
+    "11" (day-11-perf)
     nil))

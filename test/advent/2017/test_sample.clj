@@ -9,7 +9,9 @@
             [advent.2017.day6 :as day6]
             [advent.2017.day7 :as day7]
             [advent.2017.day8 :as day8]
-            [advent.2017.day9 :as day9]))
+            [advent.2017.day9 :as day9]
+            [advent.2017.day10 :as day10]
+            [advent.2017.day11 :as day11]))
 
 
 (defn- split-lines [raw-lines]
@@ -130,3 +132,33 @@
     (is (= 0 (day9/puzzle2 "<!!>")))
     (is (= 0 (day9/puzzle2 "<!!!>>")))
     (is (= 10 (day9/puzzle2 "<{o\"i!a,<{i<a>")))))
+
+
+(deftest day-10-puzzles
+  (def ^:private day-10-str
+    "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63")
+
+  (testing "Day 10, first puzzle"
+    (is (= 12 (day10/puzzle1 "3,4,1,5" 5)))
+    (is (= 40132 (day10/puzzle1 day-10-str 256))))
+
+  (testing "Day 10, second puzzle"
+    (is (= "a2582a3a0e66e6e86e3812dcb672a272" (day10/puzzle2 "")))
+    (is (= "33efeb34ea91902bb2f59c9920caa6cd" (day10/puzzle2 "AoC 2017")))
+    (is (= "3efbe78a8d82f29979031a4aa0b16a9d" (day10/puzzle2 "1,2,3")))
+    (is (= "63960835bcdc130f0b66d7ff4f6a5a8e" (day10/puzzle2 "1,2,4")))
+    (is (= "35b028fe2c958793f7d5a61d07a008c8" (day10/puzzle2 day-10-str)))))
+
+
+(deftest day-11-puzzles
+  (testing "Day 11, first puzzle"
+    (is (= 3 (day11/puzzle1 "ne,ne,ne")))
+    (is (= 0 (day11/puzzle1 "ne,ne,sw,sw")))
+    (is (= 2 (day11/puzzle1 "ne,ne,s,s")))
+    (is (= 3 (day11/puzzle1 "se,sw,se,sw,sw"))))
+
+  (testing "Day 11, second puzzle"
+    (is (= 3 (day11/puzzle2 "ne,ne,ne")))
+    (is (= 2 (day11/puzzle2 "ne,ne,sw,sw")))
+    (is (= 2 (day11/puzzle2 "ne,ne,s,s")))
+    (is (= 3 (day11/puzzle2 "se,sw,se,sw,sw")))))

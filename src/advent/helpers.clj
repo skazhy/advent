@@ -43,3 +43,6 @@
 (defn slurp-int-matrix [path]
   (map (fn [line] (map  #(Integer. %) (split line #"\s|\t")))
        (slurp-lines path)))
+
+(defn split-csv [s]
+  (split s #","))
