@@ -1,4 +1,5 @@
-(ns advent.2017.day10)
+(ns advent.2017.day10
+  "Advent of Code 2017, day 1: Knot hashes")
 
 
 (defn knot-round
@@ -24,9 +25,9 @@
 
 ;;; Puzzle 2
 
-(def salt [17 31 73 47 23])
+(def ^:private salt [17 31 73 47 23])
 
-(defn knot-rounds [inputs]
+(defn- knot-rounds [inputs]
   (loop [lst (apply hash-map (mapcat (juxt identity identity) (range 256)))
          position 0 skip-size 0 remaining 64]
     (if (pos? remaining)
@@ -35,9 +36,11 @@
         (recur lst position skip-size (dec remaining)))
       lst)))
 
-(defn puzzle2 [input-str]
+(defn knot-hash [input-str]
   (->> (concat (mapv int input-str) salt) knot-rounds
        (sort-by first) (map second)
        (partition 16)
        (map #(format "%02x" (apply bit-xor %)))
        (apply str)))
+
+(defn puzzle2 [input-str] (knot-hash input-str))
