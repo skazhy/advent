@@ -1,5 +1,7 @@
 (ns advent.2017.day14
-  (:require [advent.2017.day10 :as d10]
+  "Advent of Code 2017, day 14: Knot hashes redux"
+  (:require [advent.2017.day10 :refer [knot-hash]]
+            [advent.helpers.grid :refer [edge-neighbors]]
             [clojure.set :refer [difference]]))
 
 ;;;; Grid is represented as n * n vector of vectors.
@@ -13,10 +15,10 @@
    \6 "0110" \7 "0111" \8 "1000" \9 "1001" \a "1010" \b "1011"
    \c "1100" \d "1101" \e "1110" \f "1111"})
 
-(defn gen-grid [in-str]
+(defn- gen-grid [in-str]
   (mapv (comp #(mapv str %)
               #(mapcat hex->bin %)
-              #(d10/puzzle2 (str in-str "-" %)))
+              #(knot-hash (str in-str "-" %)))
         (range 128)))
 
 
@@ -28,17 +30,15 @@
 
 ;;; Puzzle 2 - counting all segments
 
-(def ^:private neighbors [[-1 0] [0 -1] [0 1]  [1 0]])
-
-(defn new-segment?  [grid c] (= "1" (get-in grid c)))
+(defn- new-segment? [grid c] (= "1" (get-in grid c)))
 
 (defn pairs [n]
-  (mapcat (fn [r] (map #(vector r %) (range n))) (range n)))
+  (let [rng (range n)] (mapcat (fn [r] (map #(vector r %) rng)) rng)))
 
 (defn neighbors-in-segment
   "Returns a set of neighbor coordinates that are in the same segment."
   [grid  c]
-  (->> (map #(mapv + % c) neighbors)
+  (->> (map #(mapv + % c) edge-neighbors)
        (filter #(new-segment? grid %))
        (set)))
 

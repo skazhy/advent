@@ -1,6 +1,7 @@
 (ns advent.2017.day3
   "Advent of Code 2017, day 3: Taxicab geometry"
-  (:require [advent.helpers :as h]))
+  (:require [advent.helpers :as h]
+            [advent.helpers.grid :refer [all-neighbors]]))
 
 
 ;;; "Turning" = flipping the grid
@@ -41,13 +42,11 @@
 
 ;;; Calculating a taxicab point value
 
-(def ^:private neighbors
-  [[-1 -1] [-1 0] [-1 1] [0 -1] [0 1] [1 -1] [1 0] [1 1]])
 
 (defn- neighbor-sum
   "Returns the sum of all neighboring cell values."
   [grid [x y]]
-  (apply + (map (fn [[nx ny]] (get grid [(+ x nx) (+ y ny)] 0)) neighbors)))
+  (apply + (map (fn [[nx ny]] (get grid [(+ x nx) (+ y ny)] 0)) all-neighbors)))
 
 (defn puzzle2
   "Neighbor sums"
