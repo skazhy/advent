@@ -12,7 +12,8 @@
             [advent.2017.day9 :as day9]
             [advent.2017.day10 :as day10]
             [advent.2017.day11 :as day11]
-            [advent.2017.day12 :as day12]))
+            [advent.2017.day12 :as day12]
+            [advent.2017.day13 :as day13]))
 
 
 (defn- split-lines [raw-lines]
@@ -180,3 +181,17 @@
 
   (testing "Day 12, puzzle 2"
     (is (= 2 (day12/puzzle2 day-12-rows)))))
+
+
+(deftest day-13-puzzles
+  (def ^:private day-13-rows
+    ["0: 3"
+     "1: 2"
+     "4: 4"
+     "6: 4"])
+
+  (testing "Day 13, puzzle 1"
+    (is (= 24 (day13/puzzle1 day-13-rows))))
+
+  (testing "Day 13, puzzle 2"
+    (is (= 10 (day13/puzzle2 day-13-rows)))))
