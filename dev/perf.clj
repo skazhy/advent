@@ -14,8 +14,8 @@
             [advent.2017.day10 :as day10]
             [advent.2017.day11 :as day11]
             [advent.2017.day12 :as day12]
-            [advent.2017.day12 :as day13]
-            [advent.2017.day12 :as day14]))
+            [advent.2017.day13 :as day13]
+            [advent.2017.day14 :as day14]))
 
 
 (defmacro measure [[m :as form]]
@@ -25,23 +25,20 @@
 
 
 (defn day-1-perf []
-  (let [input (h/slurp-line (resource "2017/day1.txt"))]
-    (measure (day1/puzzle1 input))
-    (measure (day1/puzzle2 input))))
+  (measure (day1/puzzle1 day1/puzzle-input))
+  (measure (day1/puzzle2 day1/puzzle-input)))
 
 (defn day-2-perf []
-  (let [input (h/slurp-int-matrix (resource "2017/day2.txt"))]
-    (measure (day2/puzzle1 input))
-    (measure (day2/puzzle2 input))))
+  (measure (day2/puzzle1 day2/puzzle-input))
+  (measure (day2/puzzle2 day2/puzzle-input)))
 
 (defn day-3-perf []
-  (measure (day3/puzzle1 279138))
-  (measure (day3/puzzle2  279138)))
+  (measure (day3/puzzle1 day3/puzzle-input))
+  (measure (day3/puzzle2 day3/puzzle-input)))
 
 (defn day-4-perf []
-  (let [input (h/slurp-word-lines (resource "2017/day4.txt"))]
-    (measure (day4/puzzle1 input))
-    (measure (day4/puzzle2 input))))
+  (measure (day4/puzzle1 day4/puzzle-input))
+  (measure (day4/puzzle2 day4/puzzle-input))))
 
 (defn day-5-perf []
   (let [input (vec (h/slurp-int-lines (resource "2017/day5.txt")))]
@@ -69,9 +66,8 @@
     (measure (day9/puzzle2 input))))
 
 (defn day-10-perf []
-  (measure (day10/puzzle1 "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63"
-                          256))
-  (measure (day10/puzzle2 "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63")))
+  (measure (day10/puzzle1 day10/puzzle-input 256))
+  (measure (day10/puzzle2 day10/puzzle-input)))
 
 (defn day-11-perf []
   (let [input (h/slurp-line (resource "2017/day11.txt"))]
@@ -89,8 +85,8 @@
     (measure (day13/puzzle2 input))))
 
 (defn day-14-perf []
-  (measure (day14/puzzle2 "ffayrhll"))
-  (measure (day14/puzzle2 "ffayrhll")))
+  (measure (day14/puzzle1 day14/puzzle-input))
+  (measure (day14/puzzle2 day14/puzzle-input)))
 
 
 (defn -main [day-no & _]

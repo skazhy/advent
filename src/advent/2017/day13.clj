@@ -11,8 +11,11 @@
   (let [ra (range r)]
     (into (vec ra) (reverse (butlast (rest ra))))))
 
-(defn gen-lens [len-map int-matrix]
-  (mapv #(get len-map %) (range (inc (first (last int-matrix))))))
+(defn gen-lens [int-matrix]
+  (let [len-map (->> int-matrix
+                     (mapcat (fn [[i r]] (vector i (full-range r))))
+                     (apply hash-map))]
+    (mapv #(get len-map %) (range (inc (first (last int-matrix)))))))
 
 
 ;;; Puzzle 1

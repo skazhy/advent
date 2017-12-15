@@ -4,6 +4,9 @@
             [advent.helpers.grid :refer [edge-neighbors]]
             [clojure.set :refer [difference]]))
 
+
+(def puzzle-input "ffayrhll")
+
 ;;;; Grid is represented as n * n vector of vectors.
 ;;;;
 ;;;; Initial values (0 1) are represented as strings - taken segments

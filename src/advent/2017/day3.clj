@@ -4,6 +4,8 @@
             [advent.helpers.grid :refer [all-neighbors]]))
 
 
+(def puzzle-input 277678)
+
 ;;; "Turning" = flipping the grid
 ;;;
 ;;; pos(ition) [x y] in the grid
@@ -61,5 +63,3 @@
       (if (< n cell-val)
         cell-val
         (recur (mapv + pos dir) dir grid)))))
-
-
