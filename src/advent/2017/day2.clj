@@ -1,6 +1,9 @@
 (ns advent.2017.day2
-  "Advent of Code 2017, day 2: Checksums")
+  "Advent of Code 2017, day 2: Checksums"
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource  "2017/day2.txt" h/slurp-int-matrix))
 
 ;;; Finding difference of min and max values in a row
 

@@ -1,7 +1,10 @@
 (ns advent.2017.day4
   "Advent of Code 2017, day 4: Unique passphrases"
-  (:require [clojure.string :refer [join]]))
+  (:require [clojure.string :refer [join]]
+            [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource "2017/day4.txt" h/slurp-word-lines))
 
 (defn- valid-passphrase? [mapper passphrase]
   (= (count passphrase) (count (distinct (map mapper passphrase)))))

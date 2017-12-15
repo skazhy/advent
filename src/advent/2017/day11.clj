@@ -26,13 +26,14 @@
 
 (defn steps-to-origin [point]
   (let [[x y] (map #(Math/abs %) point)]
-    (+ x (max (- y x) 0) (int (Math/ceil (/ x 2))))))
+    (+ y (if (< 1  x) (int (Math/ceil (/ x 2))) 0))))
 
 (defn navigate-home [steps callback-fn]
   (loop [steps steps loc [0 0] furthest 0]
     (if-let [m (move loc (first steps))]
       (recur (rest steps) (map + loc m) (max furthest (steps-to-origin loc)))
-      (callback-fn (steps-to-origin loc) furthest))))
+      (callback-fn (steps-to-origin loc)
+                    (max furthest (steps-to-origin loc))))))
 
 (defn- parse-input [input] (clojure.string/split input #","))
 

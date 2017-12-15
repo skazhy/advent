@@ -29,7 +29,7 @@
                  `"""` `
 ```
 
-Puzzles are organized by day, all tests are in `advent.2017.test-sample`.
+Puzzles are organized by day.
 Basic performance tests are in `perf`. Run tests for certain day with `lein
 perf $DAY_NUMBER`.
 

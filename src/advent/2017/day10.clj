@@ -2,6 +2,8 @@
   "Advent of Code 2017, day 1: Knot hashes")
 
 
+(def puzzle-input "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63")
+
 (defn knot-round
   [lst inputs position skip-size range-size]
   (loop [lst lst inputs inputs position position skip-size skip-size]

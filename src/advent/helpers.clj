@@ -1,5 +1,6 @@
 (ns advent.helpers
-  (:require [clojure.string :refer [split trim]]))
+  (:require [clojure.string :refer [split trim]]
+            [clojure.java.io :refer [resource]]))
 
 
 (defn neg [x] (* -1 x))
@@ -18,8 +19,14 @@
       [acc 0]
       items)))
 
+(defn split-lines [lines]
+  (map #(clojure.string/split % #" ") lines))
+
 
 ;;; I/O
+
+(defn slurp-resource [path mapper]
+  (mapper (resource path)))
 
 (defn slurp-line [path]
   (trim (slurp path)))
