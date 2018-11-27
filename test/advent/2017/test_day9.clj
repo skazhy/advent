@@ -1,11 +1,7 @@
 (ns advent.2017.test-day9
   (:require [clojure.test :refer :all]
-            [clojure.java.io :refer [resource]]
-            [advent.helpers :refer [slurp-line]]
             [advent.2017.day9 :as d]))
 
-
-(def ^:private day9-input (slurp-line (resource "2017/day9.txt")))
 
 (deftest puzzle1
   (testing "Examples"
@@ -19,7 +15,7 @@
     (is (= 3 (d/puzzle1 "{{<a!>},{<a!>},{<a!>},{<ab>}}"))))
 
   (testing "Actual input"
-    (is (= 15922 (d/puzzle1 day9-input)))))
+    (is (= 15922 (d/puzzle1 d/puzzle-input)))))
 
 
 (deftest puzzle2
@@ -33,4 +29,4 @@
     (is (= 10 (d/puzzle2 "<{o\"i!a,<{i<a>"))))
 
   (testing "Actual input"
-    (is (= 7314 (d/puzzle2 day9-input)))))
+    (is (= 7314 (d/puzzle2 d/puzzle-input)))))

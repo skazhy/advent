@@ -1,6 +1,11 @@
 (ns advent.2017.day11
-  "Advent of Code 2017, day 11: Hex grids")
+  "Advent of Code 2017, day 11: Hex grids"
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource "2017/day11.txt" h/slurp-line))
+
+(defn- parse-input [input] (clojure.string/split input #","))
 
 ;;; Coordinate system
 ;;; all odd x columns are "half step" higher than even x columns.
@@ -34,8 +39,6 @@
       (recur (rest steps) (map + loc m) (max furthest (steps-to-origin loc)))
       (callback-fn (steps-to-origin loc)
                     (max furthest (steps-to-origin loc))))))
-
-(defn- parse-input [input] (clojure.string/split input #","))
 
 (defn puzzle1 [input]
   (navigate-home (parse-input input) (fn [step-count _] step-count)))

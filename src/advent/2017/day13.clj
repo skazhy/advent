@@ -1,5 +1,8 @@
-(ns advent.2017.day13)
+(ns advent.2017.day13
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource "2017/day13.txt" h/slurp-lines))
 
 (def ^:private row-pattern #"(\d+): (\d+)")
 

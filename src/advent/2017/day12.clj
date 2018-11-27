@@ -1,6 +1,9 @@
 (ns advent.2017.day12
-  "Advent of Code 2017, day 12: dependency graphs")
+  "Advent of Code 2017, day 12: dependency graphs"
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource "2017/day12.txt" h/slurp-lines))
 
 (defn- parse-row [row]
   (let [[p _ & connected] (clojure.string/split row #"[\s,]+")]

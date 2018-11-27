@@ -4,7 +4,7 @@
             [advent.helpers.grid :refer [all-neighbors]]))
 
 
-(def puzzle-input 277678)
+(def puzzle-input (h/slurp-resource "2017/day3.txt" h/slurp-int))
 
 ;;; "Turning" = flipping the grid
 ;;;

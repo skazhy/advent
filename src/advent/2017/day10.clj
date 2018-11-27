@@ -1,8 +1,9 @@
 (ns advent.2017.day10
-  "Advent of Code 2017, day 1: Knot hashes")
+  "Advent of Code 2017, day 1: Knot hashes"
+  (:require [advent.helpers :as h]))
 
 
-(def puzzle-input "197,97,204,108,1,29,5,71,0,50,2,255,248,78,254,63")
+(def puzzle-input (h/slurp-resource "2017/day10.txt" h/slurp-line))
 
 (defn knot-round
   [lst inputs position skip-size range-size]

@@ -1,6 +1,9 @@
 (ns advent.2017.day9
-  "Advent of Code 2017, day 9: Stream parsing")
+  "Advent of Code 2017, day 9: Stream parsing"
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource "2017/day9.txt" h/slurp-line))
 
 (defn c-gr [items]
   (loop [items items

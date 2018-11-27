@@ -1,7 +1,6 @@
 (ns advent.2017.test-day8
   (:require [clojure.test :refer :all]
-            [clojure.java.io :refer [resource]]
-            [advent.helpers :refer [slurp-word-lines split-lines]]
+            [advent.helpers :refer [split-lines]]
             [advent.2017.day8 :as d]))
 
 
@@ -12,14 +11,13 @@
      "c dec -10 if a >= 1"
      "c inc -20 if c == 10"]))
 
-(def ^:private day8-input (slurp-word-lines (resource "2017/day8.txt")))
 
 (deftest puzzle1
   (testing "Example"
     (is (= 1 (d/puzzle1 day8-example))))
 
   (testing "Actual input"
-    (is (= 3745 (d/puzzle1 day8-input)))))
+    (is (= 3745 (d/puzzle1 d/puzzle-input)))))
 
 
 (deftest puzzle2
@@ -27,4 +25,4 @@
     (is (= 10 (d/puzzle2 day8-example))))
 
   (testing "Actual input"
-    (is (= 4644 (d/puzzle2 day8-input)))))
+    (is (= 4644 (d/puzzle2 d/puzzle-input)))))

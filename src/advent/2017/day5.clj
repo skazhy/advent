@@ -1,6 +1,9 @@
 (ns advent.2017.day5
-  "Advent of Code 2017, day 5: Sequence jumps")
+  "Advent of Code 2017, day 5: Sequence jumps"
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource "2017/day5.txt" h/slurp-int-lines))
 
 (defn- jump [mapper items pos]
   (let [v (+ pos (get items pos))]
@@ -11,7 +14,7 @@
   "Given a sequence of jumps and a mapping function, count the max possible
    jumps, starting from the first instruction."
   [mapper items]
-  (loop [items items pos 0 n 1]
+  (loop [items (vec items) pos 0 n 1]
     (if-let [[items pos] (jump mapper items pos)]
       (recur items pos (inc n))
       n)))
