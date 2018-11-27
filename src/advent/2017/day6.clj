@@ -1,6 +1,10 @@
 (ns advent.2017.day6
-  "Advent of Code 2017, day 6: Sequence redistribution")
+  "Advent of Code 2017, day 6: Sequence redistribution"
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input
+  (h/slurp-resource "2017/day6.txt" (comp vec first h/slurp-int-matrix)))
 
 (defn- max-idx-item [items]
   (->> (map-indexed vector items)

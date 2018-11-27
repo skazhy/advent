@@ -1,11 +1,12 @@
 (ns advent.2017.day14
   "Advent of Code 2017, day 14: Knot hashes redux"
   (:require [advent.2017.day10 :refer [knot-hash]]
+            [advent.helpers :as h]
             [advent.helpers.grid :refer [edge-neighbors]]
             [clojure.set :refer [difference]]))
 
 
-(def puzzle-input "ffayrhll")
+(def puzzle-input (h/slurp-resource "2017/day14.txt" h/slurp-line))
 
 ;;;; Grid is represented as n * n vector of vectors.
 ;;;;

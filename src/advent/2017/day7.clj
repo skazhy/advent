@@ -1,4 +1,8 @@
-(ns advent.2017.day7)
+(ns advent.2017.day7
+  (:require [advent.helpers :as h]))
+
+
+(def puzzle-input (h/slurp-resource "2017/day7.txt" h/slurp-word-lines))
 
 (defn- parse-tree-row
   "Returns a tuple with node name & metadata (weight & children)"

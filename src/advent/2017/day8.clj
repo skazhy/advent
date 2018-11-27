@@ -1,6 +1,9 @@
 (ns advent.2017.day8
-  "Advent of Code 2017, day 8: Register instruction parsing and execution")
+  "Advent of Code 2017, day 8: Register instruction parsing and execution"
+  (:require [advent.helpers :as h]))
 
+
+(def puzzle-input (h/slurp-resource "2017/day8.txt" h/slurp-word-lines))
 
 (def ^:private comp-ops {"!=" not= "<=" <= "==" = ">=" >= ">" > "<" <})
 (def ^:private upd-ops {"inc" + "dec" -})
