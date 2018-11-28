@@ -20,8 +20,8 @@
 
 (defmacro measure [[m :as form]]
   `(do
-    (println "Measuring" (:name (meta (var ~m))))
-    (dorun (repeatedly 5 (fn [] (time ~form))))))
+     (println "Measuring" (:name (meta (var ~m))))
+     (dorun (repeatedly 5 (fn [] (time ~form))))))
 
 
 (defn day-1-perf []
@@ -38,7 +38,7 @@
 
 (defn day-4-perf []
   (measure (day4/puzzle1 day4/puzzle-input))
-  (measure (day4/puzzle2 day4/puzzle-input))))
+  (measure (day4/puzzle2 day4/puzzle-input)))
 
 (defn day-5-perf []
   (let [input (vec (h/slurp-int-lines (resource "2017/day5.txt")))]
