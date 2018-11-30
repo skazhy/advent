@@ -8,4 +8,5 @@
   :resource-paths ["resources"]
   :dependencies [[org.clojure/clojure "1.9.0"]]
   :aliases {"perf" ["run" "-m" "perf"]}
+  :aot :all
   :profiles {:dev {:source-paths ["dev"]}})
