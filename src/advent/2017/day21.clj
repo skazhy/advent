@@ -1,5 +1,6 @@
 (ns advent.2017.day21
-  (:require [advent.heleprs :as h]))
+  (:require [clojure.string :as str]
+            [advent.helpers :as h]))
 
 
 (def puzzle-input (h/slurp-resource "2017/day21.txt" h/slurp-lines))
@@ -17,7 +18,7 @@
 (def init [[\. \# \.] [\. \. \#] [\# \# \#]])
 
 (defn parse-rule [row]
-  (let [[a _ b] (clojure.string/split row #"\s")]
+  (let [[a _ b] (str/split row #"\s")]
     [a b]))
 
 (defn parse-rules [rows]
@@ -63,7 +64,7 @@
 (def lols {3 4 2 3})
 
 (defn unpack-square [s]
-  (->> (split s #"\/")
+  (->> (str/split s #"\/")
        (mapv #(mapv char %))))
 
 (defn join-squares [acc sq n]
