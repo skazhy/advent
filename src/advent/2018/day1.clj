@@ -7,9 +7,10 @@
 (defn puzzle1 [input]
   (apply + input))
 
+;;; This performs slightly better with reductions used with reduce OR
+;;; by using loop and a let-binding to calculate intermediate value.
+
 (defn puzzle2 [input]
-  (loop [items (cycle input) frequency 0 seen #{0}]
-    (let [frequency (+ frequency (first items))]
-      (if (contains? seen frequency)
-        frequency
-        (recur (drop 1 items) frequency (conj seen frequency))))))
+  (loop [items (reductions + (cycle input)) seen #{0}]
+    (or (seen (first items))
+        (recur (drop 1 items) (conj seen (first items))))))
