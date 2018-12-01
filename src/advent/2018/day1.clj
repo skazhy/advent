@@ -11,8 +11,8 @@
   (reduce
     (fn [[freq acc] item]
       (let [freq (+ freq item)]
-        (if (get acc freq)
+        (if (contains? acc freq)
           (reduced freq)
-          [freq (assoc acc freq true)])))
-    [0 {0 true}]
+          [freq (conj acc freq)])))
+    [0 #{0}]
     (cycle input)))
