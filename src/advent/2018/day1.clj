@@ -8,11 +8,8 @@
   (apply + input))
 
 (defn puzzle2 [input]
-  (reduce
-    (fn [[freq acc] item]
-      (let [freq (+ freq item)]
-        (if (contains? acc freq)
-          (reduced freq)
-          [freq (conj acc freq)])))
-    [0 #{0}]
-    (cycle input)))
+  (loop [items (cycle input) frequency 0 seen #{0}]
+    (let [frequency (+ frequency (first items))]
+      (if (contains? seen frequency)
+        frequency
+        (recur (drop 1 items) frequency (conj seen frequency))))))
