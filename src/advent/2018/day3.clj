@@ -1,7 +1,6 @@
 (ns advent.2018.day3
   "Advent of Code 2018, day 3: No Matter How You Slice It"
-  (:require [clojure.set :as set]
-            [advent.helpers :as h]))
+  (:require [advent.helpers :as h]))
 
 (def row-pattern #"#(\d+) @ (\d+).(\d+): (\d+)x(\d+)")
 
@@ -20,9 +19,7 @@
     (if (seq rows)
       (recur
         ; Store number of overlaps in the grid map value.
-        (reduce (fn [acc r] (update acc r (fnil inc 0)))
-                grid
-                (rect-range (first rows)))
+        (merge-with + grid (zipmap (rect-range (first rows)) (repeat 1)))
         (rest rows))
       (reduce-kv (fn [acc _ v] (if (< 1 v) (inc acc) acc)) 0 grid))))
 
@@ -35,9 +32,9 @@
         (recur
           ; Store the patch ID in the grid value, so we can figure out
           ; if there are overlap conflicts later.
-          (reduce (fn [acc r] (assoc acc r id)) grid rng)
+          (merge grid (zipmap rng (repeat id)))
           (if (seq overlaps-with)
-            (set/difference non-overlapping (conj overlaps-with id))
+            (apply disj non-overlapping (conj overlaps-with id))
             (conj non-overlapping id))
           (rest rows)))
       (first non-overlapping))))
