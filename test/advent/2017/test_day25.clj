@@ -7,7 +7,7 @@
   {:a {0 {:val 1 :op inc :to-state :b} 1 {:val 0 :op dec :to-state :b}}
    :b {0 {:val 1 :op dec :to-state :a} 1 {:val 1 :op inc :to-state :a}}})
 
-(deftest puzzle1
+(deftest ^:slow puzzle1
   (testing "Example"
     (is (= 3 (d/puzzle1 day25-example 6))))
 

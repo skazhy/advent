@@ -7,6 +7,7 @@
             :year 2015}
   :resource-paths ["resources"]
   :dependencies [[org.clojure/clojure "1.9.0"]]
+  :test-selectors {:default (complement :slow)}
   :aliases {"perf" ["run" "-m" "perf"]}
   :aot :all
   :profiles {:dev {:source-paths ["dev"]}})
