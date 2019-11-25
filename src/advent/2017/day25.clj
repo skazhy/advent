@@ -3,6 +3,8 @@
 
 
 ; TODO: rewrite this to actually parse the file.
+
+
 (def puzzle-input
   {:a {0 {:val 1 :op inc :to-state :b} 1 {:val 0 :op dec :to-state :c}}
    :b {0 {:val 1 :op dec :to-state :a} 1 {:val 1 :op dec :to-state :d}}

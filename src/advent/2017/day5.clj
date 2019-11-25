@@ -2,7 +2,6 @@
   "Advent of Code 2017, day 5: Sequence jumps"
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day5.txt" h/slurp-int-lines))
 
 (defn- jump [mapper items pos]

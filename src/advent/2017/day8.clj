@@ -2,13 +2,12 @@
   "Advent of Code 2017, day 8: Register instruction parsing and execution"
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day8.txt" h/slurp-word-lines))
 
 (def ^:private comp-ops {"!=" not= "<=" <= "==" = ">=" >= ">" > "<" <})
 (def ^:private upd-ops {"inc" + "dec" -})
 
-(defn- instruction-fn [op arg] (fn [i] (op (or i 0) (Integer. arg))))
+(defn- instruction-fn [op arg] (fn [i] (op (or i 0) (Integer/parseInt arg))))
 
 (defn- register-fn [register op arg]
   (fn [registers] ((instruction-fn op arg) (get registers register))))

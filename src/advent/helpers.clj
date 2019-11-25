@@ -2,28 +2,27 @@
   (:require [clojure.string :refer [split trim]]
             [clojure.java.io :refer [resource]]))
 
-
 (defn neg [x] (* -1 x))
 
 (defn digit-seq
   "Takes number as a string and returns a sequence with all digits as integers."
   [int-str]
-  (map #(Integer. (str %)) int-str))
-
+  (map #(Integer/parseInt (str %)) int-str))
 
 (defn reduce-indexed
   [f acc items]
   (first
-    (reduce
-      (fn [[acc idx] item] [(f idx acc item) (inc idx)])
-      [acc 0]
-      items)))
+   (reduce
+    (fn [[acc idx] item] [(f idx acc item) (inc idx)])
+    [acc 0]
+    items)))
 
 (defn split-lines [lines]
   (map #(clojure.string/split % #" ") lines))
 
 
 ;;; I/O
+
 
 (defn slurp-resource [path mapper]
   (mapper (resource path)))
@@ -42,13 +41,13 @@
 ;; Reading numbers
 
 (defn slurp-int-lines [path]
-  (map #(Integer. %) (slurp-lines path)))
+  (map #(Integer/parseInt %) (slurp-lines path)))
 
 (defn slurp-int [path]
-  (Integer. (first (slurp-lines path))))
+  (Integer/parseInt (first (slurp-lines path))))
 
 (defn slurp-int-matrix [path]
-  (map (fn [line] (map  #(Integer. %) (split line #"\s|\t")))
+  (map (fn [line] (map  #(Integer/parseInt %) (split line #"\s|\t")))
        (slurp-lines path)))
 
 (defn split-csv [s]

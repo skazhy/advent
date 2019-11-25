@@ -1,7 +1,6 @@
 (ns advent.2017.day19
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day19.txt" h/slurp-lines))
 
 (def pipes #{\| \-})
@@ -27,8 +26,8 @@
           (cond
             (contains? pipes v) (recur new-coord direction seen (inc steps))
             (= \+ v) (recur new-coord (next-direction maze direction new-coord)
-                                      seen
-                                      (inc steps))
+                            seen
+                            (inc steps))
             :else (recur new-coord direction (conj seen v) (inc steps)))
           [seen steps])))))
 

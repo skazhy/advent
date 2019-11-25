@@ -2,13 +2,11 @@
   (:require [clojure.test :refer :all]
             [advent.2017.day13 :as d]))
 
-
 (def ^:private day13-example
   ["0: 3"
    "1: 2"
    "4: 4"
    "6: 4"])
-
 
 (deftest puzzle1
   (testing "Example"

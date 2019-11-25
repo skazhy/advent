@@ -5,6 +5,7 @@
 
 ;;; No test examples were given on day 14.
 
+
 (deftest ^:slow puzzle1
   (is (= 8190 (d/puzzle1 d/puzzle-input))))
 

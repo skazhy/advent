@@ -2,7 +2,6 @@
   (:require [clojure.test :refer :all]
             [advent.2017.day15 :as d]))
 
-
 (deftest ^:slow puzzle1
   (testing "Example"
     (is (= 588 (d/puzzle1 65 8921))))

@@ -1,7 +1,7 @@
 (ns advent.2017.day10
   "Advent of Code 2017, day 1: Knot hashes"
-  (:require [advent.helpers :as h]))
-
+  (:require [clojure.string :as str]
+            [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2017/day10.txt" h/slurp-line))
 
@@ -20,13 +20,15 @@
       [lst position skip-size])))
 
 (defn puzzle1 [input-str l]
-  (let [inputs (->> (clojure.string/split input-str #",") (map #(Integer. %)))
+  (let [inputs (->> (str/split input-str #",")
+                    (map #(Integer/parseInt %)))
         lst (apply hash-map (mapcat (juxt identity identity) (range l)))
         res (first (knot-round lst inputs 0 0 l))]
     (* (get res 0) (get res 1))))
 
 
 ;;; Puzzle 2
+
 
 (def ^:private salt [17 31 73 47 23])
 

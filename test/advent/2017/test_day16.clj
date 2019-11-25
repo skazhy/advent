@@ -2,9 +2,8 @@
   (:require [clojure.test :refer :all]
             [advent.2017.day16 :as d]))
 
-
 (deftest puzzle1
-  (= "jkmflcgpdbonihea" (d/puzzle1 d/puzzle-input)))
+  (is (= "jkmflcgpdbonihea" (d/puzzle1 d/puzzle-input))))
 
 (deftest puzzle2
-  (= "ajcdefghpkblmion" (d/puzzle2 d/puzzle-input)))
+  (is (= "ajcdefghpkblmion" (d/puzzle2 d/puzzle-input))))

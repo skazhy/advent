@@ -4,7 +4,6 @@
             [advent.helpers :refer [slurp-int-matrix]]
             [advent.2017.day2 :as d]))
 
-
 (def ^:private day2-input (slurp-int-matrix (resource "2017/day2.txt")))
 
 (deftest puzzle1
@@ -13,7 +12,6 @@
 
   (testing "Actual input"
     (is (= 39126 (d/puzzle1 day2-input)))))
-
 
 (deftest puzzle2
   (testing "Example"

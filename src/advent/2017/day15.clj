@@ -1,7 +1,6 @@
 (ns advent.2017.day15
   "Advent of Code 2017, day 15: Number generators")
 
-
 (def ^:private a-multiplier 16807)
 (def ^:private b-multiplier 48271)
 
@@ -21,6 +20,7 @@
 
 ;; Puzzle 1
 
+
 (defn puzzle1 [start-a start-b]
   (count-matching-values start-a start-b
                          (partial generate a-multiplier)
@@ -29,6 +29,7 @@
 
 
 ;; Puzzle 2
+
 
 (defn- generate-2 [mul db i]
   (let [res (generate mul i)]

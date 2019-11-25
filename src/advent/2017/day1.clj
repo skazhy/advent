@@ -2,7 +2,6 @@
   "Advent of Code 2017, day 1: CAPTCHAs"
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day1.txt" h/slurp-line))
 
 ;;; Finding the sum of identical adjacent numbers.
@@ -12,16 +11,17 @@
   [captcha]
   (let [digits (h/digit-seq captcha)]
     (first
-      (reduce
-        (fn [[sum prev] digit]
-          (if (= digit prev)
-            [(+ sum digit) digit]
-            [sum digit]))
-        [0 (last digits)]
-        digits))))
+     (reduce
+      (fn [[sum prev] digit]
+        (if (= digit prev)
+          [(+ sum digit) digit]
+          [sum digit]))
+      [0 (last digits)]
+      digits))))
 
 
 ;;; Finding equal numbers halfway ahead in a circular list.
+
 
 (defn puzzle2
   "Halfway CAPTCHA"
@@ -30,11 +30,11 @@
         digit-count (count digits)
         hw (int (Math/ceil (/ digit-count 2)))]
     (h/reduce-indexed
-      (fn [idx sum d]
+     (fn [idx sum d]
         ; If given number is equal to the number half way around the circular
         ; list - add it to the sum.
-        (if (= d (nth digits (mod (+ hw idx) digit-count)))
-          (+ sum d)
-          sum))
-      0
-      digits)))
+       (if (= d (nth digits (mod (+ hw idx) digit-count)))
+         (+ sum d)
+         sum))
+     0
+     digits)))

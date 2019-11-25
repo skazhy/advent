@@ -1,12 +1,12 @@
 (ns advent.2017.day12
   "Advent of Code 2017, day 12: dependency graphs"
-  (:require [advent.helpers :as h]))
-
+  (:require [clojure.string :as str]
+            [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2017/day12.txt" h/slurp-lines))
 
 (defn- parse-row [row]
-  (let [[p _ & connected] (clojure.string/split row #"[\s,]+")]
+  (let [[p _ & connected] (str/split row #"[\s,]+")]
     [p (set connected)]))
 
 (defn- parse-rows [rows]
@@ -18,13 +18,11 @@
       (recur new-s (into seen to-check) (apply dissoc conns to-check))
       seen)))
 
-
 ;;; Puzzle 1
 
 (defn puzzle1 [input]
   (let [conns (parse-rows input)]
     (count (group-members conns "0"))))
-
 
 ;;; Puzzle 2
 
