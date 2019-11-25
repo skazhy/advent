@@ -1,9 +1,6 @@
 (ns advent.2017.test-day1
   (:require [clojure.test :refer :all]
-            [clojure.java.io :refer [resource]]
-            [advent.helpers :refer [slurp-line]]
             [advent.2017.day1 :as d]))
-
 
 (deftest puzzle1
   (testing "Examples"
@@ -13,7 +10,6 @@
 
   (testing "Actual input"
     (is (= 1069 (d/puzzle1 d/puzzle-input)))))
-
 
 (deftest puzzle2
   (testing "Examples"

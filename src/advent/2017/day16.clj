@@ -1,12 +1,10 @@
 (ns advent.2017.day16
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input
   (h/slurp-resource "2017/day16.txt" (comp h/split-csv h/slurp-line)))
 
 (defn gen [r] (mapv char (range 97 (+ 97 r))))
-
 
 ;;; Parsing
 
@@ -15,10 +13,11 @@
 (def re-s #"s(\d+)")
 
 (defn parse-exchange [s]
-  (let [[_ a b] (re-matches re-x s)] [(Integer. a) (Integer. b)]))
+  (let [[_ a b] (re-matches re-x s)]
+    [(Integer/parseInt a) (Integer/parseInt b)]))
 
 (defn parse-spin [s]
-  (let [[_ a] (re-matches re-s s)] [(Integer. a)]))
+  (let [[_ a] (re-matches re-s s)] [(Integer/parseInt a)]))
 
 (defn parse-partner [s]
   (let [[_ a b] (re-matches re-p s)] [(first a) (first b)]))
@@ -29,7 +28,6 @@
     (.startsWith i "p") [:p (parse-partner i)]
     :else [:s (parse-spin i)]))
 
-
 ;;; Performing moves
 
 (defn exchange [l [a b]] (assoc l a (nth l b) b (nth l a)))
@@ -38,14 +36,13 @@
 
 (defn dance [r instructions]
   (reduce
-    (fn [acc [op args]]
-      (case op
-        :x (exchange acc args)
-        :p (partner acc args)
-        :s (spin acc args)))
-    r
-    instructions))
-
+   (fn [acc [op args]]
+     (case op
+       :x (exchange acc args)
+       :p (partner acc args)
+       :s (spin acc args)))
+   r
+   instructions))
 
 ;;; Puzzle 1
 
@@ -53,7 +50,6 @@
   (->> (map parse-instruction input)
        (dance (gen 16))
        (apply str)))
-
 
 ;;; Puzzle 2
 

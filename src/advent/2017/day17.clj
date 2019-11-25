@@ -2,7 +2,6 @@
   "Advent of Code 2017, day 17: Spinlock"
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day17.txt" h/slurp-int))
 
 (defn- insert-after [pos steps cnt]
@@ -10,6 +9,7 @@
 
 
 ;;; Puzzle 1
+
 
 (defn- iterate-over [steps cnt]
   (loop [pos 0 lst [0]]
@@ -27,6 +27,7 @@
 
 
 ;;; Puzzle 2
+
 
 (defn- faux-iterate-over [steps cnt]
   (loop [pos 0 len 1 after-0 nil]

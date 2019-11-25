@@ -14,10 +14,10 @@
 
 (defn parse-row [raw-row]
   (let [[_ mo d h mi action] (re-matches row-pattern raw-row)
-        d (Integer. d)
-        mo (Integer. mo)]
+        d (Integer/parseInt d)
+        mo (Integer/parseInt mo)]
     (cond
-      (= "00" h) [[mo d] (Integer. mi) action]
+      (= "00" h) [[mo d] (Integer/parseInt mi) action]
       (= (month-ends mo) d) [[(inc mo) 1] 0 action]
       :else [[mo (inc d)] 0 action])))
 
@@ -25,7 +25,7 @@
   (->> (map second sleep-actions) (partition 2) (map #(apply range %))))
 
 (defn guard-id [action]
-  (-> (re-matches guard-no-pattern (last action)) (last) (Integer.)))
+  (-> (re-matches guard-no-pattern (last action)) (last) (Integer/parseInt)))
 
 (defn sleep-map [input]
   (->> (partition-by first (map parse-row (sort input)))

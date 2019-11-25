@@ -2,13 +2,12 @@
   (:require [clojure.string :as str]
             [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day21.txt" h/slurp-lines))
 
 (defn flip-horizontal [grid n] (vec (mapcat reverse (partition n grid))))
 
 (defn flip-vertical [grid n]
-  (into (vec (drop (* n (dec n )) grid)) (take (* n (dec n)) grid)))
+  (into (vec (drop (* n (dec n)) grid)) (take (* n (dec n)) grid)))
 
 (defn rotate [grid n]
   (if (= 3 n)
@@ -70,9 +69,9 @@
 (defn join-squares [acc sq n]
   (if (< (count (last acc)) n)
     (reduce
-      (fn [acc [rel idx]] (update acc idx #(into % (nth sq rel))))
-      acc
-      (map-indexed vector (range (- (count acc) (count sq)) (count acc))))
+     (fn [acc [rel idx]] (update acc idx #(into % (nth sq rel))))
+     acc
+     (map-indexed vector (range (- (count acc) (count sq)) (count acc))))
     (into acc sq)))
 
 (defn taken-squares [rules iters]

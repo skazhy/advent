@@ -3,7 +3,6 @@
   (:require [clojure.string :refer [join]]
             [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day4.txt" h/slurp-word-lines))
 
 (defn- valid-passphrase? [mapper passphrase]

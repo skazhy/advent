@@ -1,6 +1,6 @@
 (ns advent.2017.day7
-  (:require [advent.helpers :as h]))
-
+  (:require [clojure.string :as str]
+            [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2017/day7.txt" h/slurp-word-lines))
 
@@ -8,9 +8,10 @@
   "Returns a tuple with node name & metadata (weight & children)"
   [words]
   [(first words)
-   {:weight (->> (second words) (re-find #"\((\d+)\)") second (Integer.))
+   {:weight (->> (second words) (re-find #"\((\d+)\)") second
+                 (Integer/parseInt))
     :children (->> (drop 3 words)
-                   (map #(clojure.string/replace % "," ""))
+                   (map #(str/replace % "," ""))
                    (seq))}])
 
 (defn- make-tree-map
@@ -20,6 +21,7 @@
 
 
 ;;;
+
 
 (defn- root-node [tree]
   (let [all-children (set (mapcat (comp :children second) tree))]
@@ -32,6 +34,7 @@
 
 
 ;;;
+
 
 (defn subtower-weight
   "Returns the sum of weights of all children + the node itself."

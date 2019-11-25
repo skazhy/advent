@@ -2,7 +2,6 @@
   (:require [clojure.test :refer :all]
             [advent.2017.day4 :as d]))
 
-
 (deftest puzzle1
   (testing "Examples"
     (is (= 1 (d/puzzle1 [["aa" "bb" "cc" "dd" "ee"]])))
@@ -11,7 +10,6 @@
 
   (testing "Actual input"
     (is (= 455 (d/puzzle1 d/puzzle-input)))))
-
 
 (deftest puzzle2
   (testing "Examples"

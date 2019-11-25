@@ -1,14 +1,12 @@
 (ns advent.2017.day13
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day13.txt" h/slurp-lines))
 
 (def ^:private row-pattern #"(\d+): (\d+)")
 
 (defn parse-row [row]
-  (->> (re-matches row-pattern row) rest (mapv #(Integer. %))))
-
+  (->> (re-matches row-pattern row) rest (mapv #(Integer/parseInt %))))
 
 (defn full-range [r]
   (let [ra (range r)]
@@ -19,7 +17,6 @@
                      (mapcat (fn [[i r]] (vector i (full-range r))))
                      (apply hash-map))]
     (mapv #(get len-map %) (range (inc (first (last int-matrix)))))))
-
 
 ;;; Puzzle 1
 
@@ -40,7 +37,6 @@
          collisions
          (map #(* % (inc (apply max (get lens %)))))
          (apply +))))
-
 
 ;;; Puzzle 2
 

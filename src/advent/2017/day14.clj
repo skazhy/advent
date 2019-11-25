@@ -5,7 +5,6 @@
             [advent.helpers.grid :refer [edge-neighbors]]
             [clojure.set :refer [difference]]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day14.txt" h/slurp-line))
 
 ;;;; Grid is represented as n * n vector of vectors.
@@ -28,11 +27,13 @@
 
 ;;; Puzzle 1 - Counting all taken coordinates
 
+
 (defn puzzle1 [in-str]
   (->> (gen-grid in-str) flatten (filter #(= "1" %)) count))
 
 
 ;;; Puzzle 2 - counting all segments
+
 
 (defn- new-segment? [grid c] (= "1" (get-in grid c)))
 
@@ -56,9 +57,9 @@
       (let [combi (into backlog new-neighbors)
             f (first combi)]
         (recur f (disj combi f) (conj seen c)))
-          (if-let [f (first backlog)]
-            (recur f (disj backlog f) (conj seen c))
-            (conj seen c)))))
+      (if-let [f (first backlog)]
+        (recur f (disj backlog f) (conj seen c))
+        (conj seen c)))))
 
 (defn segment-count [grid]
   (loop [grid grid

@@ -2,7 +2,6 @@
   (:require [clojure.test :refer :all]
             [advent.2017.day19 :as d]))
 
-
 (def day19-example
   ["     |"
    "     |  +--+"
@@ -11,14 +10,12 @@
    "     |  |  |  D"
    "     +B-+  +--+"])
 
-
 (deftest puzzle1
   (testing "Example"
     (is (= "ABCDEF" (d/puzzle1 day19-example))))
 
   (testing "Actual input"
     (is (= "YOHREPXWN" (d/puzzle1 d/puzzle-input)))))
-
 
 (deftest puzzle2
   (testing "Example"

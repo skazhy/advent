@@ -2,7 +2,6 @@
   "Advent of Code 2017, day 6: Sequence redistribution"
   (:require [advent.helpers :as h]))
 
-
 (def puzzle-input
   (h/slurp-resource "2017/day6.txt" (comp vec first h/slurp-int-matrix)))
 
@@ -18,8 +17,8 @@
   (->> (range (inc max-idx) (+ max-item (inc max-idx)))
        (map #(mod % (count items)))
        (reduce
-         (fn [items idx] (update items idx inc))
-         (assoc (vec items) max-idx 0))))
+        (fn [items idx] (update items idx inc))
+        (assoc (vec items) max-idx 0))))
 
 (defn redistribute [items]
   (let [[max-idx max-item] (max-idx-item items)

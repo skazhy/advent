@@ -21,14 +21,12 @@
    "[1518-11-05 00:45] falls asleep"
    "[1518-11-05 00:55] wakes up"])
 
-
 (deftest puzzle1
   (testing "Example"
     (is (= 240 (d/puzzle1 example-input))))
 
   (testing "Actual input"
     (is (= 3212 (d/puzzle1 d/puzzle-input)))))
-
 
 (deftest puzzle2
   (testing "Example"

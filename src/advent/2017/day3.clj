@@ -3,7 +3,6 @@
   (:require [advent.helpers :as h]
             [advent.helpers.grid :refer [all-neighbors]]))
 
-
 (def puzzle-input (h/slurp-resource "2017/day3.txt" h/slurp-int))
 
 ;;; "Turning" = flipping the grid
@@ -35,11 +34,11 @@
   "Manhattan distance"
   [n]
   (let [[pos] (reduce
-                (fn [[pos dir] _]
-                  (let [dir (update-direction pos dir)]
-                    [(mapv + pos dir) dir]))
-                [origin-pos [0 -1]]
-                (range (dec n)))]
+               (fn [[pos dir] _]
+                 (let [dir (update-direction pos dir)]
+                   [(mapv + pos dir) dir]))
+               [origin-pos [0 -1]]
+               (range (dec n)))]
     (apply + (map #(Math/abs %) pos))))
 
 ;;; Calculating a taxicab point value
@@ -58,8 +57,8 @@
           dir (update-direction pos dir)
           grid (if (= origin-pos pos)
                      ; Handle empty grids correctly.
-                     (assoc grid pos 1)
-                     (assoc grid pos cell-val))]
+                 (assoc grid pos 1)
+                 (assoc grid pos cell-val))]
       (if (< n cell-val)
         cell-val
         (recur (mapv + pos dir) dir grid)))))
