@@ -5,8 +5,8 @@
 
 ;;; No test examples were given on day 14.
 
-(deftest puzzle1
+(deftest ^:slow puzzle1
   (is (= 8190 (d/puzzle1 d/puzzle-input))))
 
-(deftest puzzle2
+(deftest ^:slow puzzle2
   (is (= 1134 (d/puzzle2 d/puzzle-input))))
