@@ -29,10 +29,13 @@
                  `"""` `
 ```
 
-Puzzles are organized by day.
-Basic performance tests are in `perf`. Run tests for certain day with `lein
-perf $DAY_NUMBER`.
+My Advent of Code solutions in Clojure. Puzzles are organized by year and day.
 
+Generate boilerplate for a new puzzle with:
+
+```bash
+./new_day.sh 2017 3  # second arg is the day number.
+```
 
 Some unittests take a while. They are marked with `:slow` metadata and are
 omitted by default. Run all tests with `lein test :all`.
