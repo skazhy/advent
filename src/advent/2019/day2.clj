@@ -5,25 +5,27 @@
 
 (def puzzle-input (h/slurp-resource "2019/day2.txt" h/slurp-line))
 
+(defn parse-input [input] (mapv #(Integer/parseInt %) (str/split input #",")))
+
+(defn valid-op? [input offset]
+  (let [op (nth input offset)]
+    (when-not (= 99 op) op)))
+
 (defn run-program [input noun verb]
   (loop [input (assoc input 1 noun 2 verb) offset 0]
-    (let [op (nth input offset)]
-      (if (= 99 op)
-        (first input)
-        (let [op (case op 1 + 2 *)
-              a (nth input (inc offset))
-              b (nth input (+ 2 offset))
-              res (nth input (+ 3 offset))]
-          (recur (assoc input res (op (nth input a) (nth input b)))
-                 (+ offset 4)))))))
+    (if-let [op (valid-op? input offset)]
+      (let [[a b res] (subvec input (inc offset) (+ 4 offset))
+            op (case op 1 + 2 *)]
+        (recur (assoc input res (op (nth input a) (nth input b)))
+               (+ offset 4)))
+      (first input))))
 
-(defn puzzle1 [input]
-  (run-program (mapv #(Integer/parseInt %) (str/split input #",")) 12 2))
+(defn puzzle1 [input] (run-program (parse-input input) 12 2))
 
 (def ^:private puzzle2-output 19690720)
 
 (defn puzzle2 [input]
-  (let [input (mapv #(Integer/parseInt %) (str/split input #","))
+  (let [input (parse-input input)
         ; program is a linear function.
         base (run-program input 0 0)
         noun-delta (- (run-program input 1 0) base)
