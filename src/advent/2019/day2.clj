@@ -26,10 +26,9 @@
 
 (defn puzzle2 [input]
   (let [input (parse-input input)
-        ; program is a linear function.
+        ; program is a linear function. "verb" argument delta is always 1.
         base (run-program input 0 0)
         noun-delta (- (run-program input 1 0) base)
-        verb-delta (- (run-program input 0 1) base) ; is it always 1?
         noun (int (/ (- puzzle2-output base) noun-delta))]
-    (+ (* 100  noun)
+    (+ (* 100 noun)
        (- puzzle2-output base (* noun noun-delta)))))
