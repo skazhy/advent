@@ -4,8 +4,8 @@
 
 set -e
 
-YEAR=$1 || `date "+%Y"`
-DAY=$2 || `date "+%d" | sed -e 's/0//g'`
+YEAR=$(date "+%Y")
+DAY=$(date "+%d" | sed -e 's/0//g')
 
 mkdir -p {src/advent,test/advent,resources}/$YEAR
 
@@ -23,7 +23,7 @@ SRC_FILE=$(cat <<-eof
 
 )
 
-(defn puzzle2 [intput]
+(defn puzzle2 [input]
 
 )
 eof
@@ -41,17 +41,17 @@ TEST_FILE=$(cat <<-eof
 
 (deftest puzzle1
   (testing "Examples"
-    (is (= 42 (d/puzzle1 "test")))
+    (is (= 42 (d/puzzle1 "test"))))
 
   (testing "Actual input"
-    (is (= 42 (d/puzzle1 d/puzzle-input))))))
+    (is (= 42 (d/puzzle1 d/puzzle-input)))))
 
 (deftest puzzle2
   (testing "Examples"
-    (is (= 42 (d/puzzle2 "test")))
+    (is (= 42 (d/puzzle2 "test"))))
 
   (testing "Actual input"
-    (is (= 42 (d/puzzle2 d/puzzle-input))))))
+    (is (= 42 (d/puzzle2 d/puzzle-input)))))
 eof
 )
 
