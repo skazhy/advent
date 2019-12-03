@@ -1,5 +1,6 @@
 (ns advent.helpers
-  (:require [clojure.string :refer [split trim]]
+  (:require [clojure.set :as set]
+            [clojure.string :refer [split trim]]
             [clojure.java.io :refer [resource]]))
 
 (defn neg [x] (* -1 x))
@@ -22,6 +23,8 @@
 
 (defn split-csv [s]
   (split s #","))
+
+(defn intersection [coll-a coll-b] (set/intersection (set coll-a) (set coll-b)))
 
 ;;; I/O
 
