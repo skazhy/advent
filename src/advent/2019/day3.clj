@@ -20,24 +20,33 @@
     (if-let [[dir len] (some-> (first wire) parse-wire-segment)]
       (let [move (get directions dir)]
         (recur
-          (rest wire)
-          (->> (range len)
-               (reductions (fn [acc _] (map + acc move)) (last expanded))
-               (rest)  ; remove duplications on wire turns
-               (into expanded))))
+         (rest wire)
+         (->> (range len)
+              (reductions (fn [acc _] (map + acc move)) (last expanded))
+              (rest)  ; remove duplications on wire turns
+              (into expanded))))
       (rest expanded))))  ; remove [0 0] coordinate
 
 (defn manhattan-distance [[x y]]
   (+ (Math/abs x) (Math/abs y)))
 
+(defn expanded-wire-intersections [expanded-wire-a expanded-wire-b]
+  (set/intersection (set expanded-wire-a) (set expanded-wire-b)))
+
+(defn minimal-by [cmp [h & tail]]
+  "Finds the minimal mapped value for the collection."
+  (reduce (fn [acc i] (min acc (cmp i))) (cmp h) tail))
+
 (defn puzzle1
   "Returns the closest intersection for two given wires"
   [[wire-a wire-b]]
-  (->> (set/intersection (set (expand-wire wire-a)) (set (expand-wire wire-b)))
-       (map manhattan-distance)
-       (sort)
-       (first)))
+  (->> (expanded-wire-intersections (expand-wire wire-a) (expand-wire wire-b))
+       (minimal-by manhattan-distance)))
 
-(defn puzzle2 [input]
-
-  )
+(defn puzzle2 [[wire-a wire-b]]
+  (let [expanded-a (expand-wire wire-a)
+        expanded-b (expand-wire wire-b)]
+    (->> (expanded-wire-intersections (set expanded-a)
+                                      (set expanded-b))
+         ; + 1 for each initial move, since [0 0] was dropped in expand-wire
+         (minimal-by #(+ 2 (.indexOf expanded-a %) (.indexOf expanded-b %))))))
