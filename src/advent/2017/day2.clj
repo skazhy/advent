@@ -37,4 +37,3 @@
   "Evenly divisible checksum"
   [int-matrix]
   (reduce (fn [acc row] (+ acc (evenly-divisible-row row))) 0 int-matrix))
-
