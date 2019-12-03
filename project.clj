@@ -6,7 +6,7 @@
             :key "mit"
             :year 2015}
   :resource-paths ["resources"]
-  :dependencies [[org.clojure/clojure "1.9.0"]]
+  :dependencies [[org.clojure/clojure "1.10.1"]]
   :test-selectors {:default (complement :slow)}
   :aliases {"perf" ["run" "-m" "perf"]}
   :aot :all

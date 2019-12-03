@@ -39,6 +39,9 @@
 (defn slurp-word-lines [path]
   (map #(split (trim %) #" ") (slurp-lines path)))
 
+(defn slurp-csv-lines [path]
+  (map split-csv (slurp-lines path)))
+
 ;; Reading numbers
 
 (defn slurp-int-lines [path]
