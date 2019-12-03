@@ -20,9 +20,10 @@
 (defn split-lines [lines]
   (map #(clojure.string/split % #" ") lines))
 
+(defn split-csv [s]
+  (split s #","))
 
 ;;; I/O
-
 
 (defn slurp-resource [path mapper]
   (mapper (resource path)))
@@ -50,5 +51,5 @@
   (map (fn [line] (map  #(Integer/parseInt %) (split line #"\s|\t")))
        (slurp-lines path)))
 
-(defn split-csv [s]
-  (split s #","))
+(defn slurp-int-csv-line [path]
+  (->> (slurp-line path) (split-csv) (map #(Integer/parseInt %))))
