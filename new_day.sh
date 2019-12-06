@@ -31,6 +31,7 @@ eof
 
 SRC_PATH="src/advent/$YEAR/day$DAY.clj"
 [[ -f $SRC_PATH ]] || echo "$SRC_FILE" > $SRC_PATH
+git add --intent-to-add $SRC_PATH
 
 # Gen test file
 
@@ -57,7 +58,10 @@ eof
 
 TEST_PATH=test/advent/$YEAR/test_day$DAY.clj
 [[ -f $TEST_PATH ]] || echo "$TEST_FILE" > $TEST_PATH
+git add --intent-to-add $TEST_PATH
 
 # Resource
 
-touch resources/$YEAR/day$DAY.txt
+RESOURCE_PATH=resources/$YEAR/day$DAY.txt
+touch $RESOURCE_PATH
+git add --intent-to-add $RESOURCE_PATH
