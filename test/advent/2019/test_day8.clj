@@ -1,6 +1,6 @@
  (ns advent.2019.test-day8
-  (:require [clojure.test :refer :all]
-            [advent.2019.day8 :as d]))
+   (:require [clojure.test :refer :all]
+             [advent.2019.day8 :as d]))
 
 (deftest puzzle1
   (is (= 2440 (d/puzzle1 d/puzzle-input))))

@@ -8,8 +8,9 @@
 
 ;;; All interesting bits for this puzzle are in the incode implementation.
 
-(defn puzzle1 [program]
-  (-> (run-program program 1) :outputs last))
+(defn last-program-output [program input]
+  (-> (run-program program [input]) :outputs last))
 
-(defn puzzle2 [program]
-  (-> (run-program program 5) :outputs last))
+(defn puzzle1 [program] (last-program-output program 1))
+
+(defn puzzle2 [program] (last-program-output program 5))
