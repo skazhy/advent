@@ -9,7 +9,7 @@
 ;;; All interesting bits for this puzzle are in the incode implementation.
 
 (defn last-program-output [program input]
-  (-> (run-program program [input]) :outputs last))
+  (-> (run-program program [input]) :output last))
 
 (defn puzzle1 [program] (last-program-output program 1))
 
