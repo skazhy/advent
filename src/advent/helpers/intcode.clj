@@ -82,12 +82,12 @@
                            :input input-ch}]
     (let [[op modes] (parse-opcode program)
           program (<! ((get operations op) program modes))]
-      (if (:halt program) program (recur program)))))
+      (if (:halt program)
+        (do
+          (async/close! output-ch)
+          (->> (async/reduce conj [] output-ch) <!
+               (assoc program :output)))
+        (recur program)))))
 
 (defn run-program [program inputs]
-  (let [res (<!! (run-program-async program
-                                    (make-input-channel inputs)
-                                    (async/chan)))
-        output (:output res)]
-    (async/close! output)
-    (assoc res :output (<!! (async/reduce conj [] output)))))
+  (<!! (run-program-async program (make-input-channel inputs) (async/chan))))
