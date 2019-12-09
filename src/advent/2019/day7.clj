@@ -1,7 +1,9 @@
 (ns advent.2019.day7
   "Advent of Code 2019, day 7: Amplification Circuit"
   (:require [clojure.string :as str]
-            [advent.helpers.intcode :refer [run-program]]
+            [clojure.core.async :refer [<!! <! >! go] :as async]
+            [advent.helpers.intcode :refer [make-input-channel run-program
+                                            run-program-async]]
             [advent.helpers :as h]))
 
 (def puzzle-input
@@ -23,4 +25,18 @@
 (defn puzzle1 [program]
   (apply max (map #(run-multiple program %) (permutations [0 1 2 3 4]))))
 
-; (defn puzzle2 [_])
+(defn run-multiple-async [program inputs]
+  (let [out (async/chan)]
+    (go
+      (let [inputs (-> (mapv vector inputs)
+                       (update 0 conj 0))
+            channels (map make-input-channel inputs)
+            programs (map (fn [i o] (run-program-async program i o)) channels
+                          (next (cycle channels)))]
+        (->> (last programs) <! :output first (>! out))
+        (async/close! out)))
+    out))
+
+(defn puzzle2 [program]
+  (apply max (map #(<!! (run-multiple-async program %))
+                  (permutations [5 6 7 8 9]))))
