@@ -16,7 +16,7 @@
 
 (defn run-multiple [program inputs]
   (reduce (fn [acc input]
-            (-> (run-program program [input acc]) :outputs first))
+            (-> (run-program program [input acc]) :output first))
           0
           inputs))
 

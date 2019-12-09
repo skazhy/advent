@@ -1,5 +1,6 @@
 (ns advent.helpers.intcode
-  "Intcode helpers (for 2019 puzzles)")
+  "Intcode helpers (for 2019 puzzles)"
+  (:require [clojure.core.async :refer [put! <! <!! go] :as async]))
 
 (defn parse-opcode
   "Takes an intcode and returns it split to digits with the opcode
@@ -20,32 +21,40 @@
        (reverse (padded-modes modes n immediate-last?))
        (subvec program (inc offset) (+ 1 n offset))))
 
-(defn run-command [arg-count last-arg-immediate? op-fn]
+(defn async-cmd [arg-count last-arg-immediate? op-fn]
   (fn [program modes]
     (-> (update program :offset + 1 arg-count)  ; number of args + opcode
         (op-fn (prepare-args program modes arg-count last-arg-immediate?)))))
 
+(defn cmd [arg-count last-arg-immediate? op-fn]
+  (fn [program modes]
+    (go
+      (-> (update program :offset + 1 arg-count)  ; number of args + opcode
+          (op-fn (prepare-args program modes arg-count last-arg-immediate?))))))
+
 (defn simple-op [op]
-  (run-command 3 true (fn [p [a b res]] (assoc-in p [:program res] (op a b)))))
+  (cmd 3 true (fn [p [a b res]] (assoc-in p [:program res] (op a b)))))
 
 (def input-op
-  (run-command 1 true
-               (fn [p [res]]
-                 (let [input (nth (:inputs p) (:input-offset p))]
-                   (-> (assoc-in p [:program res] input)
-                       (update :input-offset inc))))))
+  (async-cmd 1 true (fn [p [res]]
+                      (go
+                        (let [input (<! (:input p))]
+                          (assoc-in p [:program res] input))))))
 
 (def output-op
-  (run-command 1 false (fn [p [o]] (update p :outputs conj o))))
+  (async-cmd 1 false (fn [p [o]]
+                       (go
+                         (put! (:output p) o)
+                         p))))
 
 (defn cond-jump-op [pred]
-  (run-command 2 false (fn [p [t res]] (if (pred t) (assoc p :offset res) p))))
+  (cmd 2 false (fn [p [t res]] (if (pred t) (assoc p :offset res) p))))
 
 (defn compare-op [cmp]
-  (run-command 3 true (fn [p [a b res]]
-                        (assoc-in p [:program res] (if (cmp a b) 1 0)))))
+  (cmd 3 true (fn [p [a b res]]
+                (assoc-in p [:program res] (if (cmp a b) 1 0)))))
 
-(def halt-op (run-command 0 false (fn [p _] (assoc p :halt true))))
+(def halt-op (cmd 0 false (fn [p _] (assoc p :halt true))))
 
 (def operations
   {1 (simple-op +)
@@ -58,14 +67,27 @@
    8 (compare-op =)
    99 halt-op})
 
-(defn run-program
+(defn make-input-channel [inputs]
+  (let [input-ch (async/chan)]
+    ; XXX: to-chan auto-closes the chan.
+    (go (async/onto-chan input-ch inputs false))
+    input-ch))
+
+(defn run-program-async
   "Runs the intcode computer with the given input and a map of known commands."
-  [program inputs]
-  (loop [program {:program program
-                  :offset 0
-                  :outputs []
-                  :input-offset 0
-                  :inputs inputs}]
+  [program input-ch output-ch]
+  (async/go-loop [program {:program program
+                           :offset 0
+                           :output output-ch
+                           :input input-ch}]
     (let [[op modes] (parse-opcode program)
-          program ((get operations op) program modes)]
+          program (<! ((get operations op) program modes))]
       (if (:halt program) program (recur program)))))
+
+(defn run-program [program inputs]
+  (let [res (<!! (run-program-async program
+                                    (make-input-channel inputs)
+                                    (async/chan)))
+        output (:output res)]
+    (async/close! output)
+    (assoc res :output (<!! (async/reduce conj [] output)))))
