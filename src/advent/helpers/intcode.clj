@@ -29,7 +29,11 @@
   (run-command 3 true (fn [p [a b res]] (assoc-in p [:program res] (op a b)))))
 
 (def input-op
-  (run-command 1 true (fn [p [res]] (assoc-in p [:program res] (:input p)))))
+  (run-command 1 true
+               (fn [p [res]]
+                 (let [input (nth (:inputs p) (:input-offset p))]
+                   (-> (assoc-in p [:program res] input)
+                       (update :input-offset inc))))))
 
 (def output-op
   (run-command 1 false (fn [p [o]] (update p :outputs conj o))))
@@ -56,8 +60,12 @@
 
 (defn run-program
   "Runs the intcode computer with the given input and a map of known commands."
-  [program input]
-  (loop [program {:program program :offset 0 :outputs [] :input input}]
+  [program inputs]
+  (loop [program {:program program
+                  :offset 0
+                  :outputs []
+                  :input-offset 0
+                  :inputs inputs}]
     (let [[op modes] (parse-opcode program)
           program ((get operations op) program modes)]
       (if (:halt program) program (recur program)))))
