@@ -13,13 +13,28 @@
 (defn padded-modes [modes t immediate-last?]
   (let [modes (concat (repeat (- t (count modes)) 0) modes)]
     (if immediate-last?
-      (conj (rest modes) 1)
+      (if (zero? (first modes))
+        ; if last argument is immediate in relative mode, ensure we add the
+        ; relative offset later on.
+        (conj (rest modes) 1)
+        (conj (rest modes) 3))
       modes)))
 
-(defn prepare-args [{:keys [program offset]} modes n immediate-last?]
-  (map (fn [mode arg] (if (zero? mode) (nth program arg) arg))
+(defn read-param [program pos]
+  (if (contains? (:program program) pos)
+    (nth (:program program) pos)
+    (get (:memory program) pos 0)))
+
+(defn prepare-args
+  [{:keys [offset relative-base] :as program} modes n immediate-last?]
+  (map (fn [parameter-mode arg]
+         (case parameter-mode
+           0 (read-param program arg)  ; position mode
+           1 arg  ; immediate mode
+           2 (read-param program (+ relative-base arg))  ; relative mode
+           3 (+ relative-base arg)))  ; a fake "immediate + relative" mode
        (reverse (padded-modes modes n immediate-last?))
-       (subvec program (inc offset) (+ 1 n offset))))
+       (subvec (:program program) (inc offset) (+ 1 n offset))))
 
 (defn async-cmd [arg-count last-arg-immediate? op-fn]
   (fn [program modes]
@@ -33,13 +48,20 @@
           (op-fn (prepare-args program modes arg-count last-arg-immediate?))))))
 
 (defn simple-op [op]
-  (cmd 3 true (fn [p [a b res]] (assoc-in p [:program res] (op a b)))))
+  (cmd 3 true (fn [p [a b res]]
+                (if (contains? (:program p) res)
+                  (assoc-in p [:program res] (op a b))
+                  (assoc-in p [:memory res] (op a b))))))
+
+(defn compare-op [cmp] (simple-op (fn [a b] (if (cmp a b) 1 0))))
 
 (def input-op
   (async-cmd 1 true (fn [p [res]]
                       (go
                         (let [input (<! (:input p))]
-                          (assoc-in p [:program res] input))))))
+                          (if (contains? (:program p) res)
+                            (assoc-in p [:program res] input)
+                            (assoc-in p [:memory res] input)))))))
 
 (def output-op
   (async-cmd 1 false (fn [p [o]]
@@ -50,9 +72,9 @@
 (defn cond-jump-op [pred]
   (cmd 2 false (fn [p [t res]] (if (pred t) (assoc p :offset res) p))))
 
-(defn compare-op [cmp]
-  (cmd 3 true (fn [p [a b res]]
-                (assoc-in p [:program res] (if (cmp a b) 1 0)))))
+
+(def set-relative-base-op
+  (cmd 1 false (fn [p [a]] (update p :relative-base + a))))
 
 (def halt-op (cmd 0 false (fn [p _] (assoc p :halt true))))
 
@@ -65,6 +87,7 @@
    6 (cond-jump-op zero?)
    7 (compare-op <)
    8 (compare-op =)
+   9 set-relative-base-op
    99 halt-op})
 
 (defn make-input-channel [inputs]
@@ -78,6 +101,8 @@
   [program input-ch output-ch]
   (async/go-loop [program {:program program
                            :offset 0
+                           :relative-base 0
+                           :memory {}
                            :output output-ch
                            :input input-ch}]
     (let [[op modes] (parse-opcode program)
