@@ -1,7 +1,6 @@
 (ns advent.2019.day7
   "Advent of Code 2019, day 7: Amplification Circuit"
-  (:require [clojure.string :as str]
-            [clojure.core.async :refer [<!! <! >! go] :as async]
+  (:require [clojure.core.async :refer [<!! <! >! go] :as async]
             [advent.helpers.intcode :refer [make-input-channel run-program
                                             run-program-async]]
             [advent.helpers :as h]))
