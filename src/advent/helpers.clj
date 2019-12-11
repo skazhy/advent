@@ -57,5 +57,9 @@
   (map (fn [line] (map  #(Integer/parseInt %) (split line #"\s|\t")))
        (slurp-lines path)))
 
+(defn parse-int [str-i]
+  (try (Integer/parseInt str-i)
+       (catch Exception e (BigInteger. str-i))))
+
 (defn slurp-int-csv-line [path]
-  (->> (slurp-line path) (split-csv) (map #(Integer/parseInt %))))
+  (->> (slurp-line path) (split-csv) (map parse-int)))
