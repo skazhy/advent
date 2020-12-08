@@ -1,5 +1,5 @@
 (ns advent.2020.day8
-  "Advent of Code 2020, day 8: A Puzzle"
+  "Advent of Code 2020, day 8: Handheld Halting"
   (:require [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2020/day8.txt" h/slurp-lines))
