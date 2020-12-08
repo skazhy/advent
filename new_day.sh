@@ -10,14 +10,15 @@ DAY=$(date "+%d" | sed -e 's/0//g')
 mkdir -p {src/advent,test/advent,resources}/$YEAR
 
 # Gen source file
+TITLE=$(curl -s https://adventofcode.com/$YEAR/day/$DAY | grep -m1 h2 | sed 's/.*--- Day [0-9]*: \(.*\) ---.*/\1/')
 
 SRC_FILE=$(cat <<-eof
 (ns advent.$YEAR.day$DAY
-  "Advent of Code $YEAR, day $DAY: A Puzzle"
+  "Advent of Code $YEAR, day $DAY: $TITLE"
   (:require [clojure.string :as str]
             [advent.helpers :as h]))
 
-(def puzzle-input (h/slurp-resource "$YEAR/day$DAY.txt" h/slurp-line))
+(def puzzle-input (h/slurp-resource "$YEAR/day$DAY.txt" h/slurp-lines))
 
 (defn puzzle1 [input]
 
@@ -40,16 +41,18 @@ TEST_FILE=$(cat <<-eof
   (:require [clojure.test :refer :all]
             [advent.$YEAR.day$DAY :as d]))
 
+(def ^:private example "test")
+
 (deftest puzzle1
   (testing "Examples"
-    (is (= 42 (d/puzzle1 "test"))))
+    (is (= 42 (d/puzzle1 example))))
 
   (testing "Actual input"
     (is (= 42 (d/puzzle1 d/puzzle-input)))))
 
 (deftest puzzle2
   (testing "Examples"
-    (is (= 42 (d/puzzle2 "test"))))
+    (is (= 42 (d/puzzle2 example))))
 
   (testing "Actual input"
     (is (= 42 (d/puzzle2 d/puzzle-input)))))
@@ -63,5 +66,9 @@ git add --intent-to-add $TEST_PATH
 # Resource
 
 RESOURCE_PATH=resources/$YEAR/day$DAY.txt
-touch $RESOURCE_PATH
+if [ -f ".cookie" ]; then
+  curl -s --fail https://adventofcode.com/$YEAR/day/$DAY/input -H "Cookie: $(cat .cookie)" > "$RESOURCE_PATH"
+else
+  touch $RESOURCE_PATH
+fi
 git add --intent-to-add $RESOURCE_PATH
