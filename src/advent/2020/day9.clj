@@ -30,12 +30,12 @@
 (defn puzzle1 [input] (find-missing input 25))
 
 (defn break-encryption [input sum]
-  (loop [input input s [] subsum 0]
+  (loop [input input queue (clojure.lang.PersistentQueue/EMPTY) subsum 0]
     (when-let [i (first input)]
       (case (compare (+ i subsum) sum)
-        -1 (recur (rest input) (conj s i) (+ subsum i))
-        0 (let [s (conj s i)] (+ (apply min s) (apply max s)))
-        (recur input (vec (rest s)) (- subsum (first s)))))))
+        -1 (recur (rest input) (conj queue i) (+ subsum i))
+        0 (+ (apply min i queue) (apply max i queue))
+        (recur input (pop queue) (- subsum (peek queue)))))))
 
 (defn puzzle2 [input]
   (break-encryption input (puzzle1 input)))
