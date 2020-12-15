@@ -11,10 +11,8 @@
   (loop [turns (prepare-input input) prev-turn (last input) n (inc (count input))]
     (if (<= n last-turn)
       (let [prev-ns (get turns prev-turn)
-            new-turn (if (= 1 (count prev-ns)) 0 (apply - prev-ns))]
-        (recur (update turns new-turn #(if % (list n (first %)) (list n)))
-               new-turn
-               (inc n)))
+            new-turn (if (= 1 (count prev-ns)) 0 (- (first prev-ns) (second prev-ns)))]
+        (recur (update turns new-turn conj n) new-turn (inc n)))
       prev-turn)))
 
 (defn puzzle1 [input] (run-game input 2020))
