@@ -35,7 +35,7 @@
          \( (-> (update state :stack conj (:op state))
                 (assoc :op '()))
          \) (-> (update state :op #(add-operand (first (:stack state)) (eval %)))
-                (assoc :stack (pop (:stack state))))
+                (update :stack pop))
          (update state :op add-operand (Integer/parseInt (str x)))))
       (eval (:op state)))))
 
