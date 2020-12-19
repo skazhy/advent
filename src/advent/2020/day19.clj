@@ -1,6 +1,7 @@
 (ns advent.2020.day19
   "Advent of Code 2020, day 19: Monster Messages"
   (:require [clojure.string :as str]
+            [instaparse.core :as insta]
             [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2020/day19.txt" h/slurp-lines))
@@ -52,6 +53,18 @@
         rules (parse-rules rules)]
     (count (filter #(re-matches (get rules 0) %) input))))
 
-(defn puzzle2 [input]
+;; Part two using Instaparse
 
-)
+(def replacements
+  {"8" "8: 42 | 42 8"
+   "11" "11: 42 31 | 42 11 31"})
+
+(defn puzzle2 [input]
+  (let [[rules input] (split-input input)
+        rules (->> rules
+                   (map #(let [[idx _] (str/split % #": ")]
+                           (if-let [r (get replacements idx)] r %)))
+                   (str/join "\n"))
+        ;; Create a new parser by setting 0 as the start rule.
+        parser (insta/parser rules :start :0)]
+    (->> (map parser input) (remove :index) count)))
