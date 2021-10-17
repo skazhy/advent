@@ -7,6 +7,7 @@ module Advent
     , intSequence
     , inRange
     , groupedLines
+    , printMaybe
     ) where
 
 import Control.Monad
@@ -42,3 +43,7 @@ groupedLines [] = []
 groupedLines (x:xs) =
     (x:ys) : (groupedLines . drop 1) zs
     where (ys,zs) = span (/= "") xs
+
+printMaybe :: Show a => Maybe a -> IO ()
+printMaybe (Just x) = print x
+printMaybe Nothing = return ()
