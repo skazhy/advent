@@ -1,6 +1,5 @@
 # Advent of Code
 
-
 ```
            *             ,
                        _/^\_
@@ -29,16 +28,17 @@
                  `"""` `
 ```
 
-My Advent of Code solutions in Clojure. Puzzles are organized by year and day.
-
-Generate boilerplate for a new puzzle with:
+My Advent of Code solutions. `dev.sh` is the one-stop shop for generating new
+puzzle boilerplates,testing, and starting interactive environments:
 
 ```bash
-./new_day.sh 2017 3  # second arg is the day number.
+./dev.sh [$language] [[year] day] [assert] [lint]
 ```
 
-Some unittests take a while. They are marked with `:slow` metadata and are
-omitted by default. Run all tests with `lein test :all`.
+Solutions are available in:
+
+* Clojure (requires lein)
+* Haskell (requires hlint)
 
 ___
 
