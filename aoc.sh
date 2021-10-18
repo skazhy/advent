@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # One-stop shop for developing and testing AoC puzzles
-# Usage: ./dev.sh [hs|clj] [[year] day] [lint] [assert]
+# Usage: ./aoc.sh [hs|clj] [[year] day] [lint] [test]
 
 # When run with no options, will set up a puzzle in Clojure and open REPL
 
@@ -29,7 +29,7 @@ do
       LINT=1
       shift
       ;;
-    assert)
+    test)
       ASSERT=1
       shift
       ;;

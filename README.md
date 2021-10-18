@@ -28,11 +28,11 @@
                  `"""` `
 ```
 
-My Advent of Code solutions. `dev.sh` is the one-stop shop for generating new
+My Advent of Code solutions. `aoc.sh` is the one-stop shop for generating new
 puzzle boilerplates,testing, and starting interactive environments:
 
 ```bash
-./dev.sh [$language] [[year] day] [assert] [lint]
+./aoc.sh [$language] [[year] day] [test] [lint]
 ```
 
 Solutions are available in:
