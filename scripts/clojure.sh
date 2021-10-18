@@ -27,6 +27,17 @@ eof
 
   echo "$src_content" > $SRC_FILE
 
+  SOLUTION1=42
+  SOLUTION2=42
+
+  # If solutions file is non-empty use actual solutions in the test file.
+  if [[ ! -z "$SOLUTION_FILE" ]]; then
+    sols=(`cat $SOLUTION_FILE | tr '\n' ' '`)
+
+    SOLUTION1=${sols[0]}
+    SOLUTION2=${sols[1]}
+  fi
+
   test_content=$(cat <<-eof
 (ns advent.$YEAR.test-day$DAY
   (:require [clojure.test :refer :all]
@@ -39,14 +50,14 @@ eof
     (is (= 42 (d/puzzle1 example))))
 
   (testing "Actual input"
-    (is (= 42 (d/puzzle1 d/puzzle-input)))))
+    (is (= $SOLUTION1 (d/puzzle1 d/puzzle-input)))))
 
 (deftest puzzle2
   (testing "Examples"
     (is (= 42 (d/puzzle2 example))))
 
   (testing "Actual input"
-    (is (= 42 (d/puzzle2 d/puzzle-input)))))
+    (is (= $SOLUTION2 (d/puzzle2 d/puzzle-input)))))
 eof
 )
 
