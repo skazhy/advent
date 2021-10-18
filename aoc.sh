@@ -67,6 +67,7 @@ fi
 PUZZLE_URL="https://adventofcode.com/$YEAR/day/$DAY"
 INPUT_FILE="resources/$YEAR/day$DAY.txt"
 SOLUTION_FILE="resources/$YEAR/solutions/day$DAY.txt"
+TITLE_CACHE=".titlecache"
 
 if [[ "$LANG" = "clj" ]]; then
   source ./scripts/clojure.sh
@@ -77,12 +78,20 @@ if [[ "$LANG" = "hs" ]]; then
 fi
 
 mkdir -p resources/$YEAR/solutions
+touch $TITLE_CACHE
 setup
 
 function gen_src_file {
   if [ ! -f "$SRC_FILE" ]; then
-    TITLE=$(curl -s $PUZZLE_URL | grep -m1 h2 | sed 's/.*--- \(Day .*\) ---.*/\1/')
     echo "Creating new source files for $YEAR day $DAY..."
+
+    # Look up puzzle title in title cache, fallback to fetching it from the website.
+    TITLE=$(grep "$YEAR$DAY " $TITLE_CACHE | sed 's/^[0-9]* //g')
+    if [ -z "$TITLE" ]; then
+      TITLE=$(curl -s $PUZZLE_URL | grep -m1 h2 | sed 's/.*--- \(Day .*\) ---.*/\1/')
+      echo "$YEAR$DAY $TITLE" >> $TITLE_CACHE
+    fi
+
     gen_src_file_content
     [ -f "$TEST_FILE" ] && git add --intent-to-add $TEST_FILE
     git add --intent-to-add $SRC_FILE
