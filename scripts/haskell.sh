@@ -1,4 +1,4 @@
-# Haskell-specific methods for Advent of Code
+# Haskell-specific methods for Advent of Code tooling
 
 function setup {
   SRC_FILE="src/haskell/$YEAR/Day$DAY.hs"
@@ -7,7 +7,6 @@ function setup {
 
 function gen_src_file_content {
   cp src/haskell/2019/Day1.hs $SRC_FILE
-  # Remove / replace 2020.01 specific code.
   sed -i "" "s/Day1/Day$DAY/g; \
              3s/Day.*/$TITLE/; \
              5d; \

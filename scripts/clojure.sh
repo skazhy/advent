@@ -1,4 +1,4 @@
-# Clojure-specific methods for Advent of Code
+# Clojure-specific methods for Advent of Code tooling
 
 function setup {
   TEST_FILE="test/advent/$YEAR/test_day$DAY.clj"
@@ -65,8 +65,7 @@ eof
 }
 
 function lint {
-  # TODO:
-  return
+  lein eastwood "{:namespaces [advent.$YEAR.day$DAY advent.$YEAR.test-day$DAY]}"
 }
 
 function start_repl {

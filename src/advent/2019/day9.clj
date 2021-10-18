@@ -8,4 +8,4 @@
 
 (defn puzzle1 [program] (-> (run-program program [1]) :output first))
 
-(defn puzzle1 [program] (-> (run-program program [2]) :output first))
+(defn puzzle2 [program] (-> (run-program program [2]) :output first))

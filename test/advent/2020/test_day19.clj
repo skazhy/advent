@@ -2,8 +2,6 @@
   (:require [clojure.test :refer :all]
             [advent.2020.day19 :as d]))
 
-(def ^:private example "test")
-
 (def example ["0: 4 1 5"
               "1: 2 3 | 3 2"
               "2: 4 4 | 5 5"

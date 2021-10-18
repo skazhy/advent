@@ -145,8 +145,6 @@ if [[ "$ASSERT" ]]; then
   [[ "$ACTUAL" != "$EXPECTED" ]] && exit 1
 fi
 
-["$GEN_DOCS" ] && update_todos_file
-
 if [[ ! "$LINT" && ! "$ASSERT" && ! "$GEN_DOCS" ]]; then
   echo "Puzzle details: $PUZZLE_URL"
   gen_src_file

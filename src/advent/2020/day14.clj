@@ -36,8 +36,8 @@
       nil mask-fn)))
 
 (defn execute-block [acc {:keys [mask ops]}]
-  (let [mask-fn (mask-fn mask)]
-    (reduce (fn [acc [k v]] (assoc acc k (mask-fn v))) acc ops)))
+  (let [f (mask-fn mask)]
+    (reduce (fn [a [k v]] (assoc a k (f v))) acc ops)))
 
 (defn puzzle1 [input] (execute-blocks input execute-block))
 
