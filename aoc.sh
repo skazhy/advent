@@ -127,23 +127,7 @@ fi
 }
 
 [ "$LINT" ] && lint
-[ "$LINT" ] || [ "$ASSERT" ] && ACTUAL=$(run_assert)
-
-if [[ "$ASSERT" ]]; then
-  EXPECTED=$(cat "$SOLUTION_FILE")
-  if [ "$ACTUAL" != "$EXPECTED" ]; then
-    echo "Tests failed for $YEAR day $DAY:"
-  else
-    echo "Tests passed for $YEAR day $DAY:"
-  fi
-
-  act_lines=(`tr '\n' ' ' <<< "$ACTUAL"`)
-  exp_lines=(`tr '\n' ' ' <<< "$EXPECTED"`)
-  echo -n "Puzzle 1: "; echo_test_row "${exp_lines[0]}" "${act_lines[0]}"
-  echo -n "Puzzle 2: "; echo_test_row "${exp_lines[1]}" "${act_lines[1]}"
-
-  [[ "$ACTUAL" != "$EXPECTED" ]] && exit 1
-fi
+[ "$ASSERT" ] && run_assert
 
 if [[ ! "$LINT" && ! "$ASSERT" && ! "$GEN_DOCS" ]]; then
   echo "Puzzle details: $PUZZLE_URL"

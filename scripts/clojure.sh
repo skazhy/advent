@@ -64,10 +64,14 @@ eof
   echo "$test_content" > $TEST_FILE
 }
 
+function run_assert {
+  clj -M:test -n advent.$YEAR.test-day$DAY
+}
+
 function lint {
   lein eastwood "{:namespaces [advent.$YEAR.day$DAY advent.$YEAR.test-day$DAY]}"
 }
 
 function start_repl {
-  lein repl
+  clj
 }

@@ -37,7 +37,7 @@ puzzle boilerplates,testing, and starting interactive environments:
 
 Solutions are available in:
 
-* Clojure (requires lein)
+* Clojure
 * Haskell (requires hlint)
 
 ___
