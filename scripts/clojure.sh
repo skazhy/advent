@@ -40,7 +40,7 @@ eof
 
   test_content=$(cat <<-eof
 (ns advent.$YEAR.test-day$DAY
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest is testing]]
             [advent.$YEAR.day$DAY :as d]))
 
 (def ^:private example "test")
@@ -69,9 +69,9 @@ function run_assert {
 }
 
 function lint {
-  lein eastwood "{:namespaces [advent.$YEAR.day$DAY advent.$YEAR.test-day$DAY]}"
+  clj-kondo --lint $SRC_FILE $TEST_FILE
 }
 
 function start_repl {
-  clj
+  rlwrap clj -M:repl
 }
