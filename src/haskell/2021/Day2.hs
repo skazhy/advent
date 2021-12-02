@@ -8,11 +8,9 @@ Description : Day 2: Dive!
 module Day2 where
 
 import Advent
+import Data.Tuple3 (butlast)
 
 data Direction = Up | Down | Forward deriving (Show)
-
-butlast :: (a, b, c) -> (a, b)
-butlast (x,y,_) = (x,y)
 
 parseRow :: String -> (Direction, Int)
 parseRow s =
