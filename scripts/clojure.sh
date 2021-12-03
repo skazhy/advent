@@ -31,7 +31,7 @@ eof
   SOLUTION2=42
 
   # If solutions file is non-empty use actual solutions in the test file.
-  if [[ ! -z "$SOLUTION_FILE" ]]; then
+  if [[ -s "$SOLUTION_FILE" ]]; then
     sols=(`cat $SOLUTION_FILE | tr '\n' ' '`)
 
     SOLUTION1=${sols[0]}
