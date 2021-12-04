@@ -53,9 +53,12 @@
 (defn slurp-int [path]
   (Integer/parseInt (first (slurp-lines path))))
 
-(defn slurp-int-matrix [path]
-  (map (fn [line] (map  #(Integer/parseInt %) (split line #"\s|\t")))
-       (slurp-lines path)))
+(defn parse-int-matrix [lines]
+  (map (fn [line]
+         (map #(Integer/parseInt %) (split (trim line) #"[\s|\t]+")))
+       lines))
+
+(defn slurp-int-matrix [path] (parse-int-matrix (slurp-lines path)))
 
 (defn parse-int [str-i]
   (try (Integer/parseInt str-i)
