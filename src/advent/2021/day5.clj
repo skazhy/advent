@@ -23,7 +23,7 @@
                    (juxt (comp parse-coord first) (comp parse-coord last))
                    #(str/split % #" ")))
        (apply concat)
-       (reduce (fn [acc i] (update acc i (fnil inc 0))) {})
+       (frequencies)
        (filter #(< 1 (val %)))
        (count)))
 
