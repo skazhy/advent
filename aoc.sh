@@ -5,7 +5,7 @@
 
 # When run with no options, will set up a puzzle in Clojure and open REPL
 
-# Language-specific functions are defined in scripts/$language.sh:
+# Language-specific functions are defined in scripts/env/$language.sh:
 
 # `setup`:  for defining TEST_FILE,SRC_FILE and setting up source directories
 # `gen_src_file_content`: for setting up source and test file contents
@@ -70,11 +70,11 @@ SOLUTION_FILE="resources/$YEAR/solutions/day$DAY.txt"
 TITLE_CACHE=".titlecache"
 
 if [[ "$LANG" = "clj" ]]; then
-  source ./scripts/clojure.sh
+  source ./scripts/env/clojure.sh
 fi
 
 if [[ "$LANG" = "hs" ]]; then
-  source ./scripts/haskell.sh
+  source ./scripts/env/haskell.sh
 fi
 
 mkdir -p resources/$YEAR/solutions
