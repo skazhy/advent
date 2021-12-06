@@ -35,8 +35,8 @@ puzzle boilerplates,testing, and starting interactive environments:
 ./aoc.sh [$language] [[year] day] [test] [lint]
 ```
 
-Solutions are available in Clojure and Haskell. Full list [is available
-here](doc/PUZZLES.md).
+Puzzles are solved in Clojure and sometimes Haskell.
+Full list of solutions [is available here](doc/PUZZLES.md).
 
 ___
 
