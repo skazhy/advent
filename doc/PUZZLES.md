@@ -10,6 +10,7 @@
 | 4 | [Clojure](../src/advent/2021/day4.clj) |
 | 5 | [Clojure](../src/advent/2021/day5.clj), [Haskell](../src/haskell/2021/Day5.hs) |
 | 6 | [Clojure](../src/advent/2021/day6.clj), [Haskell](../src/haskell/2021/Day6.hs) |
+| 7 | [Haskell](../src/haskell/2021/Day7.hs) |
 ## 2020
 
 | Day | Solutions |
