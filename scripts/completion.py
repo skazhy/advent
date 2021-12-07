@@ -49,4 +49,6 @@ def gen_markdown():
                     solutions.append(f'[{languages[lang]}](../{puzzles[year][day][lang]})')
                 doc.write(f'| {day} | {", ".join(solutions)} |\n')
 
-gen_markdown()
+if __name__ == "__main__":
+    print("Regenerating completed puzzle doc...")
+    gen_markdown()

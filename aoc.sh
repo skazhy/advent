@@ -129,6 +129,11 @@ fi
 [ "$LINT" ] && lint
 [ "$ASSERT" ] && run_assert
 
+if [[ "$GEN_DOCS" ]]; then
+  # Regenerate completed puzzle doc
+  ./scripts/completion.py
+fi
+
 if [[ ! "$LINT" && ! "$ASSERT" && ! "$GEN_DOCS" ]]; then
   echo "Puzzle details: $PUZZLE_URL"
   gen_src_file
