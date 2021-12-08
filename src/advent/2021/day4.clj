@@ -1,5 +1,5 @@
 (ns advent.2021.day4
-  "Advent of Code 2021, day 4: Day 4: Giant Squid"
+  "Advent of Code 2021, day 4: Giant Squid"
   (:require [clojure.string :as str]
             [advent.helpers :as h]))
 

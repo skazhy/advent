@@ -1,5 +1,5 @@
 (ns advent.2021.day1
-  "Advent of Code 2021, day 1: Day 1: Sonar Sweep"
+  "Advent of Code 2021, day 1: Sonar Sweep"
   (:require [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2021/day1.txt" h/slurp-int-lines))

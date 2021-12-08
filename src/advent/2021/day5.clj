@@ -1,5 +1,5 @@
 (ns advent.2021.day5
-  "Advent of Code 2021, day 5: Day 5: Hydrothermal Venture"
+  "Advent of Code 2021, day 5: Hydrothermal Venture"
   (:require [clojure.string :as str]
             [advent.helpers :as h]))
 

@@ -1,5 +1,5 @@
 (ns advent.2021.day3
-  "Advent of Code 2021, day 3: Day 3: Binary Diagnostic"
+  "Advent of Code 2021, day 3: Binary Diagnostic"
   (:require [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2021/day3.txt" h/slurp-lines))

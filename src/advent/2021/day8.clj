@@ -1,5 +1,5 @@
 (ns advent.2021.day8
-  "Advent of Code 2021, day 8: Day 8: Seven Segment Search"
+  "Advent of Code 2021, day 8: Seven Segment Search"
   (:require [clojure.set :as set]
             [advent.helpers :as h]))
 
