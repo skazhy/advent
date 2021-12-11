@@ -9,6 +9,7 @@ module Day9 where
 
 import Advent
 import Data.Bifunctor (first, second)
+import Data.Int (readChar)
 import Data.List (sort)
 import Data.Map (Map, filterWithKey, fromList, keys, lookup)
 import Data.Maybe (mapMaybe)
@@ -16,15 +17,10 @@ import Data.Set (Set, difference, empty, fromList, insert, toList)
 
 type Grid = Map (Int, Int) Int
 
-parseRow :: String -> [Int]
-parseRow = map (read . (:[]))
-
-createGridRow :: (Int, [(Int,Int)]) -> [((Int, Int), Int)]
-createGridRow (row, cells) =
-  map (\(idx, c) -> ((row, idx), c)) cells
-
 gridMap :: [String] -> Grid
-gridMap = Data.Map.fromList . concatMap createGridRow . zip [0..] . map (zip [0..] . parseRow)
+gridMap input =
+  Data.Map.fromList [((x,y), readChar $ input !! x !! y) | x <- [0..length input - 1],
+                                                           y <- [0..length (head input) - 1]]
 
 --
 

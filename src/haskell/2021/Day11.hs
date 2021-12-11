@@ -9,14 +9,15 @@ module Day11 where
 
 import Advent
 import Data.Bifunctor (bimap, first, second)
+import Data.Int (readChar)
 import Data.Map (Map, map, filter, fromList, toList, elems, update, insert)
 
 type Grid = Map (Int, Int) Int
 
 gridMap :: [String] -> Grid
 gridMap input =
-  fromList [((x,y), read $ (:[]) $ input !! x !! y) | x <- [0..length input - 1],
-                                                      y <- [0..length (head input) - 1]]
+  fromList [((x,y), readChar $ input !! x !! y) | x <- [0..length input - 1],
+                                                  y <- [0..length (head input) - 1]]
 
 neighborCoords :: (Int, Int) -> [(Int, Int)]
 neighborCoords = sequence [ first (subtract 1)

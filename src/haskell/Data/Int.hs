@@ -1,4 +1,4 @@
-module Data.Int (ceilDiv, readBinaryInt) where
+module Data.Int (ceilDiv, readBinaryInt, readChar) where
 
 import Data.Char (digitToInt)
 import Data.Maybe (listToMaybe)
@@ -14,3 +14,6 @@ ceilDiv a b =
 
 readBinaryInt :: String -> Maybe Int
 readBinaryInt = fmap fst . listToMaybe . readInt 2 (const True) digitToInt
+
+readChar :: Char -> Int
+readChar = read . (:[])
