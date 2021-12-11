@@ -13,16 +13,10 @@ import Data.Map (Map, map, filter, fromList, toList, elems, update, insert)
 
 type Grid = Map (Int, Int) Int
 
-parseRow :: String -> [Int]
-parseRow = Prelude.map (read . (:[]))
-
-createGridRow :: (Int, [(Int,Int)]) -> [((Int, Int), Int)]
-createGridRow (row, cells) =
-  Prelude.map (\(idx, c) -> ((row, idx), c)) cells
-
 gridMap :: [String] -> Grid
-gridMap =
-  fromList . concatMap createGridRow . zip [0..] . Prelude.map (zip [0..] . parseRow)
+gridMap input =
+  fromList [((x,y), read $ (:[]) $ input !! x !! y) | x <- [0..length input - 1],
+                                                      y <- [0..length (head input) - 1]]
 
 neighborCoords :: (Int, Int) -> [(Int, Int)]
 neighborCoords = sequence [ first (subtract 1)
