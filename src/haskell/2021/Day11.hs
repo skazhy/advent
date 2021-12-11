@@ -8,7 +8,6 @@ Description : Day 11: Dumbo Octopus
 module Day11 where
 
 import Advent
-import Data.Bifunctor (bimap, first, second)
 import Data.Int (readChar)
 import Data.Map (Map, map, filter, fromList, toList, elems, update, insert)
 
@@ -16,19 +15,13 @@ type Grid = Map (Int, Int) Int
 
 gridMap :: [String] -> Grid
 gridMap input =
-  fromList [((x,y), readChar $ input !! x !! y) | x <- [0..length input - 1],
-                                                  y <- [0..length (head input) - 1]]
+  fromList [((x,y), readChar $ input !! x !! y) | x <- [0..length input - 1]
+                                                , y <- [0..length (head input) - 1]]
 
 neighborCoords :: (Int, Int) -> [(Int, Int)]
-neighborCoords = sequence [ first (subtract 1)
-                          , second (subtract 1)
-                          , first (+1)
-                          , second (+1)
-                          , bimap (subtract 1) (subtract 1)
-                          , bimap (subtract 1) (+1)
-                          , bimap (+1) (subtract 1)
-                          , bimap (+1) (+1)
-                          ]
+neighborCoords (x, y) = [(x + x0, y + y0) | x0 <- [-1..1]
+                                          , y0 <- [-1..1]
+                                          , (x0,y0) /= (0,0)]
 
 flashCoords :: (Int, Int) -> Grid -> Grid
 flashCoords coords grid =
