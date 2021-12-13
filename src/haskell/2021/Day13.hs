@@ -11,7 +11,7 @@ import Advent
 import Data.Bifunctor (bimap)
 import Data.List (elemIndex, isPrefixOf, partition)
 import Data.Maybe (mapMaybe)
-import Data.Map (fromList, member)
+import Data.Set (fromList, member)
 
 data Fold = X | Y deriving (Eq, Ord, Show)
 
@@ -28,7 +28,12 @@ parseInput =
     bimap (mapMaybe parseCoord) (map parseFold) . partition (not . isPrefixOf "fold")
 
 maxCoord :: Fold -> [(Fold, Int)] -> Int
-maxCoord f = ( * 2) . maximum . map snd . filter ((== f) . fst)
+maxCoord f = ( * 2) . snd . head . filter ((== f) . fst)
+
+makeGrid :: [(Fold, Int)] -> [(Int, Int)] -> [[Bool]]
+makeGrid folds coords =
+    map (\y -> [member (x,y) coordSet | x <- [0..(maxCoord X folds)]]) [0..(maxCoord Y folds)]
+    where coordSet = fromList coords
 
 foldLine :: (b -> b -> c) -> Int -> [b] -> [c]
 foldLine zipper a rows = zipWith zipper (take a rows) (reverse (drop (a + 1) rows))
@@ -36,11 +41,6 @@ foldLine zipper a rows = zipWith zipper (take a rows) (reverse (drop (a + 1) row
 fold :: [[Bool]] -> (Fold, Int) -> [[Bool]]
 fold grid (X, a) = map (foldLine (||) a) grid
 fold grid (Y, a) = foldLine (zipWith (||)) a grid
-
-makeGrid :: [(Fold, Int)] -> [(Int, Int)] -> [[Bool]]
-makeGrid folds coords =
-    map (\y -> [member (x,y) coordMap | x <- [0..(maxCoord X folds)]]) [0..(maxCoord Y folds)]
-    where coordMap = fromList $ zip coords (repeat True)
 
 runFolds :: [(Int, Int)] -> [(Fold, Int)] -> Int -> [[Bool]]
 runFolds coords folds foldCount =
