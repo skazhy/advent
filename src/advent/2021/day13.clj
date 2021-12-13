@@ -39,5 +39,3 @@
 (defn puzzle2 [input]
   (map (fn [row] (println (apply str (map #(if % "#" ".") row))))
        (run-folds input identity)))
-
-(puzzle2 puzzle-input)
