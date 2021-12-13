@@ -30,9 +30,12 @@ parseInput =
 maxCoord :: Fold -> [(Fold, Int)] -> Int
 maxCoord f = ( * 2) . maximum . map snd . filter ((== f) . fst)
 
+foldLine :: (b -> b -> c) -> Int -> [b] -> [c]
+foldLine zipper a rows = zipWith zipper (take a rows) (reverse (drop (a + 1) rows))
+
 fold :: [[Bool]] -> (Fold, Int) -> [[Bool]]
-fold grid (X, a) = map (\r -> zipWith (||) (take a r) (reverse (drop (a + 1) r))) grid
-fold grid (Y, a) = zipWith (zipWith (||)) (take a grid) (reverse (drop (a + 1) grid))
+fold grid (X, a) = map (foldLine (||) a) grid
+fold grid (Y, a) = foldLine (zipWith (||)) a grid
 
 makeGrid :: [(Fold, Int)] -> [(Int, Int)] -> [[Bool]]
 makeGrid folds coords =
