@@ -12,31 +12,24 @@ import Data.Char (digitToInt, intToDigit)
 import Data.List (tails)
 import Numeric (readHex, showIntAtBase)
 
-data Packet =  Literal Int Int | Op OpType Int [Packet] deriving (Show)
-
-data OpType = Sum | Product | Min | Max | Gt | Lt | Eq deriving (Show)
-
-fromString :: String -> OpType
-fromString "000" = Sum
-fromString "001" = Product
-fromString "010" = Min
-fromString "011" = Max
-fromString "101" = Gt
-fromString "110" = Lt
-fromString "111" = Eq
+data Packet =  Literal Int Int | Op ([Int] -> Int) Int [Packet]
 
 compareTails :: (Int -> Int -> Bool) -> [Int] -> Int
-compareTails op s = fromEnum $ all (\(a:b:_) -> op a b) $ filter ((== 2) . length) $ map (take 2) $ tails s
+compareTails op =
+    fromEnum . all (\(a:b:_) -> op a b) . filter ((== 2) . length) . map (take 2) . tails
+
+fromString :: String -> ([Int] -> Int)
+fromString "000" = sum
+fromString "001" = product
+fromString "010" = minimum
+fromString "011" = maximum
+fromString "101" = compareTails (>)
+fromString "110" = compareTails (<)
+fromString "111" = compareTails (==)
 
 runOp :: Packet -> Int
 runOp (Literal _ v) = v
-runOp (Op Sum _ sub) = sum $ map runOp sub
-runOp (Op Product _ sub) = product $ map runOp sub
-runOp (Op Min _ sub) = minimum $ map runOp sub
-runOp (Op Max _ sub) = maximum $ map runOp sub
-runOp (Op Gt _ sub) = compareTails (>) $ map runOp sub
-runOp (Op Lt _ sub) = compareTails (<) $ map runOp sub
-runOp (Op Eq _ sub) = compareTails (==) $ map runOp sub
+runOp (Op opFn _ sub) = opFn $ map runOp sub
 
 versionSum :: Packet -> Int
 versionSum (Literal v _) = v
