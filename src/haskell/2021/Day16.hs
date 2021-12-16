@@ -48,10 +48,8 @@ toDecimal = foldl (\acc x -> acc * 2 + digitToInt x) 0
 decodeLiteral :: Int -> String -> [Packet]
 decodeLiteral v s =
     go [] s where
-    go res s  =
-        if head s == '1'
-        then go (res ++ tail (take 5 s)) (drop 5 s)
-        else Literal v (toDecimal $ res ++ tail (take 5 s)) : decodePacket (drop 5 s)
+    go res ('1':t) = go (res ++ take 4 t) (drop 4 t)
+    go res (_:t) = Literal v (toDecimal $ res ++ take 4 t) : decodePacket (drop 4 t)
 
 decodePacket :: String -> [Packet]
 decodePacket s  =
