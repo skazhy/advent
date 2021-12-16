@@ -8,6 +8,7 @@ Description : Day 16: Packet Decoder
 module Day16 where
 
 import Advent
+import Data.Bifunctor (bimap, first)
 import Data.Char (digitToInt, intToDigit)
 import Data.List (tails)
 import Numeric (readHex, showIntAtBase)
@@ -46,21 +47,22 @@ toDecimal :: String -> Int
 toDecimal = foldl (\acc x -> acc * 2 + digitToInt x) 0
 
 decodeLiteral :: Int -> String -> [Packet]
-decodeLiteral v s =
-    go [] s where
+decodeLiteral v =
+    go [] where
     go res ('1':t) = go (res ++ take 4 t) (drop 4 t)
     go res (_:t) = Literal v (toDecimal $ res ++ take 4 t) : decodePacket (drop 4 t)
 
 decodePacket :: String -> [Packet]
-decodePacket s  =
-    case (take 3 s, take 3 $ drop 3 s, drop 6 s) of
-        (v, "100", t) -> decodeLiteral (toDecimal v) t
-        (v, o, '1':t) -> let sub = (decodePacket $ drop 11 t)
-                         in Op (fromString o) (toDecimal v) (take dec11 sub) : drop dec11 sub
-        (v, o, '0':t) -> Op (fromString o) (toDecimal v) (decodePacket $ take dec15 $ drop 15 t) : decodePacket (drop (15 + dec15) t)
+decodePacket s =
+    case (take 3 $ drop 3 s, drop 6 s) of
+        ("100", t) -> decodeLiteral v t
+        (o, '1':t) -> uncurry (:) $ first (Op (fromString o) v) $ splitAt dec11 (decodePacket $ drop 11 t)
+        (o, '0':t) -> uncurry (:) $ bimap (Op (fromString o) v . decodePacket) decodePacket $ splitAt dec15 $ drop 15 t
+        (o, '0':t) -> Op (fromString o) v (decodePacket $ take dec15 $ drop 15 t) : decodePacket (drop (15 + dec15) t)
         _ -> []
     where dec15 = toDecimal $ take 15 $ drop 7 s
           dec11 = toDecimal $ take 11 $ drop 7 s
+          v = toDecimal $ take 3 s
 
 main = do
     input <- parsedInput (2021, 16) (head . decodePacket . hexToPaddedBinary)
