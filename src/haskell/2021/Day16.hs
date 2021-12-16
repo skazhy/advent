@@ -15,8 +15,7 @@ import Numeric (readHex, showIntAtBase)
 data Packet =  Literal Int Int | Op ([Int] -> Int) Int [Packet]
 
 compareTails :: (Int -> Int -> Bool) -> [Int] -> Int
-compareTails op =
-    fromEnum . all (\(a:b:_) -> op a b) . filter ((== 2) . length) . map (take 2) . tails
+compareTails op s = fromEnum $ and [ op a b | (a:b:_) <- tails s]
 
 fromString :: String -> ([Int] -> Int)
 fromString "000" = sum
