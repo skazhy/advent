@@ -1,0 +1,10 @@
+[package]
+name = "advent"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/skazhy/advent/"
+license-file = "LICENSE"
+
+[[bin]]
+name = "advent"
+path = "src/rust/main.rs"
