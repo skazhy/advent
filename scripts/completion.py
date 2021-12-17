@@ -9,7 +9,8 @@ from collections import defaultdict
 
 languages = {
     "advent": "Clojure",
-    "haskell": "Haskell"
+    "haskell": "Haskell",
+    "rust": "Rust"
 }
 
 def handle_lang(lang):
