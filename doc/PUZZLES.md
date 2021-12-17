@@ -19,6 +19,7 @@
 | 13 | [Clojure](../src/advent/2021/day13.clj), [Haskell](../src/haskell/2021/Day13.hs) |
 | 14 | [Clojure](../src/advent/2021/day14.clj), [Haskell](../src/haskell/2021/Day14.hs) |
 | 16 | [Haskell](../src/haskell/2021/Day16.hs) |
+| 17 | [Haskell](../src/haskell/2021/Day17.hs) |
 ## 2020
 
 | Day | Solutions |
