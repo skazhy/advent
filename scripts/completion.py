@@ -2,8 +2,8 @@
 
 # Script to generate links to solved puzzles.
 
-import os
 import re
+import subprocess
 
 from collections import defaultdict
 
@@ -13,24 +13,17 @@ languages = {
     "rust": "Rust"
 }
 
-def handle_lang(lang):
-    puzzles = []
-    for folder in os.walk(f'src/{lang}'):
-        (path, subdirs, files) = folder
-        puzzle_year_re = re.search(r"20[\d]{2}", path)
-        if not subdirs and puzzle_year_re:
-            year = puzzle_year_re.group(0)
-
-            for file in files:
-                if puzzle_day_re := re.search(r"[\d]{1,2}", file):
-                    puzzles.append((year, puzzle_day_re.group(0), f'{path}/{file}'))
-    return puzzles
-
 def all_puzzles():
     puzzles = defaultdict(lambda: defaultdict(lambda: defaultdict(dict)))
-    for lang in languages:
-        for (year, day, path) in handle_lang(lang):
-            puzzles[year][day][lang] = path
+    puzzle_re = r'src/([a-z]+)/[year]*(\d+)/(?:d|D)ay(\d+)'
+    git_cmd = [
+        "git", "ls-tree",
+        "--full-tree", "--name-only", "-r", "HEAD",
+        "--", "src"
+    ]
+    for file in subprocess.run(git_cmd, capture_output=True, text=True).stdout.split('\n'):
+        if m := re.search(puzzle_re, file):
+            puzzles[m.group(2)][m.group(3)][m.group(1)] = file
     return puzzles
 
 def gen_markdown():

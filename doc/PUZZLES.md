@@ -13,7 +13,7 @@
 | 7 | [Haskell](../src/haskell/2021/Day7.hs) |
 | 8 | [Clojure](../src/advent/2021/day8.clj) |
 | 9 | [Clojure](../src/advent/2021/day9.clj), [Haskell](../src/haskell/2021/Day9.hs) |
-| 10 | [Clojure](../src/advent/2021/day10.clj), [Haskell](../src/haskell/2021/Day10.hs) |
+| 10 | [Haskell](../src/haskell/2021/Day10.hs) |
 | 11 | [Haskell](../src/haskell/2021/Day11.hs) |
 | 12 | [Haskell](../src/haskell/2021/Day12.hs) |
 | 13 | [Clojure](../src/advent/2021/day13.clj), [Haskell](../src/haskell/2021/Day13.hs) |
@@ -21,6 +21,7 @@
 | 16 | [Haskell](../src/haskell/2021/Day16.hs) |
 | 17 | [Haskell](../src/haskell/2021/Day17.hs), [Rust](../src/rust/year2021/day17.rs) |
 | 20 | [Haskell](../src/haskell/2021/Day20.hs) |
+| 21 | [Haskell](../src/haskell/2021/Day21.hs) |
 ## 2020
 
 | Day | Solutions |
