@@ -44,7 +44,7 @@
             res
             (recur (rest numbers) res)))))))
 
-(defn bingo-handler-1 [boards new-board idx n]
+(defn bingo-handler-1 [_boards new-board _idx n]
   (reduced (board-sum new-board n)))
 
 (defn puzzle1 [input] (play-bingo bingo-handler-1 input))

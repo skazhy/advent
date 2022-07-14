@@ -59,7 +59,6 @@
 
 (defn balanced-weight [tree entry]
   (let [unbalanced (unbalanced-node tree entry)
-        node (get tree unbalanced)
         result-weight (->> (get tree entry) :children
                            (map (juxt identity #(subtower-weight tree %)))
                            (remove #(= unbalanced (first %))) first second)]

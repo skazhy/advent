@@ -2,8 +2,6 @@
   (:require [clojure.test :refer :all]
             [advent.2020.day18 :as d]))
 
-(def ^:private example "test")
-
 (deftest puzzle1
   (testing "Examples"
     (is (= 71 (d/eval-xp "1 + 2 * 3 + 4 * 5 + 6" {+ 0 * 0})))

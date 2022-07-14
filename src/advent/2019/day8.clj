@@ -1,7 +1,6 @@
 (ns advent.2019.day8
   "Advent of Code 2019, day 8: Space Image Format"
-  (:require [clojure.string :as str]
-            [advent.helpers :as h]))
+  (:require [advent.helpers :as h]))
 
 (def w 25)
 (def h 6)

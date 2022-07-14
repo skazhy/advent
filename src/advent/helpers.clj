@@ -62,7 +62,7 @@
 
 (defn parse-int [str-i]
   (try (Integer/parseInt str-i)
-       (catch Exception e (BigInteger. str-i))))
+       (catch Exception _ (BigInteger. str-i))))
 
 (defn slurp-int-csv-line [path]
   (->> (slurp-line path) (split-csv) (map parse-int)))
