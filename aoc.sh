@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # One-stop shop for developing and testing AoC puzzles
-# Usage: ./aoc.sh [hs|clj] [[year] day] [lint] [test]
+# Usage: ./aoc.sh [hs|clj|rs] [[year] day] [lint] [test]
 
 # When run with no options, will set up a puzzle in Clojure and open REPL
 
@@ -35,6 +35,10 @@ do
       ;;
     hs)
       LANG="hs"
+      shift
+      ;;
+    rs)
+      LANG="rs"
       shift
       ;;
     clj)
@@ -97,6 +101,10 @@ if [[ "$LANG" = "hs" ]]; then
   source ./scripts/env/haskell.sh
 fi
 
+if [[ "$LANG" = "rs" ]]; then
+  source ./scripts/env/rust.sh
+fi
+
 mkdir -p resources/$YEAR/solutions
 touch $TITLE_CACHE
 setup
@@ -117,6 +125,8 @@ function gen_src_file {
     gen_src_file_content
     [ -f "$TEST_FILE" ] && git add --intent-to-add $TEST_FILE
     git add --intent-to-add $SRC_FILE
+
+    NEW_FILE=1
   fi
 }
 
