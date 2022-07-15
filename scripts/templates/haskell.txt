@@ -1,0 +1,17 @@
+{-|
+Module      : Day$DAY
+Description : Day $DAY: $TITLE
+
+<$PUZZLE_URL>
+-}
+
+module Day$DAY where
+
+import Advent
+
+loadInput = parsedInput ($YEAR,  $DAY) lines
+
+main = do
+    input <- loadInput
+    print input
+--- vim: set ft=haskell :

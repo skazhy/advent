@@ -1,0 +1,15 @@
+(ns advent.$YEAR.day$DAY
+  \"Advent of Code $YEAR, day $DAY: $TITLE\"
+  (:require [clojure.string :as str]
+            [advent.helpers :as h]))
+
+(def puzzle-input (h/slurp-resource \"$YEAR/day$DAY.txt\" h/slurp-lines))
+
+(defn puzzle1 [input]
+
+)
+
+(defn puzzle2 [input]
+
+)
+;;; vim: set ft=clojure :
