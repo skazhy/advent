@@ -70,7 +70,7 @@
 
 | Day | Solutions |
 | --- | --------- |
-| 1 | [Clojure](../src/advent/2018/day1.clj), [Haskell](../src/haskell/2018/Day1.hs) |
+| 1 | [Clojure](../src/advent/2018/day1.clj), [Haskell](../src/haskell/2018/Day1.hs), [Python](../src/python/2018/day1.py) |
 | 2 | [Clojure](../src/advent/2018/day2.clj) |
 | 3 | [Clojure](../src/advent/2018/day3.clj) |
 | 4 | [Clojure](../src/advent/2018/day4.clj) |

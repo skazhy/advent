@@ -10,6 +10,7 @@ from collections import defaultdict
 languages = {
     "advent": "Clojure",
     "haskell": "Haskell",
+    "python": "Python",
     "rust": "Rust"
 }
 

@@ -1,0 +1,6 @@
+# Advent of Code $YEAR, day $DAY: $TITLE
+
+from helpers import ireadlines
+
+data = readlines($YEAR, $DAY)
+# vim: set ft=python :

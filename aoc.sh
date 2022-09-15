@@ -37,6 +37,10 @@ do
       LANG="hs"
       shift
       ;;
+    py)
+      LANG="py"
+      shift
+      ;;
     rs)
       LANG="rs"
       shift
@@ -99,6 +103,10 @@ fi
 
 if [[ "$LANG" = "hs" ]]; then
   source ./scripts/env/haskell.sh
+fi
+
+if [[ "$LANG" = "py" ]]; then
+  source ./scripts/env/python.sh
 fi
 
 if [[ "$LANG" = "rs" ]]; then
