@@ -1,5 +1,8 @@
 .cookie
-.cpcache
 .titlecache
 *.o
 *.hi
+
+# Clojure
+.rebel_readline_history
+.cpcache

@@ -34,5 +34,5 @@ function lint {
 }
 
 function start_repl {
-  rlwrap clj -M:repl
+  clj -M:repl
 }
