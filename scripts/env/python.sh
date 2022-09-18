@@ -20,6 +20,10 @@ function run_assert {
   assert $(PYTHONPATH=src/python python3 $SRC_FILE)
 }
 
+function lint {
+  black $SRC_FILE
+}
+
 function start_repl {
   PYTHONPATH=src/python python3 -i $SRC_FILE
 }

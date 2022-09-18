@@ -11,38 +11,53 @@ languages = {
     "advent": "Clojure",
     "haskell": "Haskell",
     "python": "Python",
-    "rust": "Rust"
+    "rust": "Rust",
 }
+
 
 def all_puzzles():
     puzzles = defaultdict(lambda: defaultdict(lambda: defaultdict(dict)))
-    puzzle_re = r'src/([a-z]+)/[year]*(\d+)/(?:d|D)ay(\d+)'
+    puzzle_re = r"src/([a-z]+)/[year]*(\d+)/(?:d|D)ay(\d+)"
     git_cmd = [
-        "git", "ls-tree",
-        "--full-tree", "--name-only", "-r", "HEAD",
-        "--", "src"
+        "git",
+        "ls-tree",
+        "--full-tree",
+        "--name-only",
+        "-r",
+        "HEAD",
+        "--",
+        "src",
     ]
-    for file in subprocess.run(git_cmd, capture_output=True, text=True).stdout.split('\n'):
+    for file in subprocess.run(git_cmd, capture_output=True, text=True).stdout.split(
+        "\n"
+    ):
         if m := re.search(puzzle_re, file):
             puzzles[m.group(2)][m.group(3)][m.group(1)] = file
     return puzzles
 
+
 def gen_markdown():
     puzzles = all_puzzles()
+    first_year = True
     with open("doc/PUZZLES.md", "w", encoding="utf-8") as doc:
-        doc.write('# Solved Advent of Code puzzles\n\n')
+        doc.write("# Solved Advent of Code puzzles\n\n")
 
         for year in sorted(puzzles.keys(), reverse=True):
-            doc.write((f'## {year}\n\n'
-                       '| Day | Solutions |\n'
-                       '| --- | --------- |\n'
-                      ))
+            if not first_year:
+                doc.write("\n")
+            doc.write(
+                (f"## {year}\n\n" "| Day | Solutions |\n" "| --- | --------- |\n")
+            )
 
             for day in sorted(puzzles[year], key=int):
                 solutions = []
                 for lang in sorted(puzzles[year][day], key=lambda x: languages[x]):
-                    solutions.append(f'[{languages[lang]}](../{puzzles[year][day][lang]})')
+                    solutions.append(
+                        f"[{languages[lang]}](../{puzzles[year][day][lang]})"
+                    )
                 doc.write(f'| {day} | {", ".join(solutions)} |\n')
+            first_year = False
+
 
 if __name__ == "__main__":
     print("Regenerating completed puzzle doc...")

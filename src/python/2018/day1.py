@@ -7,6 +7,7 @@ from helpers import int_readlines
 
 data = int_readlines(2018, 1)
 
+
 def puzzle2():
     seen = set([0])
     for i in itertools.accumulate(itertools.cycle(data)):
@@ -14,5 +15,6 @@ def puzzle2():
             return i
         seen.add(i)
 
-print(reduce((lambda x,y: x+y), data))
+
+print(reduce((lambda x, y: x + y), data))
 print(puzzle2())

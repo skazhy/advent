@@ -37,6 +37,6 @@ puzzle boilerplates,testing, and starting interactive environments:
 
 Full list of solutions [is available here](doc/PUZZLES.md).
 
-___
+______________________________________________________________________
 
-2017 - &infin; [skazhy](https://karlis.me)
+2017 - ∞ [skazhy](https://karlis.me)

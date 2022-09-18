@@ -22,6 +22,7 @@
 | 17 | [Haskell](../src/haskell/2021/Day17.hs), [Rust](../src/rust/year2021/day17.rs) |
 | 20 | [Haskell](../src/haskell/2021/Day20.hs) |
 | 21 | [Haskell](../src/haskell/2021/Day21.hs) |
+
 ## 2020
 
 | Day | Solutions |
@@ -51,6 +52,7 @@
 | 23 | [Haskell](../src/haskell/2020/Day23.hs) |
 | 24 | [Haskell](../src/haskell/2020/Day24.hs) |
 | 25 | [Haskell](../src/haskell/2020/Day25.hs) |
+
 ## 2019
 
 | Day | Solutions |
@@ -66,6 +68,7 @@
 | 9 | [Clojure](../src/advent/2019/day9.clj) |
 | 11 | [Clojure](../src/advent/2019/day11.clj) |
 | 13 | [Clojure](../src/advent/2019/day13.clj) |
+
 ## 2018
 
 | Day | Solutions |
@@ -74,6 +77,7 @@
 | 2 | [Clojure](../src/advent/2018/day2.clj) |
 | 3 | [Clojure](../src/advent/2018/day3.clj) |
 | 4 | [Clojure](../src/advent/2018/day4.clj) |
+
 ## 2017
 
 | Day | Solutions |
@@ -99,6 +103,7 @@
 | 21 | [Clojure](../src/advent/2017/day21.clj) |
 | 24 | [Clojure](../src/advent/2017/day24.clj) |
 | 25 | [Clojure](../src/advent/2017/day25.clj) |
+
 ## 2015
 
 | Day | Solutions |

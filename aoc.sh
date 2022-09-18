@@ -172,6 +172,7 @@ fi
 if [[ "$GEN_DOCS" ]]; then
   # Regenerate completed puzzle doc
   ./scripts/completion.py
+  mdformat README.md doc
 fi
 
 if [[ "$LINT" || "$ASSERT" || "$GEN_DOCS" ]]; then
