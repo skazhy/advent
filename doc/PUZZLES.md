@@ -103,4 +103,4 @@
 
 | Day | Solutions |
 | --- | --------- |
-| 1 | [Haskell](../src/haskell/2015/Day1.hs) |
+| 1 | [Haskell](../src/haskell/2015/Day1.hs), [Rust](../src/rust/year2015/day1.rs) |

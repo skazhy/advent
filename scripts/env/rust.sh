@@ -8,6 +8,7 @@ function setup {
   mkdir -p src/rust/year$YEAR
 
   SRC_FILE="src/rust/year$YEAR/day$DAY.rs"
+  MAIN_FILE="src/rust/main.rs"
   if [[ "$ASSERT" ]]; then
     cargo build
   fi
@@ -27,7 +28,6 @@ function gen_src_file_content {
   fi
 
   # Update main.rs
-  MAIN_FILE="src/rust/main.rs"
   MODS=$(cd src/rust; ls -1d year*/ | sed 's/^/mod /g; s/\/$/;/g')
   PUZZLES=$(cd src/rust; ls -1 */day*.rs | sed -E 's/year([0-9]+)\/day([0-9]+).rs/("\1", "\2") => year\1::day\2::run,/g')
   eval_template "scripts/templates/rust_main.txt" $MAIN_FILE
@@ -45,4 +45,9 @@ function start_repl {
     cargo build
     ./target/debug/advent $YEAR $DAY
   fi
+}
+
+function lint {
+  rustfmt $MAIN_FILE
+  rustfmt $SRC_FILE
 }
