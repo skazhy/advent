@@ -14,26 +14,32 @@ languages = {
     "rust": "Rust",
 }
 
+PUZZLE_RE = r"src/([a-z]+)/[year]*(\d+)/(?:d|D)ay(\d+)"
+
+
+def find_puzzles(acc, git_cmd):
+    cmd = ["git"] + git_cmd + ["--", "src"]
+    for file in subprocess.run(cmd, capture_output=True, text=True).stdout.split(
+        "\n"
+    ):
+        if m := re.search(PUZZLE_RE, file):
+            acc[m.group(2)][m.group(3)][m.group(1)] = file
+    return acc
+
 
 def all_puzzles():
     puzzles = defaultdict(lambda: defaultdict(lambda: defaultdict(dict)))
-    puzzle_re = r"src/([a-z]+)/[year]*(\d+)/(?:d|D)ay(\d+)"
-    git_cmd = [
-        "git",
-        "ls-tree",
-        "--full-tree",
-        "--name-only",
-        "-r",
-        "HEAD",
-        "--",
-        "src",
-    ]
-    for file in subprocess.run(git_cmd, capture_output=True, text=True).stdout.split(
-        "\n"
-    ):
-        if m := re.search(puzzle_re, file):
-            puzzles[m.group(2)][m.group(3)][m.group(1)] = file
-    return puzzles
+    puzzles = find_puzzles(
+        puzzles,
+        [
+            "ls-tree",
+            "--full-tree",
+            "--name-only",
+            "-r",
+            "HEAD",
+        ],
+    )
+    return find_puzzles(puzzles, ["diff", "--name-only", "--cached"])
 
 
 def gen_markdown():
