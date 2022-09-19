@@ -1,3 +1,7 @@
+### Ciphers
+
+- 2016.4 ([Clojure](https://github.com/skazhy/advent/blob/master/src/advent/2016/day4.clj))
+
 ### Grids
 
 - 2017.14 ([Clojure](https://github.com/skazhy/advent/blob/master/src/advent/2017/day14.clj))
