@@ -3,9 +3,9 @@
 
 fn floor_direction(i: u8) -> i32 {
     if i == 40 {
-        return 1;
+        1
     } else {
-        return -1;
+        -1
     }
 }
 
@@ -14,7 +14,7 @@ fn puzzle1(input: &str) -> i32 {
     for i in input.bytes() {
         floor += floor_direction(i);
     }
-    return floor;
+    floor
 }
 
 fn puzzle2(input: &str) -> i32 {
@@ -27,7 +27,7 @@ fn puzzle2(input: &str) -> i32 {
             break;
         }
     }
-    return idx;
+    idx
 }
 
 pub fn run(input: &str) {

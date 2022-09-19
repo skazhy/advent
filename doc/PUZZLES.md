@@ -104,6 +104,14 @@
 | 24 | [Clojure](../src/advent/2017/day24.clj) |
 | 25 | [Clojure](../src/advent/2017/day25.clj) |
 
+## 2016
+
+| Day | Solutions |
+| --- | --------- |
+| 1 | [Rust](../src/rust/year2016/day1.rs) |
+| 2 | [Rust](../src/rust/year2016/day2.rs) |
+| 3 | [Rust](../src/rust/year2016/day3.rs) |
+
 ## 2015
 
 | Day | Solutions |

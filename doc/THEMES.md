@@ -23,6 +23,7 @@
 
 ### Taxicab geometry
 
+- 2016.1 ([Rust](https://github.com/skazhy/advent/blob/master/src/rust/year2016/day1.rs))
 - 2017.3 ([Clojure](https://github.com/skazhy/advent/blob/master/src/advent/2017/day3.clj))
 
 ### Trees

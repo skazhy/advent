@@ -1,7 +1,21 @@
 // Advent of Code $YEAR, day $DAY: $TITLE
 // $PUZZLE_URL
 
+fn puzzle(input: &str) -> i32 {
+    1
+}
+
 pub fn run(input: &str) {
-    println!(\"{}\", input);
+    println!(\"{}\", puzzle(input));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn puzzle_examples() {
+        assert_eq!(puzzle(\"\"), 1);
+    }
 }
 // vim: set ft=rust :
