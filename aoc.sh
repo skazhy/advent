@@ -16,6 +16,7 @@ set -e
 
 YEAR=$(date "+%Y")
 DAY=$(date "+%d" | sed -e 's/^0//g')
+MONTH=$(date "+%m")
 LANG="clj"
 
 while :
@@ -80,6 +81,11 @@ do
 done
 
 # Handle numeric arguments to set year / day number.
+
+if [[ ! "$NUMARG2" && "$MONTH" != "12" && ! "$GEN_DOCS" ]]; then
+  echo "Please provide year & month for the puzle!"
+  exit 1
+fi
 
 if [[ "$NUMARG1" && "$NUMARG2" ]]; then
   YEAR=$NUMARG1
@@ -171,8 +177,8 @@ fi
 
 if [[ "$GEN_DOCS" ]]; then
   # Regenerate completed puzzle doc
-  ./scripts/completion.py
-  mdformat README.md doc
+  PYTHONPATH=scripts ./scripts/gen_docs.py
+  # mdformat README.md doc
 fi
 
 if [[ "$LINT" || "$ASSERT" || "$GEN_DOCS" ]]; then

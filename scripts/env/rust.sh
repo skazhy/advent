@@ -35,6 +35,7 @@ function gen_src_file_content {
 }
 
 function run_assert {
+  cargo test year$YEAR::day$DAY
   assert $(./target/debug/advent $YEAR $DAY)
 }
 

@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Binary numbers",
+    "puzzles": [[2021,3]]
+  }, {
+    "name": "Ciphers",
+    "puzzles": [[2016,4]]
+  }, {
+    "name": "Bruteforce won't work here",
+    "description": "Puzzles that will take very long time to complete if solved with bruteforce.",
+    "puzzles": [[2020,15], [2021,6]]
+  }, {
+    "name": "Graphs",
+    "puzzles": [[2021,12]]
+  }, {
+    "name": "Grids",
+    "puzzles": [[2017,14], [2017,21], [2021,4]],
+    "sections": [
+      {
+        "name": "Hex",
+        "puzzles": [[2017,11]]
+      }, {
+        "name": "Taxicab",
+        "puzzles": [[2016,1], [2017,3]]
+      }
+    ]
+  }, {
+    "name": "Hashing",
+    "sections": [
+      {
+        "name": "MD5",
+        "puzzles": [[2015,4]]
+      }
+    ]
+  }, {
+    "name": "Instruction parsing & execution",
+    "puzzles": [[2017,8], [2017,16], [2021,2]]
+  }, {
+    "name": "Intcode",
+    "description": "Appeared only in AoC 2019.",
+    "puzzles": [[2019,2], [2019,5], [2019,7], [2019,9], [2019,11], [2019,13]]
+  }, {
+    "name": "List processing",
+    "puzzles": [[2021,1]]
+  }, {
+    "name": "Trees",
+    "puzzles": [[2017,7]]
+  }
+]

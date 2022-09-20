@@ -25,5 +25,5 @@ function lint {
 }
 
 function start_repl {
-  PYTHONPATH=src/python python3 -i $SRC_FILE
+  PYTHONPATH=src/python python3 $SRC_FILE
 }

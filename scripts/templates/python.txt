@@ -1,6 +1,7 @@
 # Advent of Code $YEAR, day $DAY: $TITLE
+# $PUZZLE_URL
 
-from helpers import ireadlines
+from helpers import readlines
 
 data = readlines($YEAR, $DAY)
 # vim: set ft=python :
