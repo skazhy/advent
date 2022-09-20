@@ -4,7 +4,7 @@
 from helpers import readlines
 from itertools import combinations
 
-data = [[int(x) for x in row.strip().split("x")] for row in readlines(2015, 2)]
+data = [[int(x) for x in row.split("x")] for row in readlines(2015, 2)]
 
 res1 = 0
 res2 = 0

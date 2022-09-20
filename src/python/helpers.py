@@ -3,7 +3,7 @@ def input_path(year, day):
 
 
 def readlines(year, day):
-    return open(input_path(year, day), "r").readlines()
+    return [r.strip() for r in open(input_path(year, day), "r").readlines()]
 
 
 def int_readlines(year, day):
