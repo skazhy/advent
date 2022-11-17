@@ -9,7 +9,7 @@ module Day$DAY where
 
 import Advent
 
-loadInput = parsedInput ($YEAR,  $DAY) lines
+loadInput = parsedInput ($YEAR, $DAY) lines
 
 main = do
     input <- loadInput
