@@ -83,7 +83,7 @@
 | Day | Solutions |
 |  ---  | --- |
 | 1 | [Clojure](../src/advent/2017/day1.clj) |
-| 2 | [Clojure](../src/advent/2017/day2.clj) |
+| 2 | [Clojure](../src/advent/2017/day2.clj), [Rust](../src/rust/year2017/day2.rs) |
 | 3 | [Clojure](../src/advent/2017/day3.clj) |
 | 4 | [Clojure](../src/advent/2017/day4.clj) |
 | 5 | [Clojure](../src/advent/2017/day5.clj) |

@@ -5,6 +5,9 @@ edition = "2021"
 repository = "https://github.com/skazhy/advent/"
 license-file = "LICENSE"
 
+[dependencies]
+itertools = "0.10.5"
+
 [[bin]]
 name = "advent"
 path = "src/rust/main.rs"

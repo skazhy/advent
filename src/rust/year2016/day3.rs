@@ -8,7 +8,8 @@ fn valid_triangle(input: &[i32]) -> bool {
 }
 
 fn parse_row(input: &str) -> Vec<i32> {
-    input.split_whitespace()
+    input
+        .split_whitespace()
         .map(|d| d.parse::<i32>().unwrap())
         .collect::<Vec<i32>>()
 }
@@ -32,11 +33,7 @@ fn puzzle2(input: &str) -> usize {
         let c = row_iter.next().unwrap().clone();
 
         for i in 0..3 {
-            if valid_triangle(&[
-                *a.get(i).unwrap(),
-                *b.get(i).unwrap(),
-                *c.get(i).unwrap(),
-            ]) {
+            if valid_triangle(&[*a.get(i).unwrap(), *b.get(i).unwrap(), *c.get(i).unwrap()]) {
                 valid += 1;
             }
         }
