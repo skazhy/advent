@@ -45,6 +45,7 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 
 ## Instruction parsing & execution
 
+* 2016.12 in [Haskell](../src/haskell/2016/Day12.hs)
 * 2017.8 in [Clojure](../src/advent/2017/day8.clj)
 * 2017.16 in [Clojure](../src/advent/2017/day16.clj)
 * 2021.2 in [Clojure](../src/advent/2021/day2.clj)
