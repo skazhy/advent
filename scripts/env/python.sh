@@ -21,7 +21,7 @@ function run_assert {
 }
 
 function lint {
-  black $SRC_FILE
+  black $SRC_FILE src/python/helpers.py
 }
 
 function start_repl {
