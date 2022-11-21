@@ -29,7 +29,7 @@ def md_header(title, level):
 
 
 def md_ul(content):
-    return f"* {content}\n"
+    return f"- {content}\n"
 
 
 def doc_footer():

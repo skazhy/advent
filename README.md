@@ -39,7 +39,8 @@ solutions.
 Puzzles are self-contained scripts (except for Rust - all puzzles are compiled
 to a single executable). Building the tooling sometimes is more fun than
 dealing with puzzles themselves, so a bash duct tape is holding this project
-together.
+together. [DEV.md](doc/DEV.md) has more detailed information about how this
+all works together.
 
 All puzzles read their input from `resources/$year/day$day.txt`, all puzzles
 (except for Clojure, which uses `clojure.test`) are expected to print out

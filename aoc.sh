@@ -1,23 +1,16 @@
 #! /usr/bin/env bash
 
 # One-stop shop for developing and testing AoC puzzles
-# Usage: ./aoc.sh [hs|clj|rs] [[year] day] [lint] [test]
+# Usage: ./aoc.sh [[language] [[year] day] [lint] [test]|doc]
 
-# When run with no options, will set up a puzzle in Clojure and open REPL
-
-# Language-specific functions are defined in scripts/env/$language.sh:
-
-# `setup`:  for defining TEST_FILE,SRC_FILE and setting up source directories
-# `gen_src_file_content`: for setting up source and test file contents
-# `lint`
-# `start_repl`
+# See doc/DEV.md for more information about extending this script.
 
 set -e
 
 YEAR=$(date "+%Y")
 DAY=$(date "+%d" | sed -e 's/^0//g')
 MONTH=$(date "+%m")
-LANG="clj"
+TITLE_CACHE=".titlecache"
 
 while :
 do
@@ -35,19 +28,19 @@ do
       shift
       ;;
     hs)
-      LANG="hs"
+      source ./scripts/env/haskell.sh
       shift
       ;;
     py)
-      LANG="py"
+      source ./scripts/env/python.sh
       shift
       ;;
     rs)
-      LANG="rs"
+      source ./scripts/env/rust.sh
       shift
       ;;
     clj)
-      LANG="clj"
+      source ./scripts/env/clojure.sh
       shift
       ;;
     doc)
@@ -80,9 +73,17 @@ do
   esac
 done
 
+
+if [[ "$GEN_DOCS" ]]; then
+  # Regenerate completed puzzle doc
+  PYTHONPATH=scripts ./scripts/gen_docs.py
+  mdformat README.md doc
+  exit 0
+fi
+
 # Handle numeric arguments to set year / day number.
 
-if [[ ! "$NUMARG2" && "$MONTH" != "12" && ! "$GEN_DOCS" ]]; then
+if [[ ! "$NUMARG2" && "$MONTH" != "12" ]]; then
   echo "Please provide year & month for the puzle!"
   exit 1
 fi
@@ -96,34 +97,21 @@ if [[ "$NUMARG1" && ! "$NUMARG2" ]]; then
   DAY=$NUMARG1
 fi
 
-# Environment setup
+mkdir -p resources/$YEAR/solutions
 
 PUZZLE_URL="https://adventofcode.com/$YEAR/day/$DAY"
 INPUT_FILE="resources/$YEAR/day$DAY.txt"
 SOLUTION_FILE="resources/$YEAR/solutions/day$DAY.txt"
-TITLE_CACHE=".titlecache"
 
-if [[ "$LANG" = "clj" ]]; then
-  source ./scripts/env/clojure.sh
-fi
-
-if [[ "$LANG" = "hs" ]]; then
-  source ./scripts/env/haskell.sh
-fi
-
-if [[ "$LANG" = "py" ]]; then
-  source ./scripts/env/python.sh
-fi
-
-if [[ "$LANG" = "rs" ]]; then
-  source ./scripts/env/rust.sh
-fi
-
-mkdir -p resources/$YEAR/solutions
-touch $TITLE_CACHE
 setup
+if [ ! "$SRC_FILE" ]; then
+  echo "Please select a languate!"
+  exit 1
+fi
 
 function gen_src_file {
+  touch $TITLE_CACHE
+
   if [ ! -f "$SRC_FILE" ]; then
     if [ ! "$SILENT" ]; then
       echo "Creating new source files for $YEAR day $DAY..."
@@ -175,13 +163,8 @@ fi
 [ "$LINT" ] && lint
 [ "$ASSERT" ] && run_assert
 
-if [[ "$GEN_DOCS" ]]; then
-  # Regenerate completed puzzle doc
-  PYTHONPATH=scripts ./scripts/gen_docs.py
-  # mdformat README.md doc
-fi
 
-if [[ "$LINT" || "$ASSERT" || "$GEN_DOCS" ]]; then
+if [[ "$LINT" || "$ASSERT" ]]; then
   exit 0
 fi
 
