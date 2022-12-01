@@ -6,6 +6,7 @@
  :aliases {:repl {:extra-deps {cider/cider-nrepl {:mvn/version "0.28.5"}
                                com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
                   :main-opts ["-m" "nrepl.cmdline" "-i"
+                              "-p" "49888"
                               "--middleware" "[cider.nrepl/cider-middleware]"
                               "--repl-fn" "rebel-readline.main/-main"]}
            :test {:extra-paths ["test"]
