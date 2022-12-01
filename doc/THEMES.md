@@ -56,6 +56,7 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 Appeared only in AoC 2019.
 
 - 2019.2 in [Clojure](../src/advent/2019/day2.clj)
+- 2019.2 in [Rust](../src/rust/year2019/day2.rs)
 - 2019.5 in [Clojure](../src/advent/2019/day5.clj)
 - 2019.7 in [Clojure](../src/advent/2019/day7.clj)
 - 2019.9 in [Clojure](../src/advent/2019/day9.clj)

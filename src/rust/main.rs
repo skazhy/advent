@@ -4,6 +4,7 @@
 mod year2015;
 mod year2016;
 mod year2017;
+mod year2019;
 mod year2021;
 mod year2022;
 
@@ -22,6 +23,7 @@ fn main() -> std::io::Result<()> {
         ("2016", "2") => year2016::day2::run,
         ("2016", "3") => year2016::day3::run,
         ("2017", "2") => year2017::day2::run,
+        ("2019", "2") => year2019::day2::run,
         ("2021", "17") => year2021::day17::run,
         ("2022", "1") => year2022::day1::run,
         _ => panic!("No source for {}/{}", year, day),

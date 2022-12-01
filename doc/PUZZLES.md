@@ -64,7 +64,7 @@
 | Day | Solutions |
 |  ---  | --- |
 | 1 | [Clojure](../src/advent/2019/day1.clj), [Haskell](../src/haskell/2019/Day1.hs) |
-| 2 | [Clojure](../src/advent/2019/day2.clj) |
+| 2 | [Clojure](../src/advent/2019/day2.clj), [Rust](../src/rust/year2019/day2.rs) |
 | 3 | [Clojure](../src/advent/2019/day3.clj) |
 | 4 | [Clojure](../src/advent/2019/day4.clj) |
 | 5 | [Clojure](../src/advent/2019/day5.clj) |
