@@ -10,7 +10,7 @@ function setup {
   SRC_FILE="src/rust/year$YEAR/day$DAY.rs"
   MAIN_FILE="src/rust/main.rs"
   if [[ "$ASSERT" ]]; then
-    cargo build
+    cargo build -q
   fi
 }
 
@@ -35,7 +35,11 @@ function gen_src_file_content {
 }
 
 function run_assert {
-  cargo test year$YEAR::day$DAY
+  grep "cfg(test)" $SRC_FILE && cargo test year$YEAR::day$DAY
+  if [[ "$YEAR" == "2019" ]]; then
+    cargo test intcode
+  fi
+
   assert $(./target/debug/advent $YEAR $DAY)
 }
 
