@@ -1,5 +1,11 @@
 # Solved Advent of Code puzzles
 
+## 2022
+
+| Day | Solutions |
+|  ---  | --- |
+| 1 | [Clojure](../src/advent/2022/day1.clj) |
+
 ## 2021
 
 | Day | Solutions |
