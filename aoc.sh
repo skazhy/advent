@@ -47,26 +47,6 @@ do
       GEN_DOCS=1
       shift
       ;;
-    src-path)
-      ECHO_SRC_PATH=1
-      SILENT=1
-      shift
-      ;;
-    test-path)
-      ECHO_TEST_PATH=1
-      SILENT=1
-      shift
-      ;;
-    input-path)
-      ECHO_INPUT_PATH=1
-      SILENT=1
-      shift
-      ;;
-    solution-path)
-      ECHO_SOLUTION_PATH=1
-      SILENT=1
-      shift
-      ;;
   *)
     break
     ;;
@@ -113,9 +93,7 @@ function gen_src_file {
   touch $TITLE_CACHE
 
   if [ ! -f "$SRC_FILE" ]; then
-    if [ ! "$SILENT" ]; then
-      echo "Creating new source files for $YEAR day $DAY..."
-    fi
+    echo "Creating new source files for $YEAR day $DAY..."
 
     # Look up puzzle title in title cache, fallback to fetching it from the website.
     TITLE=$(grep "$YEAR$DAY " $TITLE_CACHE | sed 's/^[0-9]* //g')
@@ -168,32 +146,9 @@ if [[ "$LINT" || "$ASSERT" ]]; then
   exit 0
 fi
 
-if [ ! "$SILENT" ]; then
-  echo "Puzzle details: $PUZZLE_URL"
-fi
+echo "Puzzle details: $PUZZLE_URL"
 
 fetch_input_file
 gen_src_file
 gen_solution_file
-
-if [ "$ECHO_SRC_PATH" ]; then
-  echo "$SRC_FILE"
-  exit 0
-fi
-
-if [ "$ECHO_TEST_PATH" ]; then
-  echo "$TEST_FILE"
-  exit 0
-fi
-
-if [ "$ECHO_INPUT_PATH" ]; then
-  echo "$INPUT_FILE"
-  exit 0
-fi
-
-if [ "$ECHO_SOLUTION_PATH" ]; then
-  echo "$SOLUTION_FILE"
-  exit 0
-fi
-
 start_repl

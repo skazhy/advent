@@ -1,5 +1,8 @@
 # Tooling notes
 
+[aoc.vim](../scripts/aoc.vim) defines a couple of Vim commands that can be
+useful: `:OpenAocSolution`, `:OpenAocInput`, and `:OpenAocTest`.
+
 ## Adding a new language support
 
 `aoc.sh` expects these methods to exist when dealing with puzzle code:

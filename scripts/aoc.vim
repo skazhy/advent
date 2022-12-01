@@ -1,24 +1,12 @@
-function! OpenAocPuzzle(args)
-  let l:srcPath = system('./aoc.sh src-path ' . a:args)
-  execute 'edit +0 ' . srcPath
+let s:srcPattern =  'src/[a-z|/]\+\(\d\+\)/[D|d]ay\(\d\+\).[a-z]\+'
+
+function! OpenAocResource(path)
+  let l:srcPath = expand('%')
+  if match(l:srcPath, s:srcPattern) > -1
+    execute 'split ' .  substitute(l:srcPath, s:srcPattern, a:path, "")
+  endif
 endfunction
 
-function! OpenAocTest(args)
-  let l:testPath = system('./aoc.sh test-path ' . a:args)
-  execute 'edit +0 ' . l:testPath
-endfunction
-
-function! OpenAocSolution(args)
-  let l:solPath = system('./aoc.sh solution-path ' . a:args)
-  execute 'edit +0 ' . l:solPath
-endfunction
-
-function! OpenAocInput(args)
-  let l:inputPath = system('./aoc.sh input-path ' . a:args)
-  execute 'edit +0 ' . l:inputPath
-endfunction
-
-command! -nargs=* AocSource call OpenAocPuzzle(<q-args>)
-command! -nargs=* AocTest call OpenAocTest(<q-args>)
-command! -nargs=* AocInput call OpenAocInput(<q-args>)
-command! -nargs=* AocSolution call OpenAocSolution(<q-args>)
+command! -nargs=* AocInput call OpenAocResource('resources/\1/day\2.txt')
+command! -nargs=* AocSolution call OpenAocResource('resources/\1/solutions/day\2.txt')
+command! -nargs=* AocTest call OpenAocResource('test/advent/\1/test_day\2.clj')
