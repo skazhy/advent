@@ -4,7 +4,7 @@
 
 | Day | Solutions |
 |  ---  | --- |
-| 1 | [Clojure](../src/advent/2022/day1.clj), [Haskell](../src/haskell/2022/Day1.hs) |
+| 1 | [Clojure](../src/advent/2022/day1.clj), [Haskell](../src/haskell/2022/Day1.hs), [Rust](../src/rust/year2022/day1.rs) |
 
 ## 2021
 
