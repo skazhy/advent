@@ -6,6 +6,7 @@
 |  ---  | --- |
 | 1 | [Clojure](../src/advent/2022/day1.clj), [Haskell](../src/haskell/2022/Day1.hs), [Rust](../src/rust/year2022/day1.rs) |
 | 2 | [Haskell](../src/haskell/2022/Day2.hs) |
+| 3 | [Haskell](../src/haskell/2022/Day3.hs) |
 
 ## 2021
 
