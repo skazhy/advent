@@ -2,8 +2,7 @@
 
 ## Binary numbers
 
-- 2021.3 in [Clojure](../src/advent/2021/day3.clj)
-- 2021.3 in [Haskell](../src/haskell/2021/Day3.hs)
+- 2021.3 in [Clojure](../src/advent/2021/day3.clj), [Haskell](../src/haskell/2021/Day3.hs)
 
 ## Ciphers
 
@@ -13,10 +12,8 @@
 
 Puzzles that will take very long time to complete if solved with bruteforce.
 
-- 2020.15 in [Clojure](../src/advent/2020/day15.clj)
-- 2020.15 in [Haskell](../src/haskell/2020/Day15.hs)
-- 2021.6 in [Clojure](../src/advent/2021/day6.clj)
-- 2021.6 in [Haskell](../src/haskell/2021/Day6.hs)
+- 2020.15 in [Clojure](../src/advent/2020/day15.clj), [Haskell](../src/haskell/2020/Day15.hs)
+- 2021.6 in [Clojure](../src/advent/2021/day6.clj), [Haskell](../src/haskell/2021/Day6.hs)
 
 ## Graphs
 
@@ -48,15 +45,13 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 - 2016.12 in [Haskell](../src/haskell/2016/Day12.hs)
 - 2017.8 in [Clojure](../src/advent/2017/day8.clj)
 - 2017.16 in [Clojure](../src/advent/2017/day16.clj)
-- 2021.2 in [Clojure](../src/advent/2021/day2.clj)
-- 2021.2 in [Haskell](../src/haskell/2021/Day2.hs)
+- 2021.2 in [Clojure](../src/advent/2021/day2.clj), [Haskell](../src/haskell/2021/Day2.hs)
 
 ## Intcode
 
 Appeared only in AoC 2019.
 
-- 2019.2 in [Clojure](../src/advent/2019/day2.clj)
-- 2019.2 in [Rust](../src/rust/year2019/day2.rs)
+- 2019.2 in [Clojure](../src/advent/2019/day2.clj), [Rust](../src/rust/year2019/day2.rs)
 - 2019.5 in [Clojure](../src/advent/2019/day5.clj)
 - 2019.7 in [Clojure](../src/advent/2019/day7.clj)
 - 2019.9 in [Clojure](../src/advent/2019/day9.clj)
@@ -65,8 +60,7 @@ Appeared only in AoC 2019.
 
 ## List processing
 
-- 2021.1 in [Clojure](../src/advent/2021/day1.clj)
-- 2021.1 in [Haskell](../src/haskell/2021/Day1.hs)
+- 2021.1 in [Clojure](../src/advent/2021/day1.clj), [Haskell](../src/haskell/2021/Day1.hs)
 
 ## Trees
 

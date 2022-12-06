@@ -58,8 +58,8 @@ def write_theme_block(doc, theme, puzzles, level=2):
         doc.write(f"{theme['description']}\n\n")
 
     for y, d in theme.get("puzzles", []):
-        for lang, url in puzzles[str(y)][str(d)].items():
-            doc.write(md_ul(f"{y}.{d} in {md_rel_link(url, lang)}"))
+        links = ", ".join(md_rel_link(url, lang) for lang, url in puzzles[str(y)][str(d)].items())
+        doc.write(md_ul(f"{y}.{d} in {links}"))
     if theme.get("puzzles"):
         doc.write("\n")
 
