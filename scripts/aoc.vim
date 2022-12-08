@@ -1,4 +1,4 @@
-let s:srcPattern =  '[a-z|/]\+\(\d\+\)/[D|d]ay\(\d\+\).[a-z]\+'
+let s:srcPattern =  '[a-z|/]\+\(\d\+\)/[a-z|_]\+\(\d\+\).[a-z]\+'
 
 function! OpenAocResource(path)
   let l:srcPath = expand('%')
