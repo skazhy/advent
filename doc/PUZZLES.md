@@ -11,6 +11,7 @@
 | 5 | [Clojure](../src/advent/2022/day5.clj), [Haskell](../src/haskell/2022/Day5.hs) |
 | 6 | [Haskell](../src/haskell/2022/Day6.hs) |
 | 7 | [Haskell](../src/haskell/2022/Day7.hs) |
+| 8 | [Clojure](../src/advent/2022/day8.clj) |
 
 ## 2021
 
