@@ -14,6 +14,7 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 
 - 2020.15 in [Clojure](../src/advent/2020/day15.clj), [Haskell](../src/haskell/2020/Day15.hs)
 - 2021.6 in [Clojure](../src/advent/2021/day6.clj), [Haskell](../src/haskell/2021/Day6.hs)
+- 2022.11 in [Clojure](../src/advent/2022/day11.clj)
 
 ## Graphs
 

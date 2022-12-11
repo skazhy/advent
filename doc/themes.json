@@ -8,7 +8,7 @@
   }, {
     "name": "Bruteforce won't work here",
     "description": "Puzzles that will take very long time to complete if solved with bruteforce.",
-    "puzzles": [[2020,15], [2021,6]]
+    "puzzles": [[2020,15], [2021,6], [2022,11]]
   }, {
     "name": "Graphs",
     "puzzles": [[2021,12]]
