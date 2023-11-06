@@ -58,7 +58,7 @@
                                     patterns)))))
 
 (defn div-by [grid]
-  (if (zero? (even? (count (first grid)))) 2 3))
+  (if (even? (count (first grid))) 2 3))
 
 (def lols {3 4 2 3})
 
