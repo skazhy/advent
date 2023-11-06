@@ -1,7 +1,7 @@
 (ns advent.2016.day4
   "Advent of Code 2016, day 4: Security Through Obscurity"
-  (:require [clojure.string :as str]
-            [advent.helpers :as h]))
+  (:require [advent.helpers :as h]
+            [clojure.string :as str]))
 
 (def puzzle-input (h/slurp-resource "2016/day4.txt" h/slurp-lines))
 
@@ -33,6 +33,6 @@
 (defn puzzle2 [input]
   (->> (keep valid-room? input)
        (map #(apply decode %))
-       (filter #(clojure.string/starts-with? (first %) "north"))
+       (filter #(str/starts-with? (first %) "north"))
        first
        last))

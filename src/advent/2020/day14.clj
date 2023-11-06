@@ -44,7 +44,7 @@
 ;;; Puzzle 2: address masks
 
 (defn mk-mask [mask bits]
-  (reduce #(bit-set %1 %2) mask bits))
+  (reduce bit-set mask bits))
 
 (defn masks [start mask]
   (loop [idx 0 res start mask (reverse mask) floating []]

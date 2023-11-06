@@ -1,7 +1,7 @@
 (ns advent.helpers
-  (:require [clojure.set :as set]
-            [clojure.string :refer [split trim]]
-            [clojure.java.io :refer [resource]]))
+  (:require [clojure.java.io :refer [resource]]
+            [clojure.set :as set]
+            [clojure.string :refer [split trim]]))
 
 (defn neg [x] (* -1 x))
 

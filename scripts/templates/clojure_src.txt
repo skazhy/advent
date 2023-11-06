@@ -1,7 +1,7 @@
 (ns advent.$YEAR.day$DAY
   \"Advent of Code $YEAR, day $DAY: $TITLE\"
-  (:require [clojure.string :as str]
-            [advent.helpers :as h]))
+  (:require [advent.helpers :as h]
+            [clojure.string :as str]))
 
 (def puzzle-input (h/slurp-resource \"$YEAR/day$DAY.txt\" h/slurp-lines))
 

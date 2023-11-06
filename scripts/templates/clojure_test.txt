@@ -1,6 +1,6 @@
 (ns advent.$YEAR.test-day$DAY
-  (:require [clojure.test :refer [deftest is testing]]
-            [advent.$YEAR.day$DAY :as d]))
+  (:require [advent.$YEAR.day$DAY :as d]
+            [clojure.test :refer [deftest is testing]]))
 
 (def ^:private example \"test\")
 

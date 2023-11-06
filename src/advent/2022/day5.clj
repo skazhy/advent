@@ -1,7 +1,7 @@
 (ns advent.2022.day5
   "Advent of Code 2022, day 5: Supply Stacks"
-  (:require [clojure.string :as str]
-            [advent.helpers :as h]))
+  (:require [advent.helpers :as h]
+            [clojure.string :as str]))
 
 (def puzzle-input (h/slurp-resource "2022/day5.txt" h/slurp-lines))
 

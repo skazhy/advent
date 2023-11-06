@@ -1,6 +1,6 @@
 (ns advent.2017.day21
-  (:require [clojure.string :as str]
-            [advent.helpers :as h]))
+  (:require [advent.helpers :as h]
+            [clojure.string :as str]))
 
 (def puzzle-input (h/slurp-resource "2017/day21.txt" h/slurp-lines))
 
@@ -27,8 +27,8 @@
   (let [rng (range n)] (mapcat (fn [r] (map #(vector r %) rng)) rng)))
 
 (defn expand-one [n [x y]]
-  (->> (range (* x n) (* n (+ x 1)))
-       (mapcat (fn [x] (map #(vector x %) (range (* y n) (* (+ y 1) n)))))))
+  (->> (range (* x n) (* n (inc x)))
+       (mapcat (fn [x] (map #(vector x %) (range (* y n) (* (inc y) n)))))))
 
 (defn expand [gridlen l]
   (map #(expand-one l %) (pairs (/ gridlen l))))

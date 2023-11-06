@@ -1,6 +1,6 @@
 (ns advent.helpers.t-intcode
-  (:require [clojure.test :refer :all]
-            [advent.helpers.intcode :refer [run-program]]))
+  (:require [advent.helpers.intcode :refer [run-program]]
+            [clojure.test :refer :all]))
 
 (deftest ^:intcode comparison-tests
   (testing  "input equal to 8 with position mode"
