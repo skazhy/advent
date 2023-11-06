@@ -29,7 +29,7 @@ fn max_height_for_velocity(
 
 fn parse_bound(bound: &str) -> Vec<i32> {
     bound
-        .split_once("=")
+        .split_once('=')
         .unwrap()
         .1
         .split("..")
@@ -39,10 +39,10 @@ fn parse_bound(bound: &str) -> Vec<i32> {
 
 pub fn run(input: &str) {
     let bounds = input
-        .replace(",", "")
+        .replace(',', "")
         .split(' ')
         .skip(2)
-        .flat_map(|b| parse_bound(b))
+        .flat_map(parse_bound)
         .collect::<Vec<i32>>();
 
     let upper_bound = (bounds[0], bounds[3]);

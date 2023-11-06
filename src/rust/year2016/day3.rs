@@ -17,7 +17,7 @@ fn parse_row(input: &str) -> Vec<i32> {
 fn puzzle1(input: &str) -> usize {
     input
         .split('\n')
-        .map(|r| parse_row(r))
+        .map(parse_row)
         .filter(|t| valid_triangle(t))
         .count()
 }
@@ -25,7 +25,7 @@ fn puzzle1(input: &str) -> usize {
 // 1237 -> too low
 
 fn puzzle2(input: &str) -> usize {
-    let mut row_iter = input.split('\n').map(|r| parse_row(r));
+    let mut row_iter = input.split('\n').map(parse_row);
     let mut valid = 0;
 
     while let Some(a) = row_iter.next() {
