@@ -137,6 +137,8 @@
 | 2 | [Rust](../src/rust/year2016/day2.rs) |
 | 3 | [Rust](../src/rust/year2016/day3.rs) |
 | 4 | [Clojure](../src/advent/2016/day4.clj) |
+| 6 | [Clojure](../src/advent/2016/day6.clj) |
+| 7 | [Rust](../src/rust/year2016/day7.rs) |
 | 12 | [Haskell](../src/haskell/2016/Day12.hs) |
 
 ## 2015
