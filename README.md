@@ -30,17 +30,17 @@
 
 My Advent of Code solutions, [in various languages](doc/PUZZLES.md).
 
-`aoc.sh` wraps the language specific tools to have somewhat unified API for
-testing and developing puzzles. `./aoc.sh $language $day $year` sets up files
+`aoc.sh` wraps the language specific tools to have a somewhat unified API for
+testing and development. `./aoc.sh $language $day $year` sets up files
 for a new puzzle & starts an interactive dev session if the given language has
 such capabilities. `./aoc.sh $language $day $year test` can be used to verify
 solutions.
 
 Puzzles are self-contained scripts (except for Rust - all puzzles are compiled
-to a single executable). Building the tooling sometimes is more fun than
+to a single executable). Building the tooling is sometimes more fun than
 dealing with puzzles themselves, so a bash duct tape is holding this project
 together. [DEV.md](doc/DEV.md) has more detailed information about how this
-all works together.
+all works.
 
 All puzzles read their input from `resources/$year/day$day.txt`, all puzzles
 (except for Clojure, which uses `clojure.test`) are expected to print out
