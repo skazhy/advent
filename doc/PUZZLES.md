@@ -1,5 +1,14 @@
 # Solved Advent of Code puzzles
 
+- [2022 puzzles](#2022)
+- [2021 puzzles](#2021)
+- [2020 puzzles](#2020)
+- [2019 puzzles](#2019)
+- [2018 puzzles](#2018)
+- [2017 puzzles](#2017)
+- [2016 puzzles](#2016)
+- [2015 puzzles](#2015)
+
 ## 2022
 
 | Day | Solutions |

@@ -39,7 +39,12 @@ def doc_footer():
 def gen_completion_md(puzzles):
     with open("doc/PUZZLES.md", "w", encoding="utf-8") as doc:
         doc.write(md_header("Solved Advent of Code puzzles", 1))
-        for year in sorted(puzzles.keys(), reverse=True):
+        sorted_puzzles = sorted(puzzles.keys(), reverse=True)
+
+        for year in sorted_puzzles:
+            doc.write(md_ul(md_link(f"#{year}", f"{year} puzzles")))
+
+        for year in sorted_puzzles:
             doc.write(md_header(year, 2))
             doc.write(md_table_header("Day", "Solutions"))
 
