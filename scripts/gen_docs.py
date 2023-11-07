@@ -3,9 +3,39 @@
 # Script to generate links to solved puzzles.
 
 from itertools import repeat
+import urllib.request
 import json
 
 from puzzle_lookup import all_puzzles
+
+### Fetching stars
+
+
+def parse_cal_row(row):
+    if "calendar-verycomplete" in row:
+        return "&#9734;&#9734;"
+    elif "calendar-complete" in row:
+        return "&#9734;"
+    else:
+        return ""
+
+
+def year_completion(year):
+    span = '<span class="calendar-day">'
+    req = urllib.request.Request(f"https://adventofcode.com/{year}")
+    req.add_header("Cookie", str(open(".cookie").read().strip()))
+    rows = [
+        d for d in str(urllib.request.urlopen(req).read()).split("\\n") if span in d
+    ]
+
+    days = range(1, 26)
+    if 'aria-label="Day 1' not in rows[0]:
+        days = reversed(days)
+
+    return {str(i): parse_cal_row(d) for i, d in zip(days, rows)}
+
+
+### Markdown output
 
 
 def md_link(url, title):
@@ -45,14 +75,16 @@ def gen_completion_md(puzzles):
             doc.write(md_ul(md_link(f"#{year}", f"{year} puzzles")))
 
         for year in sorted_puzzles:
+            stars = year_completion(year)
+
             doc.write(md_header(year, 2))
-            doc.write(md_table_header("Day", "Solutions"))
+            doc.write(md_table_header("Day", "Solutions", "Completion"))
 
             for day in sorted(puzzles[year], key=int):
                 solutions = []
                 for lang in sorted(puzzles[year][day], key=lambda x: x):
                     solutions.append(md_rel_link(puzzles[year][day][lang], lang))
-                doc.write(md_table_row(day, ", ".join(solutions)))
+                doc.write(md_table_row(day, ", ".join(solutions), stars[day]))
             doc.write("\n")
         doc.write(doc_footer())
 
@@ -63,7 +95,9 @@ def write_theme_block(doc, theme, puzzles, level=2):
         doc.write(f"{theme['description']}\n\n")
 
     for y, d in theme.get("puzzles", []):
-        links = ", ".join(md_rel_link(url, lang) for lang, url in puzzles[str(y)][str(d)].items())
+        links = ", ".join(
+            md_rel_link(url, lang) for lang, url in puzzles[str(y)][str(d)].items()
+        )
         doc.write(md_ul(f"{y}.{d} in {links}"))
     if theme.get("puzzles"):
         doc.write("\n")

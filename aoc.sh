@@ -10,7 +10,7 @@ set -e
 YEAR=$(date "+%Y")
 DAY=$(date "+%d" | sed -e 's/^0//g')
 MONTH=$(date "+%m")
-TITLE_CACHE=".titlecache"
+TITLE_CACHE=".aoccache/titles"
 
 while :
 do
@@ -53,6 +53,7 @@ do
   esac
 done
 
+mkdir -p .aoccache
 
 if [[ "$GEN_DOCS" ]]; then
   # Regenerate completed puzzle doc
