@@ -20,6 +20,10 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 
 - 2021.12 in [Haskell](../src/haskell/2021/Day12.hs)
 
+### Dijkstra's algorithm
+
+- 2021.15 in [Python](../src/python/2021/day15.py)
+
 ## Grids
 
 - 2017.14 in [Clojure](../src/advent/2017/day14.clj)

@@ -11,7 +11,13 @@
     "puzzles": [[2020,15], [2021,6], [2022,11]]
   }, {
     "name": "Graphs",
-    "puzzles": [[2021,12]]
+    "puzzles": [[2021,12]],
+    "sections": [
+        {
+            "name": "Dijkstra's algorithm",
+            "puzzles": [[2021,15]]
+        }
+    ]
   }, {
     "name": "Grids",
     "puzzles": [[2017,14], [2017,21], [2021,4], [2022,8]],
