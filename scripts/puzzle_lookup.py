@@ -7,6 +7,7 @@ languages = {
     "advent": "Clojure",
     "haskell": "Haskell",
     "python": "Python",
+    "idris": "Idris",
     "rust": "Rust",
 }
 

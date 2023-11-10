@@ -1,0 +1,12 @@
+||| Advent of Code $YEAR, day $DAY: $TITLE
+||| $PUZZLE_URL
+module Main
+
+import System.File
+
+main : IO ()
+main = do file <- readFile \"resources/$YEAR/day$DAY.txt\"
+          case file of
+               Right content => printLn content
+               Left err => printLn err
+-- vim: set ft=idris :

@@ -43,6 +43,10 @@ do
       source ./scripts/env/clojure.sh
       shift
       ;;
+    idr)
+      source ./scripts/env/idris.sh
+      shift
+      ;;
     doc)
       GEN_DOCS=1
       shift

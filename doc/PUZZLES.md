@@ -108,7 +108,7 @@
 
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
-| 1 | [Clojure](../src/advent/2017/day1.clj) | ☆☆ |
+| 1 | [Clojure](../src/advent/2017/day1.clj), [Idris](../src/idris/2017/Day1.idr) | ☆☆ |
 | 2 | [Clojure](../src/advent/2017/day2.clj), [Rust](../src/rust/year2017/day2.rs) | ☆☆ |
 | 3 | [Clojure](../src/advent/2017/day3.clj) | ☆☆ |
 | 4 | [Clojure](../src/advent/2017/day4.clj), [Haskell](../src/haskell/2017/Day4.hs) | ☆☆ |

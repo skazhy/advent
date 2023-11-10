@@ -1,7 +1,11 @@
 # Tooling notes
 
-[aoc.vim](../scripts/aoc.vim) defines a couple of Vim commands that can be
-useful: `:OpenAocSolution`, `:OpenAocInput`, and `:OpenAocTest`.
+## Supported languages
+
+### Idris
+
+Idris 2 can be installed [via Homebrew](https://idris2.readthedocs.io/en/latest/tutorial/starting.html#installing-from-a-package-manager). Each puzzle is compiled as a separate binary. Puzzles are expected to output
+one solution per line.
 
 ## Adding a new language support
 
