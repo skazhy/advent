@@ -12,10 +12,10 @@ function gen_src_file_content {
 }
 
 function start_repl {
-    idris2 $SRC_FILE -o Day$DAY
-    ./build/exec/Day$DAY
+  rlwrap idris2 $SRC_FILE
 }
 
 function run_assert {
-  assert $(start_repl)
+  idris2 $SRC_FILE -o Day$DAY
+  assert $(./build/exec/Day$DAY)
 }
