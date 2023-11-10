@@ -2,10 +2,26 @@
 
 ## Supported languages
 
+### Clojure
+
+Puzzles are tested via `clojure.test` - a separate test file with well known function name is crated when creating a new test file.
+
 ### Idris
 
 Idris 2 can be installed [via Homebrew](https://idris2.readthedocs.io/en/latest/tutorial/starting.html#installing-from-a-package-manager). Each puzzle is compiled as a separate binary. Puzzles are expected to output
 one solution per line.
+
+### Haskell
+
+Puzzles are self-contained files that are run interactively with `runghc`.
+
+### Python
+
+Same as Haskell - puzzles are self contained scripts.
+
+### Rust
+
+All puzzles are compiled into a single binary, puzzle's day and year is passed as argument when running it. Shared files (`mod.rs`, etc) [will be updated automatically](../scripts/env/rust.sh#L17) when adding a new puzzle.
 
 ## Adding a new language support
 
