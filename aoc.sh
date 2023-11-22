@@ -51,6 +51,14 @@ do
       GEN_DOCS=1
       shift
       ;;
+    srcpath)
+      SRC_PATH=1
+      shift
+      ;;
+    setup)
+      SETUP=1
+      shift
+      ;;
   *)
     break
     ;;
@@ -145,9 +153,10 @@ fi
 
 [ "$LINT" ] && lint
 [ "$ASSERT" ] && run_assert
+[ "$SRC_PATH" ] && echo $SRC_FILE
 
 
-if [[ "$LINT" || "$ASSERT" ]]; then
+if [[ "$LINT" || "$ASSERT" || "$SRC_PATH" ]]; then
   exit 0
 fi
 
@@ -156,4 +165,9 @@ echo "Puzzle details: $PUZZLE_URL"
 fetch_input_file
 gen_src_file
 gen_solution_file
+
+if [[ "$SETUP" ]]; then
+  exit 0
+fi
+
 start_repl
