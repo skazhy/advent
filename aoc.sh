@@ -86,6 +86,10 @@ if [[ "$NUMARG1" && "$NUMARG2" ]]; then
   DAY=$NUMARG2
 fi
 
+if [ "${#YEAR}" -eq 2 ]; then
+  YEAR="20$YEAR"
+fi
+
 if [[ "$NUMARG1" && ! "$NUMARG2" ]]; then
   DAY=$NUMARG1
 fi
