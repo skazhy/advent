@@ -37,6 +37,10 @@
   (interactive)
   (aoc-find-resource (apply 'concat (-interleave (aoc-split-filename) '("/solutions/day" ".txt")))))
 
+(defun aoc-lint ()
+  (interactive)
+  (aoc-run-buffer-command "lint"))
+
 (defun aoc-run-tests ()
   (interactive)
   (aoc-run-buffer-command "test"))
@@ -57,6 +61,7 @@
                               :keymaps '(aoc-mode-map)
                               :infix "a" "" (list :ignore t)
                               "i" #'aoc-open-input
+                              "l" #'aoc-lint
                               "o" #'aoc-find-or-create
                               "s" #'aoc-open-solution
                               "t" #'aoc-run-tests))
