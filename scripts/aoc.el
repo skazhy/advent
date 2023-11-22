@@ -13,9 +13,10 @@
 (require 's)
 
 (defun aoc-split-filename ()
-  (pcase-let ((`(,ext ,day ,year) (reverse (s-split "[\\./]" (buffer-file-name)))))
-    (list year (s-chop-left 3 (s-chop-prefix "test_" day)) ext)))
-
+  (pcase-let ((`(,ext ,day ,year ,lang ,src?) (reverse (s-split "[\\./]" (buffer-file-name)))))
+    (if (string= "src" src?)
+        (list year (s-chop-left 3 (s-chop-prefix "test_" day)) ext)
+      '())))
 (defun aoc-run-async-command (args)
   (projectile-run-async-shell-command-in-root (s-join " " (cons "./aoc.sh" args)) (get-buffer-create "*AoC*")))
 
@@ -45,6 +46,16 @@
   (interactive)
   (aoc-run-buffer-command "test"))
 
+(defun aoc-browse ()
+  (interactive)
+  (let ((year-day (aoc-split-filename)))
+    (browse-url
+     (concat "https://adventofcode.com/"
+             (cond
+              ((consp year-day) (concat (car year-day) "/day/" (car (cdr year-day))))
+              ((string= "12" (format-time-string "%m")) (format-time-string "%Y"))
+              (t (number-to-string (- (string-to-number (format-time-string "%Y")) 1))))))))
+
 (defun aoc-find-or-create (arg)
   (interactive "sFind or create puzzle: ")
   (let ((src-path (concat (projectile-acquire-root) (aoc-run-str-command (concat arg " srcpath")))))
@@ -60,6 +71,7 @@
                               :prefix "SPC m"
                               :keymaps '(aoc-mode-map)
                               :infix "a" "" (list :ignore t)
+                              "b" #'aoc-browse
                               "i" #'aoc-open-input
                               "l" #'aoc-lint
                               "o" #'aoc-find-or-create
