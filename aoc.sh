@@ -59,6 +59,10 @@ do
       SETUP=1
       shift
       ;;
+    run)
+      RUN=1
+      shift
+      ;;
   *)
     break
     ;;
@@ -122,8 +126,6 @@ function gen_src_file {
     gen_src_file_content
     [ -f "$TEST_FILE" ] && git add --intent-to-add $TEST_FILE
     git add --intent-to-add $SRC_FILE
-
-    NEW_FILE=1
   fi
 }
 
@@ -140,31 +142,20 @@ function fetch_input_file {
   fi
 }
 
-function echo_test_row {
-  if [ "$1" != "$2" ]; then
-    echo -e "\033[0;32mExpected: $1\033[0m \033[0;31mGot: $2\033[0m"
-  else
-    echo -e "\033[0;32m$2\033[0m"
-  fi
-}
-
 function gen_solution_file {
-if [ ! -f "$SOLUTION_FILE" ]; then
-  touch $SOLUTION_FILE
-  git add --intent-to-add $SOLUTION_FILE
-fi
+  if [ ! -f "$SOLUTION_FILE" ]; then
+    touch $SOLUTION_FILE
+    git add --intent-to-add $SOLUTION_FILE
+  fi
 }
 
 [ "$LINT" ] && lint
 [ "$ASSERT" ] && run_assert
 [ "$SRC_PATH" ] && echo $SRC_FILE
 
-
 if [[ "$LINT" || "$ASSERT" || "$SRC_PATH" ]]; then
   exit 0
 fi
-
-echo "Puzzle details: $PUZZLE_URL"
 
 fetch_input_file
 gen_src_file
@@ -174,4 +165,7 @@ if [[ "$SETUP" ]]; then
   exit 0
 fi
 
-start_repl
+[[ $(type -t run_puzzle) == function && "$RUN" ]] && run_puzzle && exit 0 || exit $?
+
+echo "Puzzle details: $PUZZLE_URL"
+[[ $(type -t start_repl) == function ]] && start_repl

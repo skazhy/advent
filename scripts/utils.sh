@@ -1,3 +1,11 @@
+function echo_test_row {
+  if [ "$1" != "$2" ]; then
+    echo -e "\033[0;32mExpected: $1\033[0m \033[0;31mGot: $2\033[0m"
+  else
+    echo -e "\033[0;32m$2\033[0m"
+  fi
+}
+
 # Compares contents of $SOLUTION_FILE to first 2 arguments
 # passed to the function.
 function assert {

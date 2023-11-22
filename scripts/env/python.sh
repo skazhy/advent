@@ -24,6 +24,6 @@ function lint {
   black $SRC_FILE src/python/helpers.py
 }
 
-function start_repl {
+function run_puzzle {
   PYTHONPATH=src/python python3 $SRC_FILE
 }

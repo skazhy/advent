@@ -46,6 +46,10 @@
   (interactive)
   (aoc-run-buffer-command "test"))
 
+(defun aoc-run ()
+  (interactive)
+  (aoc-run-buffer-command "run"))
+
 (defun aoc-browse ()
   (interactive)
   (let ((year-day (aoc-split-filename)))

@@ -43,13 +43,9 @@ function run_assert {
   assert $(./target/debug/advent $YEAR $DAY)
 }
 
-function start_repl {
-  if [[ "$NEW_FILE" ]]; then
-    exit 0
-  else
-    cargo build
-    ./target/debug/advent $YEAR $DAY
-  fi
+function run_puzzle {
+  cargo build
+  ./target/debug/advent $YEAR $DAY
 }
 
 function lint {
