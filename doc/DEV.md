@@ -1,5 +1,10 @@
 # Tooling notes
 
+## Editor support
+
+Development and testing happens within Doom Emacs - `aoc.el` has helper functions that call `aoc.sh` under the hood.
+There's very basic Vim support for jumping between source / test data in `aoc.vim` (although it's not really used anymore).
+
 ## Supported languages
 
 ### Clojure
