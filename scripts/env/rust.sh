@@ -44,8 +44,7 @@ function run_assert {
 }
 
 function run_puzzle {
-  cargo build
-  ./target/debug/advent $YEAR $DAY
+  cargo run $YEAR $DAY
 }
 
 function lint {
