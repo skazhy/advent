@@ -9,6 +9,7 @@ mod year2017;
 mod year2019;
 mod year2021;
 mod year2022;
+mod year2023;
 
 use std::env;
 use std::fs;
@@ -29,6 +30,7 @@ fn main() -> std::io::Result<()> {
         ("2019", "2") => year2019::day2::run,
         ("2021", "17") => year2021::day17::run,
         ("2022", "1") => year2022::day1::run,
+        ("2023", "1") => year2023::day1::run,
         _ => panic!("No source for {}/{}", year, day),
     };
     puzzle(input.trim());

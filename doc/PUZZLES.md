@@ -14,7 +14,7 @@
 
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
-| 1 | [Haskell](../src/haskell/2023/Day1.hs) | ☆☆ |
+| 1 | [Haskell](../src/haskell/2023/Day1.hs), [Rust](../src/rust/year2023/day1.rs) | ☆☆ |
 
 ## 2022
 
