@@ -1,5 +1,6 @@
 # Solved Advent of Code puzzles
 
+- [2023 puzzles](#2023)
 - [2022 puzzles](#2022)
 - [2021 puzzles](#2021)
 - [2020 puzzles](#2020)
@@ -8,6 +9,11 @@
 - [2017 puzzles](#2017)
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
+## 2023
+
+| Day | Solutions | Completion |
+|  ---  | ---  | --- |
+| 1 | [Haskell](../src/haskell/2023/Day1.hs) | ☆☆ |
 
 ## 2022
 
