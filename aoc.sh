@@ -119,13 +119,7 @@ function gen_src_file {
 
   if [ ! -f "$SRC_FILE" ]; then
     echo "Creating new source files for $YEAR day $DAY..."
-
-    # Look up puzzle title in title cache, fallback to fetching it from the website.
-    TITLE=$(grep "$YEAR$DAY " $TITLE_CACHE | sed 's/^[0-9]* //g')
-    if [ -z "$TITLE" ]; then
-      TITLE=$(curl -s $PUZZLE_URL | grep -m1 h2 | sed 's/.*--- Day [0-9]*: \(.*\) ---.*/\1/')
-      echo "$YEAR$DAY $TITLE" >> $TITLE_CACHE
-    fi
+    TITLE=$(bb ./scripts/title_lookup.bb $YEAR $DAY)
 
     gen_src_file_content
     [ -f "$TEST_FILE" ] && git add --intent-to-add $TEST_FILE

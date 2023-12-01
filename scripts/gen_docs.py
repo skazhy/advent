@@ -121,6 +121,14 @@ def previously_solved_years(path):
     return {}
 
 
+def title_lookup(year, day):
+    return subprocess.run(
+        ["bb", "./scripts/title_lookup.bb", str(year), str(day)],
+        capture_output=True,
+        text=True,
+    ).stdout.split("\n")[0]
+
+
 def gen_completion_md(puzzles, staged_years):
     print("Regenerating completed puzzle doc...")
     existing_years = previously_solved_years(PUZZLE_MD_PATH)
@@ -164,12 +172,19 @@ def gen_completion_md(puzzles, staged_years):
                         f"Completion: {star_count/50:.0%} ({star_count} / 50 stars)\n\n"
                     )
 
-                doc.write(md_table_header("Day", "Solutions", "Completion"))
+                doc.write(md_table_header("Day", "Title", "Solutions", "Completion"))
                 for day in sorted(puzzles[year], key=int):
                     solutions = []
                     for lang in sorted(puzzles[year][day], key=lambda x: x):
                         solutions.append(md_rel_link(puzzles[year][day][lang], lang))
-                    doc.write(md_table_row(day, ", ".join(solutions), stars[day]))
+                    doc.write(
+                        md_table_row(
+                            day,
+                            title_lookup(year, day),
+                            ", ".join(solutions),
+                            stars[day],
+                        )
+                    )
             else:
                 doc.write("\n".join(existing_years[year]["md"]))
                 doc.write("\n")
@@ -191,7 +206,7 @@ def write_theme_block(doc, theme, puzzles, level=2, lang=None):
             links = ", ".join(
                 md_rel_link(url, lang) for lang, url in puzzles[str(y)][str(d)].items()
             )
-            doc.write(md_ul(f"{y}.{d} in {links}"))
+            doc.write(md_ul(f'{y}.{d} "{title_lookup(y, d)}" in {links}'))
     if theme.get("puzzles"):
         doc.write("\n")
 
