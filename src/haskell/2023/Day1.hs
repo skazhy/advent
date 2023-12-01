@@ -9,19 +9,16 @@ module Day1 where
 
 import Advent
 import Control.Monad (liftM2)
-import Data.Char (ord)
+import Data.Char (isDigit)
 import Data.Foldable (find)
 import Data.List (isPrefixOf, tails)
 import Data.Maybe (mapMaybe)
-
-numChar :: Char -> Bool
-numChar s = ord s > 48 && ord s < 58
 
 -- Part 1
 -- Find first digit in line and in reversed line, then concat them and convert to int.
 
 joinDigits :: String -> Maybe Int
-joinDigits s = liftM2 (\a b -> read [a, b]) (find numChar s) (find numChar $ reverse s)
+joinDigits s = liftM2 (\a b -> read [a, b]) (find isDigit s) (find isDigit $ reverse s)
 
 -- Part 2
 -- Preserve all digit literals, transform all spelled digits to chars, then
@@ -44,7 +41,7 @@ numericPrefix s = snd <$> find ((`isPrefixOf` s) . fst) digits
 
 initDigit :: String -> Maybe Char
 initDigit [] = Nothing
-initDigit s | numChar $ head s = Just $ head s
+initDigit s | isDigit $ head s = Just $ head s
             | otherwise = numericPrefix s
 
 joinDigits2 :: String -> Int

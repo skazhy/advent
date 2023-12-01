@@ -9,11 +9,11 @@ module Day12 where
 
 import Advent
 
-import Data.Char (ord)
+import Data.Char (isDigit)
 import Data.List (takeWhile, dropWhile, isSubsequenceOf)
 
 numChar :: Char -> Bool
-numChar c = ord c > 47 && ord c < 58 || ord c == 45
+numChar c = isDigit c || c == '-'
 
 parseChunk :: String -> Int
 parseChunk s =
