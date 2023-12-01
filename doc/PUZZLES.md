@@ -18,6 +18,8 @@
 
 ## 2022
 
+Completion: 44% (22 / 50 stars)
+
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
 | 1 | [Clojure](../src/advent/2022/day1.clj), [Haskell](../src/haskell/2022/Day1.hs), [Rust](../src/rust/year2022/day1.rs) | ☆☆ |
@@ -33,6 +35,8 @@
 | 11 | [Clojure](../src/advent/2022/day11.clj) | ☆☆ |
 
 ## 2021
+
+Completion: 74% (37 / 50 stars)
 
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
@@ -57,6 +61,8 @@
 | 21 | [Haskell](../src/haskell/2021/Day21.hs) | ☆ |
 
 ## 2020
+
+Completion: 96% (48 / 50 stars)
 
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
@@ -88,6 +94,8 @@
 
 ## 2019
 
+Completion: 42% (21 / 50 stars)
+
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
 | 1 | [Clojure](../src/advent/2019/day1.clj), [Haskell](../src/haskell/2019/Day1.hs) | ☆☆ |
@@ -104,6 +112,8 @@
 
 ## 2018
 
+Completion: 16% (8 / 50 stars)
+
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
 | 1 | [Clojure](../src/advent/2018/day1.clj), [Haskell](../src/haskell/2018/Day1.hs), [Python](../src/python/2018/day1.py) | ☆☆ |
@@ -112,6 +122,8 @@
 | 4 | [Clojure](../src/advent/2018/day4.clj) | ☆☆ |
 
 ## 2017
+
+Completion: 84% (42 / 50 stars)
 
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
@@ -139,6 +151,8 @@
 
 ## 2016
 
+Completion: 28% (14 / 50 stars)
+
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |
 | 1 | [Rust](../src/rust/year2016/day1.rs) | ☆☆ |
@@ -150,6 +164,8 @@
 | 12 | [Haskell](../src/haskell/2016/Day12.hs) | ☆☆ |
 
 ## 2015
+
+Completion: 30% (15 / 50 stars)
 
 | Day | Solutions | Completion |
 |  ---  | ---  | --- |

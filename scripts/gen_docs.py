@@ -3,11 +3,14 @@
 # Script to generate links to solved puzzles.
 
 from itertools import repeat
+from functools import reduce
 import urllib.request
+import math
 import json
 import os.path
 import sys
 import re
+import datetime
 
 import subprocess
 
@@ -57,7 +60,7 @@ def md_rel_link(url, title):
 
 
 def md_id_link(id_el, title):
-    slug = re.sub(r"[^\w-]", "", title.lower().replace(" ", "-"))
+    slug = re.sub(r"[^\w-]", "", id_el.lower().replace(" ", "-"))
     return md_link(f"#{slug}", title)
 
 
@@ -85,21 +88,25 @@ def doc_footer():
 
 
 def previously_solved_years(path):
-    ret = []
+    blocks = []
     if os.path.exists(path):
         block = []
         for row in [r.strip() for r in open(path, "r").readlines()]:
             if row == "":
-                ret.append(block)
+                blocks.append(block)
                 block = []
             else:
                 block.append(row)
         years = {}
         i = 2  # Skip table of contents and main header
         while True:
-            if len(ret) > i + 1:
-                years[ret[i][0][3:]] = ret[i + 1]
-                i += 2
+            if len(blocks) > i + 1:
+                if blocks[i +1][0][0:3] == "Com":
+                    years[blocks[i][0][3:]] = blocks[i + 1] + [""] + blocks[i + 2]
+                    i += 3
+                else:
+                    years[blocks[i][0][3:]] = blocks[i + 1]
+                    i += 2
             else:
                 break
         return years
@@ -109,6 +116,7 @@ def previously_solved_years(path):
 def gen_completion_md(puzzles, staged_years):
     print("Regenerating completed puzzle doc...")
     existing_years = previously_solved_years(PUZZLE_MD_PATH)
+    cur_year = str(datetime.date.today().year)
 
     with open(PUZZLE_MD_PATH, "w", encoding="utf-8") as doc:
         doc.write(md_header("Solved Advent of Code puzzles", 1))
@@ -125,6 +133,15 @@ def gen_completion_md(puzzles, staged_years):
             if year in staged_years:
                 print(f"Fetching stars for {year}...")
                 stars = year_completion(year)
+                if year != cur_year:
+                    # Only count stars for puzzles available in the repo.
+                    star_count = 0
+                    for (day, v) in stars.items():
+                        if v and puzzles[year].get(day):
+                            star_count += len(v) / 7
+                    star_count = math.floor(star_count)
+                    doc.write(f"Completion: {star_count/50:.0%} ({star_count} / 50 stars)\n\n")
+
                 doc.write(md_table_header("Day", "Solutions", "Completion"))
                 for day in sorted(puzzles[year], key=int):
                     solutions = []
