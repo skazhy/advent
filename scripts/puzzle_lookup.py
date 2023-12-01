@@ -14,12 +14,24 @@ languages = {
 PUZZLE_RE = r"src/([a-z]+)/[year]*(\d+)/(?:d|D)ay(\d+)"
 
 
+def run_git_cmd(cmd):
+    return [
+        x
+        for x in subprocess.run(
+            ["git"] + cmd, capture_output=True, text=True
+        ).stdout.split("\n")
+        if x
+    ]
+
+
 def find_puzzles(acc, git_cmd):
-    cmd = ["git"] + git_cmd + ["--", "src"]
-    for file in subprocess.run(cmd, capture_output=True, text=True).stdout.split("\n"):
+    for file in run_git_cmd(git_cmd + ["--", "src"]):
         if m := re.search(PUZZLE_RE, file):
             acc[m.group(2)][m.group(3)][languages[m.group(1)]] = file
     return acc
+
+
+STAGED_FILE_CMD = ["diff", "--name-only", "--cached"]
 
 
 def all_puzzles():
@@ -34,4 +46,12 @@ def all_puzzles():
             "HEAD",
         ],
     )
-    return find_puzzles(puzzles, ["diff", "--name-only", "--cached"])
+    return find_puzzles(puzzles, STAGED_FILE_CMD)
+
+
+def staged_years():
+    return set(
+        find_puzzles(
+            defaultdict(lambda: defaultdict(lambda: defaultdict(dict))), STAGED_FILE_CMD
+        ).keys()
+    )

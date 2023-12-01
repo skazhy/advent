@@ -24,3 +24,7 @@ function run_assert {
 function start_repl {
   ghci -isrc/haskell $SRC_FILE
 }
+
+function run_puzzle {
+  runghc $GHC_FLAGS -isrc/haskell $SRC_FILE
+}

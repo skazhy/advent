@@ -63,6 +63,10 @@ do
       RUN=1
       shift
       ;;
+    vim)
+      VIM=1
+      shift
+      ;;
   *)
     break
     ;;
@@ -73,7 +77,7 @@ mkdir -p .aoccache
 
 if [[ "$GEN_DOCS" ]]; then
   # Regenerate completed puzzle doc
-  PYTHONPATH=scripts ./scripts/gen_docs.py
+  PYTHONPATH=scripts ./scripts/gen_docs.py "$@"
   mdformat README.md doc
   exit 0
 fi
@@ -165,7 +169,12 @@ if [[ "$SETUP" ]]; then
   exit 0
 fi
 
-[[ $(type -t run_puzzle) == function && "$RUN" ]] && run_puzzle && exit 0 || exit $?
+if [[ "$VIM" ]]; then
+  vim $SRC_FILE
+ exit 0
+fi
+
+[[ $(type -t run_puzzle) == function && "$RUN" ]] && run_puzzle && exit 0
 
 echo "Puzzle details: $PUZZLE_URL"
 [[ $(type -t start_repl) == function ]] && start_repl

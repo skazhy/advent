@@ -9,6 +9,7 @@
 - [2017 puzzles](#2017)
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
+
 ## 2023
 
 | Day | Solutions | Completion |
