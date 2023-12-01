@@ -1,12 +1,25 @@
 # Puzzle themes
 
+- [Binary numbers](#binary-numbers)
+- [Bruteforce won't work here](#bruteforce-wont-work-here)
+- [Ciphers](#ciphers)
+- [Graphs](#graphs)
+  - [Dijkstra's algorithm](#dijkstras-algorithm)
+- [Grids](#grids)
+  - [Hex](#hex)
+  - [Taxicab](#taxicab)
+- [Hashing](#hashing)
+  - [MD5](#md5)
+- [Instruction parsing & execution](#instruction-parsing--execution)
+- [Intcode](#intcode)
+- [List processing](#list-processing)
+- [Rust only](#rust-only)
+  - [String slices](#string-slices)
+- [Trees](#trees)
+
 ## Binary numbers
 
 - 2021.3 in [Clojure](../src/advent/2021/day3.clj), [Haskell](../src/haskell/2021/Day3.hs)
-
-## Ciphers
-
-- 2016.4 in [Clojure](../src/advent/2016/day4.clj)
 
 ## Bruteforce won't work here
 
@@ -15,6 +28,10 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 - 2020.15 in [Clojure](../src/advent/2020/day15.clj), [Haskell](../src/haskell/2020/Day15.hs)
 - 2021.6 in [Clojure](../src/advent/2021/day6.clj), [Haskell](../src/haskell/2021/Day6.hs)
 - 2022.11 in [Clojure](../src/advent/2022/day11.clj)
+
+## Ciphers
+
+- 2016.4 in [Clojure](../src/advent/2016/day4.clj)
 
 ## Graphs
 
@@ -67,6 +84,12 @@ Appeared only in AoC 2019.
 ## List processing
 
 - 2021.1 in [Clojure](../src/advent/2021/day1.clj), [Haskell](../src/haskell/2021/Day1.hs)
+
+## Rust only
+
+### String slices
+
+- [2023.1](../src/rust/year2023/day1.rs)
 
 ## Trees
 

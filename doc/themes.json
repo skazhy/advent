@@ -51,5 +51,14 @@
   }, {
     "name": "Trees",
     "puzzles": [[2017,7], [2022,7]]
+  }, {
+      "name": "Rust only",
+      "lang": "Rust",
+      "sections": [
+          {
+              "name": "String slices",
+              "puzzles": [[2023,1]]
+          }
+      ]
   }
 ]

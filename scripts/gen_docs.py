@@ -7,6 +7,7 @@ import urllib.request
 import json
 import os.path
 import sys
+import re
 
 import subprocess
 
@@ -55,6 +56,11 @@ def md_rel_link(url, title):
     return md_link(f"../{url}", title)
 
 
+def md_id_link(id_el, title):
+    slug = re.sub(r"[^\w-]", "", title.lower().replace(" ", "-"))
+    return md_link(f"#{slug}", title)
+
+
 def md_table_row(*columns):
     return f"| {' | '.join(columns)} |\n"
 
@@ -67,8 +73,8 @@ def md_header(title, level):
     return f"{''.join(repeat('#', level))} {title}\n\n"
 
 
-def md_ul(content):
-    return f"- {content}\n"
+def md_ul(content, indent=0):
+    return f"{''.join(' ' for _ in range(indent))}- {content}\n"
 
 
 def doc_footer():
@@ -109,7 +115,7 @@ def gen_completion_md(puzzles, staged_years):
         sorted_puzzles = sorted(puzzles.keys(), reverse=True)
 
         for year in sorted_puzzles:
-            doc.write(md_ul(md_link(f"#{year}", f"{year} puzzles")))
+            doc.write(md_ul(md_id_link(year, f"{year} puzzles")))
         doc.write("\n")
 
         for year in sorted_puzzles:
@@ -132,31 +138,46 @@ def gen_completion_md(puzzles, staged_years):
         doc.write(doc_footer())
 
 
-def write_theme_block(doc, theme, puzzles, level=2):
+def write_theme_block(doc, theme, puzzles, level=2, lang=None):
     doc.write(md_header(theme["name"], level))
+    _lang = lang or theme.get("lang")
     if theme.get("description"):
         doc.write(f"{theme['description']}\n\n")
 
     for y, d in theme.get("puzzles", []):
-        links = ", ".join(
-            md_rel_link(url, lang) for lang, url in puzzles[str(y)][str(d)].items()
-        )
-        doc.write(md_ul(f"{y}.{d} in {links}"))
+        if _lang:
+            if url := puzzles[str(y)][str(d)].get(_lang):
+                doc.write(md_ul(md_rel_link(url, f"{y}.{d}")))
+        else:
+            links = ", ".join(
+                md_rel_link(url, lang) for lang, url in puzzles[str(y)][str(d)].items()
+            )
+            doc.write(md_ul(f"{y}.{d} in {links}"))
     if theme.get("puzzles"):
         doc.write("\n")
 
-    for s in theme.get("sections", []):
-        write_theme_block(doc, s, puzzles, level + 1)
+    for s in sorted(theme.get("sections", []), key=lambda s: s["name"]):
+        write_theme_block(doc, s, puzzles, level=level + 1, lang=_lang)
 
 
 def gen_theme_doc(puzzles):
     print("Regenerating puzzle theme doc...")
-    themes = json.load(open(THEME_SOURCE, "r"))
+    themes = sorted(json.load(open(THEME_SOURCE, "r")), key=lambda t: t["name"])
 
     with open(THEME_MD_PATH, "w", encoding="utf-8") as doc:
+
+        def write_toc(theme, indent):
+            doc.write(md_ul(md_id_link(theme["name"], theme["name"]), indent=indent))
+            for s in sorted(theme.get("sections", []), key=lambda s: s["name"]):
+                write_toc(s, indent + 2)
+
         doc.write(md_header("Puzzle themes", 1))
         for theme in themes:
-            write_theme_block(doc, theme, puzzles)
+            write_toc(theme, 0)
+        doc.write("\n")
+
+        for theme in themes:
+            write_theme_block(doc, theme, puzzles, lang=theme.get("lang"))
         doc.write(doc_footer())
 
 
