@@ -10,6 +10,8 @@
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
 
+Total completion rate in past years: 59% (207 / 350 stars)
+
 ## 2023
 
 | Day | Solutions | Completion |

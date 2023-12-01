@@ -98,14 +98,22 @@ def previously_solved_years(path):
             else:
                 block.append(row)
         years = {}
-        i = 2  # Skip table of contents and main header
+        i = 3  # Skip table of contents and main header
         while True:
             if len(blocks) > i + 1:
-                if blocks[i +1][0][0:3] == "Com":
-                    years[blocks[i][0][3:]] = blocks[i + 1] + [""] + blocks[i + 2]
+                if blocks[i + 1][0][0:3] == "Com":
+                    stars = int(
+                        re.match(
+                            r"Completion: \d+% \((\d+) / 50 stars\)", blocks[i + 1][0]
+                        )[1]
+                    )
+                    years[blocks[i][0][3:]] = {
+                        "md": blocks[i + 1] + [""] + blocks[i + 2],
+                        "stars": stars,
+                    }
                     i += 3
                 else:
-                    years[blocks[i][0][3:]] = blocks[i + 1]
+                    years[blocks[i][0][3:]] = {"md": blocks[i + 1]}
                     i += 2
             else:
                 break
@@ -116,7 +124,11 @@ def previously_solved_years(path):
 def gen_completion_md(puzzles, staged_years):
     print("Regenerating completed puzzle doc...")
     existing_years = previously_solved_years(PUZZLE_MD_PATH)
-    cur_year = str(datetime.date.today().year)
+
+    today = datetime.date.today()
+    last_complete_year = today.year - 1
+    if datetime.date.today().day > 24 and datetime.date.month == 12:
+        last_complete_year = today.year
 
     with open(PUZZLE_MD_PATH, "w", encoding="utf-8") as doc:
         doc.write(md_header("Solved Advent of Code puzzles", 1))
@@ -126,6 +138,14 @@ def gen_completion_md(puzzles, staged_years):
             doc.write(md_ul(md_id_link(year, f"{year} puzzles")))
         doc.write("\n")
 
+        total_stars = reduce(
+            lambda acc, y: acc + y.get("stars", 0), existing_years.values(), 0
+        )
+        max_stars = (last_complete_year - 2015) * 50
+        doc.write(
+            f"Total completion rate in past years: {total_stars/max_stars:.0%} ({total_stars} / {max_stars} stars)\n\n"
+        )
+
         for year in sorted_puzzles:
             doc.write(md_header(year, 2))
 
@@ -133,14 +153,16 @@ def gen_completion_md(puzzles, staged_years):
             if year in staged_years:
                 print(f"Fetching stars for {year}...")
                 stars = year_completion(year)
-                if year != cur_year:
+                if int(year) <= last_complete_year:
                     # Only count stars for puzzles available in the repo.
                     star_count = 0
                     for (day, v) in stars.items():
                         if v and puzzles[year].get(day):
                             star_count += len(v) / 7
                     star_count = math.floor(star_count)
-                    doc.write(f"Completion: {star_count/50:.0%} ({star_count} / 50 stars)\n\n")
+                    doc.write(
+                        f"Completion: {star_count/50:.0%} ({star_count} / 50 stars)\n\n"
+                    )
 
                 doc.write(md_table_header("Day", "Solutions", "Completion"))
                 for day in sorted(puzzles[year], key=int):
@@ -149,7 +171,7 @@ def gen_completion_md(puzzles, staged_years):
                         solutions.append(md_rel_link(puzzles[year][day][lang], lang))
                     doc.write(md_table_row(day, ", ".join(solutions), stars[day]))
             else:
-                doc.write("\n".join(existing_years[year]))
+                doc.write("\n".join(existing_years[year]["md"]))
                 doc.write("\n")
             doc.write("\n")
         doc.write(doc_footer())
