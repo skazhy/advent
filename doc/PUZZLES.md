@@ -17,6 +17,7 @@ Total completion rate in past years: 59% (207 / 350 stars)
 | Day | Title | Solutions | Completion |
 |  ---  | ---  | ---  | --- |
 | 1 | Trebuchet?! | [Haskell](../src/haskell/2023/Day1.hs), [Rust](../src/rust/year2023/day1.rs) | ☆☆ |
+| 2 | Cube Conundrum | [Clojure](../src/advent/2023/day2.clj) | ☆☆ |
 
 ## 2022
 
