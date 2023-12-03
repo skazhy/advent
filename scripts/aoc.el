@@ -53,6 +53,7 @@
   (aoc-run-buffer-command "run"))
 
 (defun aoc-switch-test-src ()
+  "Switch between test and source buffer for given puzzle."
   (interactive)
   (cond
    ((and (eq major-mode 'clojure-mode) (bound-and-true-p puzzle-test-buffer))
@@ -60,7 +61,20 @@
    ((and (eq major-mode 'clojure-mode) (bound-and-true-p puzzle-src-buffer))
     (aoc-find-file (concat "/test/advent/" puzzle-year "/test_day" puzzle-day ".clj")))))
 
+(defun aoc-other-impls ()
+  "Show all implementations for the open puzzle."
+  (interactive)
+  (let* ((project-root (projectile-acquire-root))
+         (current (buffer-file-name))
+         (file (completing-read "Open puzzle: "
+                                (seq-filter (lambda (f) (not (string= f current))) (projectile-project-files project-root))
+                                nil
+                                nil
+                                (concat "src " puzzle-year "/day" puzzle-day))))
+    (aoc-find-file file)))
+
 (defun aoc-browse ()
+  "Open puzzle description in browser."
   (interactive)
   (browse-url
    (concat "https://adventofcode.com/"
@@ -90,6 +104,7 @@
                               "o" #'aoc-find-or-create
                               "s" #'aoc-open-solution
                               "t" #'aoc-test
+                              "SPC" #'aoc-other-impls
                               "T" #'aoc-switch-test-src)
   (when (and aoc-mode (buffer-file-name))
     ;; '("clj" "day3" "2021" "advent" "src")
