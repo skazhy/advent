@@ -55,9 +55,9 @@
 (defun aoc-switch-test-src ()
   (interactive)
   (cond
-   ((and (eq major-mode 'clojure-mode) (bound-and-true-p 'puzzle-test-buffer))
+   ((and (eq major-mode 'clojure-mode) (bound-and-true-p puzzle-test-buffer))
     (aoc-find-file (concat "/src/advent/" puzzle-year "/day" puzzle-day ".clj")))
-   ((and (eq major-mode 'clojure-mode) (bound-and-true-p 'puzzle-src-buffer))
+   ((and (eq major-mode 'clojure-mode) (bound-and-true-p puzzle-src-buffer))
     (aoc-find-file (concat "/test/advent/" puzzle-year "/test_day" puzzle-day ".clj")))))
 
 (defun aoc-browse ()
@@ -94,7 +94,7 @@
   (when (and aoc-mode (buffer-file-name))
     ;; '("clj" "day3" "2021" "advent" "src")
     (let ((split-path (reverse (s-split "[\\./]" (buffer-file-name)))))
-      (when (or (string= "src" (nth 4 split-path)) (string= "src" (nth 4 split-path)))
+      (when (or (string= "src" (nth 4 split-path)) (string= "test" (nth 4 split-path)))
         (setq-local puzzle-day (s-chop-left 3 (s-chop-prefix "test_" (nth 1 split-path))))
         (setq-local puzzle-year (s-chop-prefix "year" (nth 2 split-path)))
         (setq-local puzzle-ext (car split-path))
