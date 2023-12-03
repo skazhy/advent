@@ -23,6 +23,8 @@ $2"
   echo -n "Puzzle 2: "; echo_test_row "${exp_lines[1]}" "$2"
 
   [[ "$ACTUAL" != "$EXPECTED" ]] && exit 1
+
+  exit 0
 }
 
 # evals a given template file and writes to the output path
