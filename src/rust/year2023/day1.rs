@@ -20,7 +20,7 @@ impl Pair {
             self.last = Some(v)
         }
     }
-    pub fn to_usize(self) -> usize {
+    pub fn usize(self) -> usize {
         let mut s = String::from(self.first.unwrap());
         s.push(self.last.unwrap_or(self.first.unwrap()));
         s.parse::<usize>().unwrap()
@@ -32,7 +32,7 @@ fn join_digits(input: &str) -> usize {
     for c in input.chars().filter(|x| x.is_ascii_digit()) {
         p.push(c);
     }
-    p.to_usize()
+    p.usize()
 }
 
 fn join_digits2(input: &str) -> usize {
@@ -74,7 +74,7 @@ fn join_digits2(input: &str) -> usize {
             i += 1;
         }
     }
-    pair.to_usize()
+    pair.usize()
 }
 
 pub fn run(input: &str) {
