@@ -123,7 +123,7 @@ def previously_solved_years(path):
 
 def title_lookup(year, day):
     return subprocess.run(
-        ["bb", "./scripts/title_lookup.bb", str(year), str(day)],
+        ["bb", "./scripts/utils.bb", "title", str(year), str(day)],
         capture_output=True,
         text=True,
     ).stdout.split("\n")[0]

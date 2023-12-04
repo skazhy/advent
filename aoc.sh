@@ -119,7 +119,7 @@ function gen_src_file {
 
   if [ ! -f "$SRC_FILE" ]; then
     echo "Creating new source files for $YEAR day $DAY..."
-    TITLE=$(bb ./scripts/title_lookup.bb $YEAR $DAY)
+    TITLE=$(bb ./scripts/utils.bb title $YEAR $DAY)
 
     gen_src_file_content
     [ -f "$TEST_FILE" ] && git add --intent-to-add $TEST_FILE
