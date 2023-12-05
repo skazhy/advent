@@ -28,6 +28,7 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 - 2020.15 "Rambunctious Recitation" in [Clojure](../src/advent/2020/day15.clj), [Haskell](../src/haskell/2020/Day15.hs)
 - 2021.6 "Lanternfish" in [Clojure](../src/advent/2021/day6.clj), [Haskell](../src/haskell/2021/Day6.hs)
 - 2022.11 "Monkey in the Middle" in [Clojure](../src/advent/2022/day11.clj)
+- 2023.5 "If You Give A Seed A Fertilizer" in [Clojure](../src/advent/2023/day5.clj)
 
 ## Ciphers
 
