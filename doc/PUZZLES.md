@@ -20,6 +20,7 @@ Total completion rate in past years: 59% (207 / 350 stars)
 | 2 | Cube Conundrum | [Clojure](../src/advent/2023/day2.clj), [Haskell](../src/haskell/2023/Day2.hs) | ☆☆ |
 | 3 | Gear Ratios | [Clojure](../src/advent/2023/day3.clj) | ☆☆ |
 | 4 | Scratchcards | [Haskell](../src/haskell/2023/Day4.hs), [Rust](../src/rust/year2023/day4.rs) | ☆☆ |
+| 5 | If You Give A Seed A Fertilizer | [Clojure](../src/advent/2023/day5.clj) | ☆☆ |
 
 ## 2022
 
