@@ -136,14 +136,12 @@ function fetch_input_file {
     fi
     curl --fail -s "$PUZZLE_URL/input" -H "Cookie: $(cat .cookie)" > "$INPUT_FILE" || \
       (echo "Error: please refresh .cookie!" && rm -f "$INPUT_FILE" && exit 1)
-    git add --intent-to-add $INPUT_FILE
   fi
 }
 
 function gen_solution_file {
   if [ ! -f "$SOLUTION_FILE" ]; then
     touch $SOLUTION_FILE
-    git add --intent-to-add $SOLUTION_FILE
   fi
 }
 
