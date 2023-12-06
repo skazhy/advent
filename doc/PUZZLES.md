@@ -21,7 +21,7 @@ Total completion rate in past years: 59% (207 / 350 stars)
 | 3 | Gear Ratios | [Clojure](../src/advent/2023/day3.clj) | ☆☆ |
 | 4 | Scratchcards | [Haskell](../src/haskell/2023/Day4.hs), [Rust](../src/rust/year2023/day4.rs) | ☆☆ |
 | 5 | If You Give A Seed A Fertilizer | [Clojure](../src/advent/2023/day5.clj) | ☆☆ |
-| 6 | Wait For It | [Haskell](../src/haskell/2023/Day6.hs) | ☆☆ |
+| 6 | Wait For It | [Haskell](../src/haskell/2023/Day6.hs), [Rust](../src/rust/year2023/day6.rs) | ☆☆ |
 
 ## 2022
 
