@@ -4,7 +4,6 @@
 
 from itertools import repeat
 from functools import reduce
-import urllib.request
 import math
 import json
 import os.path
@@ -19,33 +18,23 @@ from puzzle_lookup import all_puzzles, run_git_cmd, staged_years, STAGED_FILE_CM
 
 ### Fetching stars
 
-
-def parse_cal_row(row):
-    if "calendar-verycomplete" in row:
-        return "&#9734;&#9734;"
-    elif "calendar-complete" in row:
-        return "&#9734;"
-    else:
-        return ""
-
-
 THEME_SOURCE = "doc/themes.json"
 PUZZLE_MD_PATH = "doc/PUZZLES.md"
 THEME_MD_PATH = "doc/THEMES.md"
 
 
-def year_completion(year):
-    span = '<span class="calendar-day">'
-    req = urllib.request.Request(f"https://adventofcode.com/{year}")
-    req.add_header("Cookie", str(open(".cookie").read().strip()))
-    rows = [
-        d for d in str(urllib.request.urlopen(req).read()).split("\\n") if span in d
-    ]
-    days = range(1, len(rows) + 1)
-    if 'aria-label="Day 1' not in rows[0]:
-        days = reversed(days)
+def run_utils_bb(*args):
+    return subprocess.run(
+        ["bb", "./scripts/utils.bb"] + list(args),
+        capture_output=True,
+        text=True,
+    ).stdout.split("\n")[0]
 
-    return {str(i): parse_cal_row(d) for i, d in zip(days, rows)}
+
+def year_completion(year):
+    fmt = ["", "&#9734;", "&#9734;&#9734;"]
+    stars = run_utils_bb("stars", str(year))
+    return {str(r[0]): fmt[r[1]] for r in eval(stars.replace(" ", ", "))}
 
 
 ### Markdown output
@@ -122,11 +111,7 @@ def previously_solved_years(path):
 
 
 def title_lookup(year, day):
-    return subprocess.run(
-        ["bb", "./scripts/utils.bb", "title", str(year), str(day)],
-        capture_output=True,
-        text=True,
-    ).stdout.split("\n")[0]
+    return run_utils_bb("title", str(year), str(day))
 
 
 def gen_completion_md(puzzles, staged_years):

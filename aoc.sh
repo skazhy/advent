@@ -104,6 +104,9 @@ fi
 
 mkdir -p resources/$YEAR/solutions
 
+# Check if the resources/ folder is a separate repository.
+[[ "$(git -C resources ls-remote --get-url origin)" == "$(git ls-remote --get-url origin)" ]] || RESOURCE_REPO=1
+
 PUZZLE_URL="https://adventofcode.com/$YEAR/day/$DAY"
 INPUT_FILE="resources/$YEAR/day$DAY.txt"
 SOLUTION_FILE="resources/$YEAR/solutions/day$DAY.txt"
@@ -130,32 +133,39 @@ function gen_src_file {
 function fetch_input_file {
   set -e
   if [ ! -f "$INPUT_FILE" ]; then
-    if [ ! -f ".cookie" ]; then
-      echo "Please save the cookie header value in .cookie!"
-      exit 1
+    bb  ./scripts/utils.bb input $YEAR $DAY
+
+    if [[ "$RESOURCE_REPO" ]]; then
+      git -C resources add --intent-to-add "$YEAR/day$DAY.txt"
     fi
-    curl --fail -s "$PUZZLE_URL/input" -H "Cookie: $(cat .cookie)" > "$INPUT_FILE" || \
-      (echo "Error: please refresh .cookie!" && rm -f "$INPUT_FILE" && exit 1)
   fi
 }
 
 function gen_solution_file {
   if [ ! -f "$SOLUTION_FILE" ]; then
     touch $SOLUTION_FILE
+
+    bb ./scripts/utils.bb sol $YEAR $DAY
+
+    if [[ "$RESOURCE_REPO" ]]; then
+      git -C resources add --intent-to-add "$YEAR/solutions/day$DAY.txt"
+    fi
   fi
 }
 
 [ "$LINT" ] && lint
-[ "$ASSERT" ] && run_assert
 [ "$SRC_PATH" ] && echo $SRC_FILE
+
+fetch_input_file
+gen_solution_file
+
+[ "$ASSERT" ] && run_assert
 
 if [[ "$LINT" || "$ASSERT" || "$SRC_PATH" ]]; then
   exit 0
 fi
 
-fetch_input_file
 gen_src_file
-gen_solution_file
 
 if [[ "$SETUP" ]]; then
   exit 0
