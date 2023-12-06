@@ -42,7 +42,9 @@ dealing with puzzles themselves, so a bash duct tape is holding this project
 together. [DEV.md](doc/DEV.md) has more detailed information about how this
 all works.
 
-All puzzles read their input from `resources/$year/day$day.txt`, all puzzles
+
+Puzzle inputs and their solutions are contained in a separate private repository, which
+lives in `resources` folder. All puzzles read their input from `resources/$year/day$day.txt`, all puzzles
 (except for Clojure, which uses `clojure.test`) are expected to print out
 their solutions which are then compared to `resources/$year/solutions/day$day.txt`.
 
