@@ -32,11 +32,11 @@ fn parse_column(input: &str) -> impl Iterator<Item = usize> + '_ {
 }
 
 fn parse_as_columns(input: &str) -> Vec<(usize, usize)> {
-    let mut rows = input.split_terminator("\n");
-
-    let time = parse_column(rows.next().unwrap());
-    let record = parse_column(rows.next().unwrap());
-    time.zip(record).collect::<Vec<(usize, usize)>>()
+    let mut rows = input.split_terminator("\n").map(parse_column);
+    rows.next()
+        .unwrap()
+        .zip(rows.next().unwrap())
+        .collect::<Vec<(usize, usize)>>()
 }
 
 // Part 2 - parsing data as rows
@@ -51,11 +51,12 @@ fn parse_row(input: &str) -> usize {
 }
 
 fn parse_as_rows(input: &str) -> (usize, usize) {
-    let mut rows = input.split_terminator("\n");
-    (
-        parse_row(rows.next().unwrap()),
-        parse_row(rows.next().unwrap()),
-    )
+    input
+        .split_terminator('\n')
+        .take(2)
+        .map(parse_row)
+        .next_tuple()
+        .unwrap()
 }
 
 pub fn run(input: &str) {
