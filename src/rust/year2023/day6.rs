@@ -4,22 +4,12 @@
 use itertools::Itertools;
 
 fn winning_distance_count(time_record: (usize, usize)) -> usize {
-    let mut first_winning = 0;
-    let mut last_winning = 0;
+    let is_record = |i: &usize| -> bool { i * (time_record.0 - i) > time_record.1 };
 
-    for i in 1..time_record.0 {
-        if i * (time_record.0 - i) > time_record.1 {
-            first_winning = i;
-            break;
-        }
-    }
-    for i in (first_winning..time_record.0 - 1).rev() {
-        if i * (time_record.0 - i) > time_record.1 {
-            last_winning = i;
-            break;
-        }
-    }
-    last_winning - first_winning + 1
+    let first = (1..time_record.0).find(is_record).unwrap();
+    let last = (first..time_record.0 - 1).rev().find(is_record).unwrap();
+
+    last - first + 1
 }
 
 // Part 1 - Parsing data as columns
