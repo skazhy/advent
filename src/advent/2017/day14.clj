@@ -1,5 +1,6 @@
 (ns advent.2017.day14
-  "Advent of Code 2017, day 14: Knot hashes redux"
+  "Advent of Code 2017, day 14: Knot hashes redux
+   Tags: slow"
   (:require [advent.2017.day10 :refer [knot-hash]]
             [advent.helpers :as h]
             [advent.helpers.grid :refer [edge-neighbors]]

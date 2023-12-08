@@ -1,4 +1,6 @@
 (ns advent.2017.day21
+  "Advent of Code 2017, day 21: Fractal Art
+   Tags: slow"
   (:require [advent.helpers :as h]
             [clojure.string :as str]))
 

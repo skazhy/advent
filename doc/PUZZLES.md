@@ -149,12 +149,12 @@ Completion: 84% (42 / 50 stars)
 | 11 | [Hex Ed](https://adventofcode.com/2017/day/11) | [Clojure](../src/advent/2017/day11.clj) | ☆☆ |
 | 12 | [Digital Plumber](https://adventofcode.com/2017/day/12) | [Clojure](../src/advent/2017/day12.clj) | ☆☆ |
 | 13 | [Packet Scanners](https://adventofcode.com/2017/day/13) | [Clojure](../src/advent/2017/day13.clj) | ☆☆ |
-| 14 | [Disk Defragmentation](https://adventofcode.com/2017/day/14) | [Clojure](../src/advent/2017/day14.clj) | ☆☆ |
-| 15 | [Dueling Generators](https://adventofcode.com/2017/day/15) | [Clojure](../src/advent/2017/day15.clj) | ☆☆ |
+| 14 | [Disk Defragmentation](https://adventofcode.com/2017/day/14) | [Clojure](../src/advent/2017/day14.clj) (slow) | ☆☆ |
+| 15 | [Dueling Generators](https://adventofcode.com/2017/day/15) | [Clojure](../src/advent/2017/day15.clj) (slow) | ☆☆ |
 | 16 | [Permutation Promenade](https://adventofcode.com/2017/day/16) | [Clojure](../src/advent/2017/day16.clj) | ☆☆ |
 | 17 | [Spinlock](https://adventofcode.com/2017/day/17) | [Clojure](../src/advent/2017/day17.clj) | ☆☆ |
 | 19 | [A Series of Tubes](https://adventofcode.com/2017/day/19) | [Clojure](../src/advent/2017/day19.clj) | ☆☆ |
-| 21 | [Fractal Art](https://adventofcode.com/2017/day/21) | [Clojure](../src/advent/2017/day21.clj) | ☆☆ |
+| 21 | [Fractal Art](https://adventofcode.com/2017/day/21) | [Clojure](../src/advent/2017/day21.clj) (slow) | ☆☆ |
 | 24 | [Electromagnetic Moat](https://adventofcode.com/2017/day/24) | [Clojure](../src/advent/2017/day24.clj) | ☆☆ |
 | 25 | [The Halting Problem](https://adventofcode.com/2017/day/25) | [Clojure](../src/advent/2017/day25.clj) | ☆☆ |
 

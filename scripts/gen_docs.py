@@ -123,7 +123,9 @@ def year_puzzle_tags(year):
     ).stdout.split("\n")[:-1]:
         (f, line, _, tags) = s.split(":")
         if int(line) < 5:
-            ret[f] = [x.strip().replace('"', "") for x in tags.split(",")]
+            ret[f] = [
+                x.strip().replace('"', "").replace(")", "") for x in tags.split(",")
+            ]
     return ret
 
 

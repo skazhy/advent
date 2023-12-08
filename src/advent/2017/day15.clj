@@ -1,5 +1,6 @@
 (ns advent.2017.day15
-  "Advent of Code 2017, day 15: Number generators")
+  "Advent of Code 2017, day 15: Number generators
+   Tags: slow")
 
 (def ^:private a-multiplier 16807)
 (def ^:private b-multiplier 48271)
