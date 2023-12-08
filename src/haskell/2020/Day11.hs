@@ -1,6 +1,7 @@
 {-|
 Module      : Day11
 Description : Day 11: Seating System
+Tags        : slow
 
 <https://adventofcode.com/2020/day/11>
 -}
@@ -30,7 +31,7 @@ parseChar _ = Nothing
 mkFloorPlan :: [String] -> FloorPlan
 mkFloorPlan rows =
     fromList $ zip [0..] rows >>= uncurry mapEntries
-    where mapEntries i = map (\(j, c) -> ([i, j], parseChar c)) . zip [0..]
+    where mapEntries i = zipWith (\j c -> ([i, j], parseChar c)) [0 .. ]
 
 -- Part 1: Adjacent neighbords
 

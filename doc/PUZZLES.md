@@ -85,20 +85,20 @@ Completion: 100% (50 / 50 stars)
 | 8 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Clojure](../src/advent/2020/day8.clj), [Haskell](../src/haskell/2020/Day8.hs) | ☆☆ |
 | 9 | [Encoding Error](https://adventofcode.com/2020/day/9) | [Clojure](../src/advent/2020/day9.clj), [Haskell](../src/haskell/2020/Day9.hs) | ☆☆ |
 | 10 | [Adapter Array](https://adventofcode.com/2020/day/10) | [Clojure](../src/advent/2020/day10.clj), [Haskell](../src/haskell/2020/Day10.hs) | ☆☆ |
-| 11 | [Seating System](https://adventofcode.com/2020/day/11) | [Clojure](../src/advent/2020/day11.clj), [Haskell](../src/haskell/2020/Day11.hs) | ☆☆ |
+| 11 | [Seating System](https://adventofcode.com/2020/day/11) | [Clojure](../src/advent/2020/day11.clj) (slow), [Haskell](../src/haskell/2020/Day11.hs) (slow) | ☆☆ |
 | 12 | [Rain Risk](https://adventofcode.com/2020/day/12) | [Clojure](../src/advent/2020/day12.clj), [Haskell](../src/haskell/2020/Day12.hs) | ☆☆ |
 | 13 | [Shuttle Search](https://adventofcode.com/2020/day/13) | [Clojure](../src/advent/2020/day13.clj), [Haskell](../src/haskell/2020/Day13.hs) | ☆☆ |
 | 14 | [Docking Data](https://adventofcode.com/2020/day/14) | [Clojure](../src/advent/2020/day14.clj), [Haskell](../src/haskell/2020/Day14.hs) | ☆☆ |
-| 15 | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | [Clojure](../src/advent/2020/day15.clj), [Haskell](../src/haskell/2020/Day15.hs) | ☆☆ |
+| 15 | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | [Clojure](../src/advent/2020/day15.clj), [Haskell](../src/haskell/2020/Day15.hs) (incomplete, slow) | ☆☆ |
 | 16 | [Ticket Translation](https://adventofcode.com/2020/day/16) | [Clojure](../src/advent/2020/day16.clj), [Haskell](../src/haskell/2020/Day16.hs) | ☆☆ |
-| 17 | [Conway Cubes](https://adventofcode.com/2020/day/17) | [Clojure](../src/advent/2020/day17.clj), [Haskell](../src/haskell/2020/Day17.hs) | ☆☆ |
+| 17 | [Conway Cubes](https://adventofcode.com/2020/day/17) | [Clojure](../src/advent/2020/day17.clj) (slow), [Haskell](../src/haskell/2020/Day17.hs) (slow) | ☆☆ |
 | 18 | [Operation Order](https://adventofcode.com/2020/day/18) | [Clojure](../src/advent/2020/day18.clj), [Haskell](../src/haskell/2020/Day18.hs) | ☆☆ |
 | 19 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Clojure](../src/advent/2020/day19.clj) | ☆☆ |
 | 20 | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20) | [Haskell](../src/haskell/2020/Day20.hs) | ☆☆ |
 | 21 | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Haskell](../src/haskell/2020/Day21.hs) | ☆☆ |
-| 22 | [Crab Combat](https://adventofcode.com/2020/day/22) | [Haskell](../src/haskell/2020/Day22.hs) | ☆☆ |
-| 23 | [Crab Cups](https://adventofcode.com/2020/day/23) | [Haskell](../src/haskell/2020/Day23.hs), [Python](../src/python/2020/day23.py) | ☆☆ |
-| 24 | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Haskell](../src/haskell/2020/Day24.hs) | ☆☆ |
+| 22 | [Crab Combat](https://adventofcode.com/2020/day/22) | [Haskell](../src/haskell/2020/Day22.hs) (slow) | ☆☆ |
+| 23 | [Crab Cups](https://adventofcode.com/2020/day/23) | [Haskell](../src/haskell/2020/Day23.hs) (incomplete), [Python](../src/python/2020/day23.py) | ☆☆ |
+| 24 | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Haskell](../src/haskell/2020/Day24.hs) (slow) | ☆☆ |
 | 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Haskell](../src/haskell/2020/Day25.hs) | ☆☆ |
 
 ## 2019

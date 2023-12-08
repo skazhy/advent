@@ -1,6 +1,7 @@
 {-|
 Module      : Day17
 Description : Day 17: Conway Cubes
+Tags        : slow
 
 <https://adventofcode.com/2020/day/17>
 -}
@@ -19,11 +20,11 @@ import Data.Maybe (fromMaybe, catMaybes)
 
 -- Parsing
 
-gridCell :: Int -> (Int, Char) -> ([Int], Bool)
-gridCell y (x, c) = ([x,y,0,0], c == '#')
+gridCell :: Int -> Int -> Char -> ([Int], Bool)
+gridCell y x c = ([x,y,0,0], c == '#')
 
 parseGrid :: [String] -> Map [Int] Bool
-parseGrid = fromList . concatMap (\(y, f) -> map (gridCell y) $ zip [0..] f) . zip [0..]
+parseGrid = fromList . concatMap (\(y, f) -> zipWith (gridCell y) [0..] f) . zip [0..]
 
 --
 

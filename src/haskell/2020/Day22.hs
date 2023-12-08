@@ -1,6 +1,7 @@
 {-|
 Module      : Day22
 Description : Day 22: Crab Combat
+Tags        : slow
 
 <https://adventofcode.com/2020/day/22>
 -}

@@ -1,5 +1,6 @@
 (ns advent.2020.day17
-  "Advent of Code 2020, day 17: Conway Cubes"
+  "Advent of Code 2020, day 17: Conway Cubes
+   Tags: slow"
   (:require [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2020/day17.txt" h/slurp-lines))

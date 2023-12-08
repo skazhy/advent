@@ -1,6 +1,7 @@
 {-|
 Module      : Day15
 Description : Day 15: Rambunctious Recitation
+Tags        : incomplete, slow
 
 <https://adventofcode.com/2020/day/15>
 -}
@@ -30,4 +31,4 @@ runVanEckSequence lim input =
 main = do
     input <- parsedInput (2020, 15) intSequence
     print $ runVanEckSequence 2020 input
-    print $ runVanEckSequence 30000000 input
+    --- print $ runVanEckSequence 30000000 input

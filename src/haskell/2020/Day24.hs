@@ -1,6 +1,7 @@
 {-|
 Module      : Day24
 Description : Day 24: Lobby Layout
+Tags        : slow
 
 <https://adventofcode.com/2020/day/24>
 -}

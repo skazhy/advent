@@ -114,6 +114,19 @@ def title_lookup(year, day):
     return run_utils_bb("title", str(year), str(day))
 
 
+def year_puzzle_tags(year):
+    ret = {}
+    for s in subprocess.run(
+        ["git", "grep", "Tags", f"src/*/{year}/*"],
+        capture_output=True,
+        text=True,
+    ).stdout.split("\n")[:-1]:
+        (f, line, _, tags) = s.split(":")
+        if int(line) < 5:
+            ret[f] = [x.strip().replace('"', "") for x in tags.split(",")]
+    return ret
+
+
 def gen_completion_md(puzzles, staged_years):
     print("Regenerating completed puzzle doc...")
     existing_years = previously_solved_years(PUZZLE_MD_PATH)
@@ -145,6 +158,7 @@ def gen_completion_md(puzzles, staged_years):
             # Only refetch stars when there are staged puzzles for this year
             if year in staged_years:
                 print(f"Fetching stars for {year}...")
+                tags = year_puzzle_tags(year)
                 stars = year_completion(year)
                 if int(year) <= last_complete_year:
                     # Only count stars for puzzles available in the repo.
@@ -161,11 +175,17 @@ def gen_completion_md(puzzles, staged_years):
                 for day in sorted(puzzles[year], key=int):
                     solutions = []
                     for lang in sorted(puzzles[year][day], key=lambda x: x):
-                        solutions.append(md_rel_link(puzzles[year][day][lang], lang))
+                        sol = md_rel_link(puzzles[year][day][lang], lang)
+                        if t := tags.get(puzzles[year][day][lang]):
+                            sol = f"{sol} ({', '.join(t)})"
+                        solutions.append(sol)
                     doc.write(
                         md_table_row(
                             day,
-                            md_link(f"https://adventofcode.com/{year}/day/{day}", title_lookup(year, day)),
+                            md_link(
+                                f"https://adventofcode.com/{year}/day/{day}",
+                                title_lookup(year, day),
+                            ),
                             ", ".join(solutions),
                             stars[day],
                         )

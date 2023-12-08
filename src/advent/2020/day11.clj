@@ -1,5 +1,6 @@
 (ns advent.2020.day11
-  "Advent of Code 2020, day 11: Seating System"
+  "Advent of Code 2020, day 11: Seating System
+   Tags : slow"
   (:require [advent.helpers :as h]
             [advent.helpers.grid :refer [all-neighbors]]))
 
