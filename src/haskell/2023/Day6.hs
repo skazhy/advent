@@ -1,6 +1,7 @@
 {-|
 Module      : Day6
 Description : Day 6: Wait For It
+Tags        : slow
 
 <https://adventofcode.com/2023/day/6>
 -}

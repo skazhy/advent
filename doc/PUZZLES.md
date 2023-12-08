@@ -10,7 +10,7 @@
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
 
-Total completion rate in past years: 60% (209 / 350 stars)
+Total completion rate in past years: 60% (209 / 350 stars). Solutions marked as _slow_ complete both parts in more than 5 seconds.
 
 ## 2023
 
@@ -21,7 +21,7 @@ Total completion rate in past years: 60% (209 / 350 stars)
 | 3 | [Gear Ratios](https://adventofcode.com/2023/day/3) | [Clojure](../src/advent/2023/day3.clj) | ☆☆ |
 | 4 | [Scratchcards](https://adventofcode.com/2023/day/4) | [Haskell](../src/haskell/2023/Day4.hs), [Rust](../src/rust/year2023/day4.rs) | ☆☆ |
 | 5 | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | [Clojure](../src/advent/2023/day5.clj) | ☆☆ |
-| 6 | [Wait For It](https://adventofcode.com/2023/day/6) | [Haskell](../src/haskell/2023/Day6.hs), [Rust](../src/rust/year2023/day6.rs) | ☆☆ |
+| 6 | [Wait For It](https://adventofcode.com/2023/day/6) | [Haskell](../src/haskell/2023/Day6.hs) (slow), [Rust](../src/rust/year2023/day6.rs) | ☆☆ |
 | 7 | [Camel Cards](https://adventofcode.com/2023/day/7) | [Haskell](../src/haskell/2023/Day7.hs) | ☆☆ |
 | 8 | [Haunted Wasteland](https://adventofcode.com/2023/day/8) | [Clojure](../src/advent/2023/day8.clj), [Rust](../src/rust/year2023/day8.rs) | ☆☆ |
 

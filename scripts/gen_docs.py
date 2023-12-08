@@ -151,7 +151,10 @@ def gen_completion_md(puzzles, staged_years):
         )
         max_stars = (last_complete_year - 2015) * 50
         doc.write(
-            f"Total completion rate in past years: {total_stars/max_stars:.0%} ({total_stars} / {max_stars} stars)\n\n"
+            f"Total completion rate in past years: {total_stars/max_stars:.0%} ({total_stars} / {max_stars} stars). "
+        )
+        doc.write(
+            "Solutions marked as _slow_ complete both parts in more than 5 seconds.\n\n"
         )
 
         for year in sorted_puzzles:
