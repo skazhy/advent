@@ -10,7 +10,7 @@
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
 
-Total completion rate in past years: 59% (207 / 350 stars)
+Total completion rate in past years: 60% (209 / 350 stars)
 
 ## 2023
 
@@ -71,7 +71,7 @@ Completion: 74% (37 / 50 stars)
 
 ## 2020
 
-Completion: 96% (48 / 50 stars)
+Completion: 100% (50 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
 |  ---  | ---  | ---  | --- |
@@ -97,9 +97,9 @@ Completion: 96% (48 / 50 stars)
 | 20 | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20) | [Haskell](../src/haskell/2020/Day20.hs) | ☆☆ |
 | 21 | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Haskell](../src/haskell/2020/Day21.hs) | ☆☆ |
 | 22 | [Crab Combat](https://adventofcode.com/2020/day/22) | [Haskell](../src/haskell/2020/Day22.hs) | ☆☆ |
-| 23 | [Crab Cups](https://adventofcode.com/2020/day/23) | [Haskell](../src/haskell/2020/Day23.hs) | ☆ |
+| 23 | [Crab Cups](https://adventofcode.com/2020/day/23) | [Haskell](../src/haskell/2020/Day23.hs), [Python](../src/python/2020/day23.py) | ☆☆ |
 | 24 | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Haskell](../src/haskell/2020/Day24.hs) | ☆☆ |
-| 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Haskell](../src/haskell/2020/Day25.hs) | ☆ |
+| 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Haskell](../src/haskell/2020/Day25.hs) | ☆☆ |
 
 ## 2019
 
