@@ -16,5 +16,5 @@
 
 (defn puzzle2 [input]
   (->> (group-items input)
-       (mapcat #(distinct (apply concat %)))
-       (count)))
+       (map #(count (reduce clojure.set/intersection (map set %))))
+       (apply +)))
