@@ -23,7 +23,7 @@ Total completion rate in past years: 59% (207 / 350 stars)
 | 5 | If You Give A Seed A Fertilizer | [Clojure](../src/advent/2023/day5.clj) | ☆☆ |
 | 6 | Wait For It | [Haskell](../src/haskell/2023/Day6.hs), [Rust](../src/rust/year2023/day6.rs) | ☆☆ |
 | 7 | Camel Cards | [Haskell](../src/haskell/2023/Day7.hs) | ☆☆ |
-| 8 | Haunted Wasteland | [Clojure](../src/advent/2023/day8.clj) | ☆☆ |
+| 8 | Haunted Wasteland | [Clojure](../src/advent/2023/day8.clj), [Rust](../src/rust/year2023/day8.rs) | ☆☆ |
 
 ## 2022
 
