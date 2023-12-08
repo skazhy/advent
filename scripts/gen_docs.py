@@ -157,7 +157,7 @@ def gen_completion_md(puzzles, staged_years):
                         f"Completion: {star_count/50:.0%} ({star_count} / 50 stars)\n\n"
                     )
 
-                doc.write(md_table_header("Day", "Title", "Solutions", "Completion"))
+                doc.write(md_table_header("Day", "Puzzle", "Solutions", "Completion"))
                 for day in sorted(puzzles[year], key=int):
                     solutions = []
                     for lang in sorted(puzzles[year][day], key=lambda x: x):
@@ -165,7 +165,7 @@ def gen_completion_md(puzzles, staged_years):
                     doc.write(
                         md_table_row(
                             day,
-                            title_lookup(year, day),
+                            md_link(f"https://adventofcode.com/{year}/day/{day}", title_lookup(year, day)),
                             ", ".join(solutions),
                             stars[day],
                         )
