@@ -24,6 +24,7 @@ Total completion rate in past years: 60% (209 / 350 stars). Solutions marked as 
 | 6 | [Wait For It](https://adventofcode.com/2023/day/6) | [Haskell](../src/haskell/2023/Day6.hs) (slow), [Rust](../src/rust/year2023/day6.rs) | ☆☆ |
 | 7 | [Camel Cards](https://adventofcode.com/2023/day/7) | [Haskell](../src/haskell/2023/Day7.hs) | ☆☆ |
 | 8 | [Haunted Wasteland](https://adventofcode.com/2023/day/8) | [Clojure](../src/advent/2023/day8.clj), [Rust](../src/rust/year2023/day8.rs) | ☆☆ |
+| 9 | [Mirage Maintenance](https://adventofcode.com/2023/day/9) | [Clojure](../src/advent/2023/day9.clj) | ☆☆ |
 
 ## 2022
 
