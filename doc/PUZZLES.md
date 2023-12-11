@@ -26,6 +26,7 @@ Total completion rate in past years: 60% (209 / 350 stars). Solutions marked as 
 | 8 | [Haunted Wasteland](https://adventofcode.com/2023/day/8) | [Clojure](../src/advent/2023/day8.clj), [Rust](../src/rust/year2023/day8.rs) | ☆☆ |
 | 9 | [Mirage Maintenance](https://adventofcode.com/2023/day/9) | [Clojure](../src/advent/2023/day9.clj) | ☆☆ |
 | 10 | [Pipe Maze](https://adventofcode.com/2023/day/10) | [Clojure](../src/advent/2023/day10.clj) (incomplete) | ☆ |
+| 11 | [Cosmic Expansion](https://adventofcode.com/2023/day/11) | [Rust](../src/rust/year2023/day11.rs) | ☆☆ |
 
 ## 2022
 
