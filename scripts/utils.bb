@@ -95,20 +95,17 @@
 
 ;;; Year completion
 
-(defn day-completion [html-row]
-  (condp #(str/includes? %2 %1) html-row
+(defn day-completion [completion-class]
+  (case (when completion-class (str/trim completion-class))
     "calendar-verycomplete" 2
     "calendar-complete" 1
     0))
 
 (defn year-completion [year]
-  (let [day-rows (->> (str/split (aoc-get (year-url year) {:auth? true}) #"\n")
-                      (filter #(str/includes? % "<span class=\"calendar-day\">")))
-        day-range (as-> (range 1 (inc (count day-rows))) r
-                    (if (str/includes? (first day-rows) (str "href=\"/" year "/day/1\""))
-                      r
-                      (reverse r)))]
-    (mapv #(vector %1 (day-completion %2)) day-range day-rows)))
+  (->> (str/split (aoc-get (year-url year) {:auth? true}) #"\n")
+       (filter #(str/includes? % "class=\"calendar-day"))
+       (keep #(re-find #"class=\"calendar-day(\d+)( [\w-]+)?\"" %))
+       (mapv (fn [[_ day completion]] [day (day-completion completion)]))))
 
 (defn -main [[op & args]]
   (case op
