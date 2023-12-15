@@ -28,7 +28,7 @@ Total completion rate in past years: 60% (209 / 350 stars). Solutions marked as 
 | 10 | [Pipe Maze](https://adventofcode.com/2023/day/10) | [Clojure](../src/advent/2023/day10.clj) (incomplete) | ☆ |
 | 11 | [Cosmic Expansion](https://adventofcode.com/2023/day/11) | [Rust](../src/rust/year2023/day11.rs) | ☆☆ |
 | 14 | [Parabolic Reflector Dish](https://adventofcode.com/2023/day/14) | [Clojure](../src/advent/2023/day14.clj) | ☆☆ |
-| 15 | [Lens Library](https://adventofcode.com/2023/day/15) | [Rust](../src/rust/year2023/day15.rs) | ☆☆ |
+| 15 | [Lens Library](https://adventofcode.com/2023/day/15) | [Haskell](../src/haskell/2023/Day15.hs), [Rust](../src/rust/year2023/day15.rs) | ☆☆ |
 
 ## 2022
 
