@@ -32,6 +32,7 @@ fn main() -> std::io::Result<()> {
         ("2022", "1") => year2022::day1::run,
         ("2023", "1") => year2023::day1::run,
         ("2023", "11") => year2023::day11::run,
+        ("2023", "15") => year2023::day15::run,
         ("2023", "4") => year2023::day4::run,
         ("2023", "6") => year2023::day6::run,
         ("2023", "8") => year2023::day8::run,
