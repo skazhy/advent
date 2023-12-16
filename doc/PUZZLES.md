@@ -31,6 +31,7 @@ Total completion rate in past years: 60% (209 / 350 stars). Solutions marked as 
 | 13 | [Point of Incidence](https://adventofcode.com/2023/day/13) | [Clojure](../src/advent/2023/day13.clj) | ☆☆ |
 | 14 | [Parabolic Reflector Dish](https://adventofcode.com/2023/day/14) | [Clojure](../src/advent/2023/day14.clj) | ☆☆ |
 | 15 | [Lens Library](https://adventofcode.com/2023/day/15) | [Haskell](../src/haskell/2023/Day15.hs), [Rust](../src/rust/year2023/day15.rs) | ☆☆ |
+| 16 | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16) | [Rust](../src/rust/year2023/day16.rs) | ☆☆ |
 
 ## 2022
 
