@@ -5,16 +5,10 @@
 (def ^:private example \"test\")
 
 (deftest puzzle1
-  (testing \"Examples\"
-    (is (= 42 (d/puzzle1 example))))
-
-  (testing \"Actual input\"
-    (is (= $SOLUTION1 (d/puzzle1 d/puzzle-input)))))
+  (testing \"Example\"
+    (is (= 42 (d/puzzle1 example)))))
 
 (deftest puzzle2
-  (testing \"Examples\"
-    (is (= 42 (d/puzzle2 example))))
-
-  (testing \"Actual input\"
-    (is (= $SOLUTION2 (d/puzzle2 d/puzzle-input)))))
+  (testing \"Example\"
+    (is (= 42 (d/puzzle2 example)))))
 ;;; vim: set ft=clojure :
