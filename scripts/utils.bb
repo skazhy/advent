@@ -26,8 +26,12 @@
     (str/trim (slurp cookie-path))
     (read-cookie "No cookie found.")))
 
-(defn aoc-get [url {:keys [auth?]}]
-  (let [{:keys [body status]} (try (http/get url (cond-> {:throw false}
+(defn aoc-req [uri {:keys [auth? method form-params]}]
+  (let [{:keys [body status]} (try (http/request (cond-> {:throw false
+                                                          :method :get
+                                                          :uri uri}
+                                                   method (assoc :method method)
+                                                   form-params (assoc :form-params form-params)
                                                    auth? (assoc :headers {"Cookie" (get-cookie)})))
                                    (catch Exception e
                                      (println (.getMessage e))
@@ -37,13 +41,13 @@
       (do
         (println body)
         (read-cookie)
-        (aoc-get url {:auth? auth?})))))
+        (aoc-req uri {:auth? auth?})))))
 
 (defn year-url [year] (str "https://adventofcode.com/" year))
 (defn puzzle-url [year day] (str (year-url year) "/day/" day))
 
 (defn puzzle-html-lines [year day http-opts]
-  (let [res (aoc-get (puzzle-url year day) http-opts)]
+  (let [res (aoc-req (puzzle-url year day) http-opts)]
     (str/split res #"\n")))
 
 (def title-re #"--- Day (\d+)?: (.+) ---")
@@ -80,10 +84,12 @@
 ;;; Fetch input
 
 (defn input-lookup [year day]
-  (->> (aoc-get (str (puzzle-url year day) "/input") {:auth? true})
+  (->> (aoc-req (str (puzzle-url year day) "/input") {:auth? true})
        (spit (str "resources/" year "/day" day ".txt"))))
 
 ;;; Solution lookup
+
+(defn solution-path [year day] (str "resources/" year "/solutions/day" day ".txt"))
 
 (def code-re #"<code>(\d+)</code>")
 
@@ -91,7 +97,7 @@
   (let [solutions (->> (puzzle-html-lines year day {:auth? true})
                        (filter #(str/starts-with? % "<p>Your puzzle answer was <code>"))
                        (map #(last (re-find code-re %))))]
-    (spit (str "resources/" year "/solutions/day" day ".txt") (str (str/join "\n" solutions) "\n"))))
+    (spit (solution-path year day) (str (str/join "\n" solutions) "\n"))))
 
 ;;; Year completion
 
@@ -102,7 +108,7 @@
     0))
 
 (defn year-completion [year]
-  (->> (str/split (aoc-get (year-url year) {:auth? true}) #"\n")
+  (->> (str/split (aoc-req (year-url year) {:auth? true}) #"\n")
        (filter #(str/includes? % "class=\"calendar-day"))
        (keep #(re-find #"class=\"calendar-day(\d+)( [\w-]+)?\"" %))
        (mapv (fn [[_ day completion]] [day (day-completion completion)]))))
