@@ -33,6 +33,7 @@ Total completion rate in past years: 60% (209 / 350 stars). Solutions marked as 
 | 15 | [Lens Library](https://adventofcode.com/2023/day/15) | [Haskell](../src/haskell/2023/Day15.hs), [Rust](../src/rust/year2023/day15.rs) | ☆☆ |
 | 16 | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16) | [Rust](../src/rust/year2023/day16.rs) | ☆☆ |
 | 17 | [Clumsy Crucible](https://adventofcode.com/2023/day/17) | [Python](../src/python/2023/day17.py) | ☆☆ |
+| 19 | [Aplenty](https://adventofcode.com/2023/day/19) | [Clojure](../src/advent/2023/day19.clj) (incomplete) | ☆ |
 
 ## 2022
 
