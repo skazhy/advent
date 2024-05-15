@@ -8,3 +8,5 @@
 resources/
 .cpcache
 build
+
+.tool-versions
