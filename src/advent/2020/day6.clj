@@ -1,6 +1,7 @@
 (ns advent.2020.day6
   "Advent of Code 2020, day 6: Custom Customs"
-  (:require [advent.helpers :as h]))
+  (:require [advent.helpers :as h]
+            [clojure.set :as set]))
 
 (def puzzle-input (h/slurp-resource "2020/day6.txt" h/slurp-lines))
 
@@ -16,5 +17,5 @@
 
 (defn puzzle2 [input]
   (->> (group-items input)
-       (map #(count (reduce clojure.set/intersection (map set %))))
+       (map #(count (reduce set/intersection (map set %))))
        (apply +)))

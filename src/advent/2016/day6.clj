@@ -1,7 +1,6 @@
 (ns advent.2016.day6
   "Advent of Code 2016, day 6: Signals and Noise"
-  (:require [advent.helpers :as h]
-            [clojure.string :as str]))
+  (:require [advent.helpers :as h]))
 
 (def puzzle-input (h/slurp-resource "2016/day6.txt" h/slurp-lines))
 
