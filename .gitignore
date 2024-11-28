@@ -10,3 +10,5 @@ resources/
 build
 
 .tool-versions
+venv
+.clj-kondo

@@ -10,8 +10,8 @@ from helpers import readlines
 
 def mk_graph(str_grid):
     graph = {}
-    for (y, row) in enumerate(str_grid):
-        for (x, r) in enumerate(row):
+    for y, row in enumerate(str_grid):
+        for x, r in enumerate(row):
             graph[(x, y)] = int(r)
     return graph
 
@@ -35,7 +35,7 @@ def neighbors(graph, coords, direction, max_straight, min_turn):
         sign = int(math.copysign(1, dy))
         choices.append(((x, (y + 1 * sign)), (0, dy + 1 * sign)))
 
-    for (coords, direction) in choices:
+    for coords, direction in choices:
         if coords in graph:
             yield (coords, direction)
 
@@ -60,7 +60,7 @@ def find_path(str_grid, max_straight=3, min_turn=1):
 
         seen.add((coords, direction))
 
-        for (coords, direction) in neighbors(
+        for coords, direction in neighbors(
             graph, coords, direction, max_straight, min_turn
         ):
             if ((coords, direction)) not in seen:

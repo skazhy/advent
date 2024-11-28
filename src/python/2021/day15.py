@@ -20,8 +20,8 @@ def neighbors(grid, coords):
 
 def find_path(grid):
     graph = {}
-    for (y, row) in enumerate(grid):
-        for (x, r) in enumerate(row):
+    for y, row in enumerate(grid):
+        for x, r in enumerate(row):
             graph[(x, y)] = r
 
     target = (len(grid[0]) - 1, len(grid) - 1)
