@@ -168,7 +168,7 @@ def gen_completion_md(puzzles, staged_years):
                 if int(year) <= last_complete_year:
                     # Only count stars for puzzles available in the repo.
                     star_count = 0
-                    for (day, v) in stars.items():
+                    for day, v in stars.items():
                         if v and puzzles[year].get(day):
                             star_count += len(v) / 7
                     star_count = math.floor(star_count)
