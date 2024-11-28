@@ -47,6 +47,10 @@ do
       source ./scripts/env/idris.sh
       shift
       ;;
+    scm)
+      source ./scripts/env/scheme.sh
+      shift
+      ;;
     doc)
       GEN_DOCS=1
       shift

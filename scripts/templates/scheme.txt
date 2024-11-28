@@ -1,0 +1,11 @@
+;;; Advent of Code $YEAR, day $DAY: $TITLE
+;;; $PUZZLE_URL
+
+(load \"src/scheme/helpers.scm\")
+
+(define (main args)
+  (let ((input (read-file (car args))))
+    (display input)
+    (newline)))
+
+;;; vim: set ft=scheme :

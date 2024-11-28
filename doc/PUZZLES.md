@@ -188,7 +188,7 @@ Completion: 30% (15 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
 |  ---  | ---  | ---  | --- |
-| 1 | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [Haskell](../src/haskell/2015/Day1.hs), [Rust](../src/rust/year2015/day1.rs) | ☆☆ |
+| 1 | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [Haskell](../src/haskell/2015/Day1.hs), [Rust](../src/rust/year2015/day1.rs), [Scheme](../src/scheme/2015/day1.scm) | ☆☆ |
 | 2 | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [Python](../src/python/2015/day2.py) | ☆☆ |
 | 3 | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [Haskell](../src/haskell/2015/Day3.hs) | ☆☆ |
 | 4 | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4) | [Clojure](../src/advent/2015/day4.clj) | ☆☆ |

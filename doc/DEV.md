@@ -28,6 +28,10 @@ Same as Haskell - puzzles are self contained scripts.
 
 All puzzles are compiled into a single binary, puzzle's day and year is passed as argument when running it. Shared files (`mod.rs`, etc) [will be updated automatically](../scripts/env/rust.sh#L17) when adding a new puzzle.
 
+### Scheme
+
+Puzzles are implemented with [Chicken Scheme](https://wiki.call-cc.org) & run in the interpreted mode.
+
 ## Adding a new language support
 
 `aoc.sh` expects these methods to exist when dealing with puzzle code:

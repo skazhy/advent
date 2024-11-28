@@ -8,6 +8,7 @@ languages = {
     "haskell": "Haskell",
     "python": "Python",
     "idris": "Idris",
+    "scheme": "Scheme",
     "rust": "Rust",
 }
 
