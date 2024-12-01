@@ -17,7 +17,7 @@ Total completion rate in past years: 60% (242 / 400 stars). Solutions marked as 
 
 | Day | Puzzle | Solutions | Completion |
 |  ---  | ---  | ---  | --- |
-| 1 | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [Clojure](../src/advent/2024/day1.clj) | ☆☆ |
+| 1 | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [Clojure](../src/advent/2024/day1.clj), [Haskell](../src/haskell/2024/Day1.hs) | ☆☆ |
 
 ## 2023
 
