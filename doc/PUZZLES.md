@@ -1,5 +1,6 @@
 # Solved Advent of Code puzzles
 
+- [2024 puzzles](#2024)
 - [2023 puzzles](#2023)
 - [2022 puzzles](#2022)
 - [2021 puzzles](#2021)
@@ -11,6 +12,12 @@
 - [2015 puzzles](#2015)
 
 Total completion rate in past years: 60% (242 / 400 stars). Solutions marked as _slow_ complete both parts in more than 5 seconds.
+
+## 2024
+
+| Day | Puzzle | Solutions | Completion |
+|  ---  | ---  | ---  | --- |
+| 1 | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [Clojure](../src/advent/2024/day1.clj) | ☆☆ |
 
 ## 2023
 
