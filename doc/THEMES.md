@@ -48,6 +48,7 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 - 2017.21 "Fractal Art" in [Clojure](../src/advent/2017/day21.clj)
 - 2021.4 "Giant Squid" in [Clojure](../src/advent/2021/day4.clj)
 - 2022.8 "Treetop Tree House" in [Clojure](../src/advent/2022/day8.clj)
+- 2024.4 "Ceres Search" in [Haskell](../src/haskell/2024/Day4.hs)
 
 ### Hex
 
