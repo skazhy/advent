@@ -21,6 +21,7 @@ Total completion rate in past years: 60% (242 / 400 stars). Solutions marked as 
 | 2 | [Red-Nosed Reports](https://adventofcode.com/2024/day/2) | [Haskell](../src/haskell/2024/Day2.hs), [Scheme](../src/scheme/2024/day2.scm) | ☆☆ |
 | 3 | [Mull It Over](https://adventofcode.com/2024/day/3) | [Haskell](../src/haskell/2024/Day3.hs) | ☆☆ |
 | 4 | [Ceres Search](https://adventofcode.com/2024/day/4) | [Haskell](../src/haskell/2024/Day4.hs) | ☆☆ |
+| 5 | [Print Queue](https://adventofcode.com/2024/day/5) | [Haskell](../src/haskell/2024/Day5.hs) | ☆☆ |
 
 ## 2023
 

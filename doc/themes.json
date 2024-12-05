@@ -49,6 +49,9 @@
     "name": "List processing",
     "puzzles": [[2021,1]]
   }, {
+    "name": "Sorting",
+    "puzzles": [[2024,5]]
+  }, {
     "name": "Trees",
     "puzzles": [[2017,7], [2022,7]]
   }, {

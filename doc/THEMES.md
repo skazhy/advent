@@ -15,6 +15,7 @@
 - [List processing](#list-processing)
 - [Rust only](#rust-only)
   - [String slices](#string-slices)
+- [Sorting](#sorting)
 - [Trees](#trees)
 
 ## Binary numbers
@@ -93,6 +94,10 @@ Appeared only in AoC 2019.
 ### String slices
 
 - [2023.1](../src/rust/year2023/day1.rs)
+
+## Sorting
+
+- 2024.5 "Print Queue" in [Haskell](../src/haskell/2024/Day5.hs)
 
 ## Trees
 
