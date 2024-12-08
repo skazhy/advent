@@ -24,7 +24,7 @@ Total completion rate in past years: 60% (242 / 400 stars). Solutions marked as 
 | 5 | [Print Queue](https://adventofcode.com/2024/day/5) | [Haskell](../src/haskell/2024/Day5.hs) | ☆☆ |
 | 6 | [Guard Gallivant](https://adventofcode.com/2024/day/6) | [Clojure](../src/advent/2024/day6.clj) | ☆☆ |
 | 7 | [Bridge Repair](https://adventofcode.com/2024/day/7) | [Haskell](../src/haskell/2024/Day7.hs) (slow) | ☆☆ |
-| 8 | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | [Clojure](../src/advent/2024/day8.clj) | ☆☆ |
+| 8 | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | [Clojure](../src/advent/2024/day8.clj), [Haskell](../src/haskell/2024/Day8.hs) | ☆☆ |
 
 ## 2023
 
