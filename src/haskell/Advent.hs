@@ -8,6 +8,7 @@ module Advent
     , inRange
     , groupedLines
     , printMaybe
+    , foldGrid
     ) where
 
 import Control.Monad
@@ -47,3 +48,14 @@ groupedLines (x:xs) =
 printMaybe :: Show a => Maybe a -> IO ()
 printMaybe (Just x) = print x
 printMaybe Nothing = return ()
+
+foldGrid :: (b -> Char -> (Int, Int) -> b) -> b -> [String] -> b
+foldGrid f acc =
+    foldl
+        (\acc (y, row) ->
+            foldl (\acc (x, c) -> f acc c (y, x))
+                acc
+                (zip [0..] row)
+        )
+        acc
+        . zip [0..]

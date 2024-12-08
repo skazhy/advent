@@ -26,16 +26,7 @@ upd _ p Nothing = Just [p]
 upd _ p (Just v) = Just $ p : v
 
 antennaPoints :: [String] -> Map Char [(Int, Int)]
-antennaPoints =
-    foldl
-        (\acc (y, row) ->
-            foldl
-                (\acc (x, c) -> alter (upd c (y, x)) c acc)
-                acc
-                (zip [0..] row)
-        )
-        empty
-        . zip [0..]
+antennaPoints = foldGrid (\acc c p -> alter (upd c p) c acc) empty
 
 antinodes :: (Int, Int) -> (Int, Int) -> ([(Int, Int)], [(Int, Int)])
 antinodes (y1, x1) (y2, x2)
