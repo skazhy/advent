@@ -57,7 +57,7 @@ Puzzles that will take very long time to complete if solved with bruteforce.
 
 ### Taxicab
 
-- 2016.1 "Radioisotope Thermoelectric Generators" in [Rust](../src/rust/year2016/day1.rs)
+- 2016.1 "No Time for a Taxicab" in [Rust](../src/rust/year2016/day1.rs)
 - 2017.3 "Spiral Memory" in [Clojure](../src/advent/2017/day3.clj)
 - 2023.11 "Cosmic Expansion" in [Rust](../src/rust/year2023/day11.rs)
 
@@ -87,7 +87,7 @@ Appeared only in AoC 2019.
 
 ## List processing
 
-- 2021.1 "Passage Pathing" in [Clojure](../src/advent/2021/day1.clj), [Haskell](../src/haskell/2021/Day1.hs)
+- 2021.1 "Sonar Sweep" in [Clojure](../src/advent/2021/day1.clj), [Haskell](../src/haskell/2021/Day1.hs)
 
 ## Rust only
 

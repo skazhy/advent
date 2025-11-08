@@ -11,12 +11,14 @@
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
 
-Total completion rate in past years: 60% (242 / 400 stars). Solutions marked as _slow_ complete both parts in more than 5 seconds.
+Total completion rate in past years: 48% (242 / 500 stars). Solutions marked as _slow_ complete both parts in more than 5 seconds.
 
 ## 2024
 
+Completion: 32% (16 / 50 stars)
+
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
+| --- | --- | --- | --- |
 | 1 | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [Clojure](../src/advent/2024/day1.clj), [Haskell](../src/haskell/2024/Day1.hs) | ☆☆ |
 | 2 | [Red-Nosed Reports](https://adventofcode.com/2024/day/2) | [Haskell](../src/haskell/2024/Day2.hs), [Scheme](../src/scheme/2024/day2.scm) | ☆☆ |
 | 3 | [Mull It Over](https://adventofcode.com/2024/day/3) | [Haskell](../src/haskell/2024/Day3.hs) | ☆☆ |
@@ -31,7 +33,7 @@ Total completion rate in past years: 60% (242 / 400 stars). Solutions marked as 
 Completion: 66% (33 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
+| --- | --- | --- | --- |
 | 1 | [Trebuchet?!](https://adventofcode.com/2023/day/1) | [Haskell](../src/haskell/2023/Day1.hs), [Rust](../src/rust/year2023/day1.rs) | ☆☆ |
 | 2 | [Cube Conundrum](https://adventofcode.com/2023/day/2) | [Clojure](../src/advent/2023/day2.clj), [Haskell](../src/haskell/2023/Day2.hs) | ☆☆ |
 | 3 | [Gear Ratios](https://adventofcode.com/2023/day/3) | [Clojure](../src/advent/2023/day3.clj) | ☆☆ |
@@ -56,8 +58,8 @@ Completion: 66% (33 / 50 stars)
 Completion: 44% (22 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
-| 1 | [Monkey in the Middle](https://adventofcode.com/2022/day/1) | [Clojure](../src/advent/2022/day1.clj), [Haskell](../src/haskell/2022/Day1.hs), [Rust](../src/rust/year2022/day1.rs) | ☆☆ |
+| --- | --- | --- | --- |
+| 1 | [Calorie Counting](https://adventofcode.com/2022/day/1) | [Clojure](../src/advent/2022/day1.clj), [Haskell](../src/haskell/2022/Day1.hs), [Rust](../src/rust/year2022/day1.rs) | ☆☆ |
 | 2 | [Rock Paper Scissors](https://adventofcode.com/2022/day/2) | [Haskell](../src/haskell/2022/Day2.hs) | ☆☆ |
 | 3 | [Rucksack Reorganization](https://adventofcode.com/2022/day/3) | [Haskell](../src/haskell/2022/Day3.hs) | ☆☆ |
 | 4 | [Camp Cleanup](https://adventofcode.com/2022/day/4) | [Haskell](../src/haskell/2022/Day4.hs) | ☆☆ |
@@ -74,8 +76,8 @@ Completion: 44% (22 / 50 stars)
 Completion: 74% (37 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
-| 1 | [Passage Pathing](https://adventofcode.com/2021/day/1) | [Clojure](../src/advent/2021/day1.clj), [Haskell](../src/haskell/2021/Day1.hs) | ☆☆ |
+| --- | --- | --- | --- |
+| 1 | [Sonar Sweep](https://adventofcode.com/2021/day/1) | [Clojure](../src/advent/2021/day1.clj), [Haskell](../src/haskell/2021/Day1.hs) | ☆☆ |
 | 2 | [Dive!](https://adventofcode.com/2021/day/2) | [Clojure](../src/advent/2021/day2.clj), [Haskell](../src/haskell/2021/Day2.hs) | ☆☆ |
 | 3 | [Binary Diagnostic](https://adventofcode.com/2021/day/3) | [Clojure](../src/advent/2021/day3.clj), [Haskell](../src/haskell/2021/Day3.hs) | ☆☆ |
 | 4 | [Giant Squid](https://adventofcode.com/2021/day/4) | [Clojure](../src/advent/2021/day4.clj) | ☆☆ |
@@ -100,8 +102,8 @@ Completion: 74% (37 / 50 stars)
 Completion: 100% (50 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
-| 1 | [Rambunctious Recitation](https://adventofcode.com/2020/day/1) | [Clojure](../src/advent/2020/day1.clj), [Haskell](../src/haskell/2020/Day1.hs) | ☆☆ |
+| --- | --- | --- | --- |
+| 1 | [Report Repair](https://adventofcode.com/2020/day/1) | [Clojure](../src/advent/2020/day1.clj), [Haskell](../src/haskell/2020/Day1.hs) | ☆☆ |
 | 2 | [Password Philosophy](https://adventofcode.com/2020/day/2) | [Clojure](../src/advent/2020/day2.clj), [Haskell](../src/haskell/2020/Day2.hs) | ☆☆ |
 | 3 | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [Clojure](../src/advent/2020/day3.clj), [Haskell](../src/haskell/2020/Day3.hs) | ☆☆ |
 | 4 | [Passport Processing](https://adventofcode.com/2020/day/4) | [Clojure](../src/advent/2020/day4.clj), [Haskell](../src/haskell/2020/Day4.hs) | ☆☆ |
@@ -132,8 +134,8 @@ Completion: 100% (50 / 50 stars)
 Completion: 42% (21 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
-| 1 | [Space Police](https://adventofcode.com/2019/day/1) | [Clojure](../src/advent/2019/day1.clj), [Haskell](../src/haskell/2019/Day1.hs) | ☆☆ |
+| --- | --- | --- | --- |
+| 1 | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [Clojure](../src/advent/2019/day1.clj), [Haskell](../src/haskell/2019/Day1.hs) | ☆☆ |
 | 2 | [1202 Program Alarm](https://adventofcode.com/2019/day/2) | [Clojure](../src/advent/2019/day2.clj), [Rust](../src/rust/year2019/day2.rs) | ☆☆ |
 | 3 | [Crossed Wires](https://adventofcode.com/2019/day/3) | [Clojure](../src/advent/2019/day3.clj) | ☆☆ |
 | 4 | [Secure Container](https://adventofcode.com/2019/day/4) | [Clojure](../src/advent/2019/day4.clj) | ☆☆ |
@@ -150,7 +152,7 @@ Completion: 42% (21 / 50 stars)
 Completion: 16% (8 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
+| --- | --- | --- | --- |
 | 1 | [Chronal Calibration](https://adventofcode.com/2018/day/1) | [Clojure](../src/advent/2018/day1.clj), [Haskell](../src/haskell/2018/Day1.hs), [Python](../src/python/2018/day1.py) | ☆☆ |
 | 2 | [Inventory Management System](https://adventofcode.com/2018/day/2) | [Clojure](../src/advent/2018/day2.clj) | ☆☆ |
 | 3 | [No Matter How You Slice It](https://adventofcode.com/2018/day/3) | [Clojure](../src/advent/2018/day3.clj) | ☆☆ |
@@ -161,7 +163,7 @@ Completion: 16% (8 / 50 stars)
 Completion: 84% (42 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
+| --- | --- | --- | --- |
 | 1 | [Inverse Captcha](https://adventofcode.com/2017/day/1) | [Clojure](../src/advent/2017/day1.clj), [Idris](../src/idris/2017/Day1.idr) | ☆☆ |
 | 2 | [Corruption Checksum](https://adventofcode.com/2017/day/2) | [Clojure](../src/advent/2017/day2.clj), [Rust](../src/rust/year2017/day2.rs) | ☆☆ |
 | 3 | [Spiral Memory](https://adventofcode.com/2017/day/3) | [Clojure](../src/advent/2017/day3.clj) | ☆☆ |
@@ -189,8 +191,8 @@ Completion: 84% (42 / 50 stars)
 Completion: 28% (14 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
-| 1 | [Radioisotope Thermoelectric Generators](https://adventofcode.com/2016/day/1) | [Rust](../src/rust/year2016/day1.rs) | ☆☆ |
+| --- | --- | --- | --- |
+| 1 | [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [Rust](../src/rust/year2016/day1.rs) | ☆☆ |
 | 2 | [Bathroom Security](https://adventofcode.com/2016/day/2) | [Rust](../src/rust/year2016/day2.rs) | ☆☆ |
 | 3 | [Squares With Three Sides](https://adventofcode.com/2016/day/3) | [Rust](../src/rust/year2016/day3.rs) | ☆☆ |
 | 4 | [Security Through Obscurity](https://adventofcode.com/2016/day/4) | [Clojure](../src/advent/2016/day4.clj) | ☆☆ |
@@ -203,7 +205,7 @@ Completion: 28% (14 / 50 stars)
 Completion: 30% (15 / 50 stars)
 
 | Day | Puzzle | Solutions | Completion |
-|  ---  | ---  | ---  | --- |
+| --- | --- | --- | --- |
 | 1 | [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [Haskell](../src/haskell/2015/Day1.hs), [Rust](../src/rust/year2015/day1.rs), [Scheme](../src/scheme/2015/day1.scm) | ☆☆ |
 | 2 | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [Python](../src/python/2015/day2.py) | ☆☆ |
 | 3 | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [Haskell](../src/haskell/2015/Day3.hs) | ☆☆ |

@@ -129,13 +129,22 @@ def year_puzzle_tags(year):
     return ret
 
 
+def day_count_for_year(year):
+    if year < 2025:
+        return 25
+    else:
+        return 12
+
+def star_count_for_year(year):
+    return day_count_for_year(year) * 2
+
 def gen_completion_md(puzzles, staged_years):
     print("Regenerating completed puzzle doc...")
     existing_years = previously_solved_years(PUZZLE_MD_PATH)
 
     today = datetime.date.today()
     last_complete_year = today.year - 1
-    if datetime.date.today().day > 24 and datetime.date.month == 12:
+    if datetime.date.today().day >= day_count_for_year(today.year) and datetime.date.month == 12:
         last_complete_year = today.year
 
     with open(PUZZLE_MD_PATH, "w", encoding="utf-8") as doc:
@@ -149,7 +158,8 @@ def gen_completion_md(puzzles, staged_years):
         total_stars = reduce(
             lambda acc, y: acc + y.get("stars", 0), existing_years.values(), 0
         )
-        max_stars = (last_complete_year - 2015) * 50
+        max_stars = sum(star_count_for_year(y) for y in range(2015, last_complete_year + 1))
+
         doc.write(
             f"Total completion rate in past years: {total_stars/max_stars:.0%} ({total_stars} / {max_stars} stars). "
         )
@@ -163,9 +173,11 @@ def gen_completion_md(puzzles, staged_years):
             # Only refetch stars when there are staged puzzles for this year
             if year in staged_years:
                 print(f"Fetching stars for {year}...")
+
                 tags = year_puzzle_tags(year)
                 stars = year_completion(year)
                 if int(year) <= last_complete_year:
+                    year_star_count = star_count_for_year(int(year))
                     # Only count stars for puzzles available in the repo.
                     star_count = 0
                     for day, v in stars.items():
@@ -173,7 +185,7 @@ def gen_completion_md(puzzles, staged_years):
                             star_count += len(v) / 7
                     star_count = math.floor(star_count)
                     doc.write(
-                        f"Completion: {star_count/50:.0%} ({star_count} / 50 stars)\n\n"
+                        f"Completion: {star_count/year_star_count:.0%} ({star_count} / {year_star_count} stars)\n\n"
                     )
 
                 doc.write(md_table_header("Day", "Puzzle", "Solutions", "Completion"))

@@ -64,11 +64,12 @@
 (def cache-path  ".aoccache/titles")
 
 (defn title-cache-lookup [year day]
-  (with-open [rdr (io/reader cache-path)]
-    (when-let [item (->> (line-seq rdr)
-                         (filter #(str/starts-with? % (str year day)))
-                         first)]
-      (last (str/split item #" " 2)))))
+  (when (fs/exists? cache-path)
+    (with-open [rdr (io/reader cache-path)]
+      (when-let [item (->> (line-seq rdr)
+                           (filter #(str/starts-with? % (str year day)))
+                           first)]
+        (last (str/split item #" " 2))))))
 
 (defn cache-write [title year day]
   (spit cache-path (str year day " " title "\n") :append true))
