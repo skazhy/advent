@@ -18,7 +18,7 @@ one solution per line.
 
 ### Haskell
 
-Puzzles are self-contained files that are run interactively with `runghc`.
+Puzzles are self-contained files that are run interactively with `runghc`. [hlint](https://github.com/ndmitchell/hlint) is used for linting puzzle source code.
 
 ### Python
 
