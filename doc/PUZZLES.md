@@ -1,5 +1,6 @@
 # Solved Advent of Code puzzles
 
+- [2025 puzzles](#2025)
 - [2024 puzzles](#2024)
 - [2023 puzzles](#2023)
 - [2022 puzzles](#2022)
@@ -11,7 +12,13 @@
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
 
-Total completion rate in past years: 48% (242 / 500 stars). Solutions marked as _slow_ complete both parts in more than 5 seconds.
+Total completion rate in past years: 52% (258 / 500 stars). Solutions marked as _slow_ complete both parts in more than 5 seconds.
+
+## 2025
+
+| Day | Puzzle | Solutions | Completion |
+| --- | --- | --- | --- |
+| 1 | [Secret Entrance](https://adventofcode.com/2025/day/1) | [Haskell](../src/haskell/2025/Day1.hs) | ☆☆ |
 
 ## 2024
 
