@@ -135,8 +135,10 @@ def day_count_for_year(year):
     else:
         return 12
 
+
 def star_count_for_year(year):
     return day_count_for_year(year) * 2
+
 
 def gen_completion_md(puzzles, staged_years):
     print("Regenerating completed puzzle doc...")
@@ -144,7 +146,10 @@ def gen_completion_md(puzzles, staged_years):
 
     today = datetime.date.today()
     last_complete_year = today.year - 1
-    if datetime.date.today().day >= day_count_for_year(today.year) and datetime.date.month == 12:
+    if (
+        datetime.date.today().day >= day_count_for_year(today.year)
+        and datetime.date.month == 12
+    ):
         last_complete_year = today.year
 
     with open(PUZZLE_MD_PATH, "w", encoding="utf-8") as doc:
@@ -158,13 +163,15 @@ def gen_completion_md(puzzles, staged_years):
         total_stars = reduce(
             lambda acc, y: acc + y.get("stars", 0), existing_years.values(), 0
         )
-        max_stars = sum(star_count_for_year(y) for y in range(2015, last_complete_year + 1))
+        max_stars = sum(
+            star_count_for_year(y) for y in range(2015, last_complete_year + 1)
+        )
 
         doc.write(
             f"Total completion rate in past years: {total_stars/max_stars:.0%} ({total_stars} / {max_stars} stars). "
         )
         doc.write(
-            "Solutions marked as _slow_ complete both parts in more than 5 seconds.\n\n"
+            "Solutions marked as _slow_ complete both parts in more than 10 seconds.\n\n"
         )
 
         for year in sorted_puzzles:

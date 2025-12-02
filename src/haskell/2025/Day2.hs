@@ -43,7 +43,7 @@ partitions n s =
     s' -> s' : partitions n (drop n s)
 
 invalidId2 :: String -> Bool
-invalidId2 id = elem True $ map (\n -> everyEq $ partitions n id) $ dividers !! length id
+invalidId2 id = any (\n -> everyEq $ partitions n id) $ dividers !! length id
 
 
 main = do

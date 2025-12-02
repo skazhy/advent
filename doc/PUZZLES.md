@@ -12,7 +12,7 @@
 - [2016 puzzles](#2016)
 - [2015 puzzles](#2015)
 
-Total completion rate in past years: 52% (258 / 500 stars). Solutions marked as _slow_ complete both parts in more than 5 seconds.
+Total completion rate in past years: 52% (258 / 500 stars). Solutions marked as _slow_ complete both parts in more than 10 seconds.
 
 ## 2025
 

@@ -5,6 +5,11 @@
 Development and testing happens within Doom Emacs - `aoc.el` has helper functions that call `aoc.sh` under the hood.
 There's very basic Vim support for jumping between source / test data in `aoc.vim` (although it's not really used anymore).
 
+Some common utils used for linting the entire project:
+
+- `mdformat` for Markdown
+- `black` for Python
+
 ## Supported languages
 
 ### Clojure
@@ -20,8 +25,8 @@ one solution per line.
 
 Puzzles are self-contained files that are run interactively with `runghc`.
 
-* Use [GHCup](https://www.haskell.org/ghcup/) to install Haskell itself
-* [hlint](https://github.com/ndmitchell/hlint) is used for linting puzzle source code - it can be installed with `brew`
+- Use [GHCup](https://www.haskell.org/ghcup/) to install Haskell itself
+- [hlint](https://github.com/ndmitchell/hlint) is used for linting puzzle source code - it can be installed with `brew`
 
 ### Python
 
