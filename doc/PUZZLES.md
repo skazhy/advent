@@ -20,6 +20,7 @@ Total completion rate in past years: 52% (258 / 500 stars). Solutions marked as 
 | --- | --- | --- | --- |
 | 1 | [Secret Entrance](https://adventofcode.com/2025/day/1) | [Haskell](../src/haskell/2025/Day1.hs) | ☆☆ |
 | 2 | [Gift Shop](https://adventofcode.com/2025/day/2) | [Haskell](../src/haskell/2025/Day2.hs) | ☆☆ |
+| 3 | [Lobby](https://adventofcode.com/2025/day/3) | [Haskell](../src/haskell/2025/Day3.hs) | ☆☆ |
 
 ## 2024
 
