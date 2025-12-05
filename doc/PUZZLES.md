@@ -22,6 +22,7 @@ Total completion rate in past years: 52% (258 / 500 stars). Solutions marked as 
 | 2 | [Gift Shop](https://adventofcode.com/2025/day/2) | [Haskell](../src/haskell/2025/Day2.hs) | ☆☆ |
 | 3 | [Lobby](https://adventofcode.com/2025/day/3) | [Haskell](../src/haskell/2025/Day3.hs) | ☆☆ |
 | 4 | [Printing Department](https://adventofcode.com/2025/day/4) | [Haskell](../src/haskell/2025/Day4.hs) | ☆☆ |
+| 5 | [Cafeteria](https://adventofcode.com/2025/day/5) | [Haskell](../src/haskell/2025/Day5.hs) | ☆☆ |
 
 ## 2024
 
