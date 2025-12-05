@@ -61,7 +61,7 @@
 
 ;;; Caching
 
-(def cache-path  ".aoccache/titles")
+(def cache-path  "resources/titles")
 
 (defn title-cache-lookup [year day]
   (when (fs/exists? cache-path)
